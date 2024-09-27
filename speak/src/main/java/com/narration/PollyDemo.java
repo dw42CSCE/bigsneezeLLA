@@ -22,7 +22,7 @@ import java.io.FileOutputStream;
 
 public class PollyDemo {
     private AmazonPolly polly;
-    private final String outputFileName = "speech.mp3"; // OUTPUT FILE NAME
+    private String outputFileName = "speech"; // OUTPUT FILE NAME
 
 
     public PollyDemo() {
@@ -54,11 +54,23 @@ public class PollyDemo {
     }
 
     /**
-     * Method to sythesize speech from text, adds mp3 file of speech
+     * Method to synthesize speech from text with default file name speech
      * @param text String text to be synthesized
      * @throws IOException Result of error in input or output, file or data mismatch
      */
-    public void synthesize(String text) throws IOException {
+    public void synthesize(String text) throws IOException{
+        outputFileName = "speech";
+        synthesize(text, outputFileName);
+    }
+
+    /**
+     * Method to sythesize speech from text, adds mp3 file of speech
+     * @param text String text to be synthesized
+     * @param outputFile String of file name, will be a .mp3
+     * @throws IOException Result of error in input or output, file or data mismatch
+     */
+    public void synthesize(String text, String outputFile) throws IOException {
+        outputFileName = outputFile + ".mp3";
         SynthesizeSpeechRequest synthReq = new SynthesizeSpeechRequest()
                 .withText(text)
                 .withVoiceId("Mia") // Language and Accent dependent on name
