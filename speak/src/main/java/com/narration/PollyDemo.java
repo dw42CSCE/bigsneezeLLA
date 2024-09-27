@@ -77,16 +77,4 @@ public class PollyDemo {
             System.out.println("Speech synthesized and saved as " + outputFileName);
         }
     }
-
-public static void main(String[] args) {
-
-    String text = "Hola, como estas?";
-
-    PollyDemo pollyDemo = new PollyDemo();
-        try {
-            pollyDemo.synthesize(text);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
