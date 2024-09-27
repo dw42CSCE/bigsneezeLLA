@@ -21,20 +21,36 @@ import java.io.InputStream;
 import java.io.FileOutputStream;
 
 public class PollyDemo {
-    private final AmazonPolly polly;
+    private AmazonPolly polly;
     private final String outputFileName = "speech.mp3"; // OUTPUT FILE NAME
 
-    /**
-     * Contructor for Polly 
-     * @param accessKey String access key, !DO NOT PUSH THIS KEY TO GITHUB! !DO NOT PUT THE KEY IN THIS OR ANY OTHER SOURCE CODE! 
-     * @param secretKey String secret key, !DO NOT PUSH THIS KEY TO GITHUB! !DO NOT PUT THE KEY IN THIS OR ANY OTHER SOURCE CODE! 
-     */
-    public PollyDemo(String accessKey, String secretKey) {
+
+    public PollyDemo() {
+
+        String accessKey = "";
+        String secretKey = "";
+
+        // Read the access key and secret key from the credentials.txt file
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("credentials.txt"));
+            if (lines.size() >= 2) {
+                accessKey = lines.get(0).trim();  // First line for access key
+                secretKey = lines.get(1).trim();  // Second line for secret key
+            } else {
+                System.err.println("Credentials file must contain at least two lines.");
+                return;
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading credentials file: " + e.getMessage());
+            return;
+        }
+
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
         this.polly = AmazonPollyClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
                 .withRegion(Regions.US_EAST_1)
                 .build();
+        
     }
 
     /**
@@ -63,27 +79,12 @@ public class PollyDemo {
     }
 
 public static void main(String[] args) {
-        String accessKey = "";
-        String secretKey = "";
 
-        // Read the access key and secret key from the credentials.txt file
-        try {
-            List<String> lines = Files.readAllLines(Paths.get("credentials.txt"));
-            if (lines.size() >= 2) {
-                accessKey = lines.get(0).trim();  // First line for access key
-                secretKey = lines.get(1).trim();  // Second line for secret key
-            } else {
-                System.err.println("Credentials file must contain at least two lines.");
-                return;
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading credentials file: " + e.getMessage());
-            return;
-        }
+    String text = "Hola, como estas?";
 
-        PollyDemo pollyDemo = new PollyDemo(accessKey, secretKey);
+    PollyDemo pollyDemo = new PollyDemo();
         try {
-            pollyDemo.synthesize("Hola! Como Estas? Como te LLamas?");
+            pollyDemo.synthesize(text);
         } catch (IOException e) {
             e.printStackTrace();
         }
