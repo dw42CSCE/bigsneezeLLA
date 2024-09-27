@@ -1,3 +1,8 @@
+/**
+ * @author Dallas Wade
+ * Class for Polly, the Narrator
+ */
+
 package com.narration;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -8,7 +13,6 @@ import com.amazonaws.services.polly.AmazonPollyClientBuilder;
 import com.amazonaws.services.polly.model.OutputFormat;
 import com.amazonaws.services.polly.model.SynthesizeSpeechRequest;
 import com.amazonaws.services.polly.model.SynthesizeSpeechResult;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,10 +22,14 @@ import java.io.FileOutputStream;
 
 public class PollyDemo {
     private final AmazonPolly polly;
-    private final String outputFileName = "speech.mp3";
+    private final String outputFileName = "speech.mp3"; // OUTPUT FILE NAME
 
+    /**
+     * Contructor for Polly 
+     * @param accessKey String access key, !DO NOT PUSH THIS KEY TO GITHUB! !DO NOT PUT THE KEY IN THIS OR ANY OTHER SOURCE CODE! 
+     * @param secretKey String secret key, !DO NOT PUSH THIS KEY TO GITHUB! !DO NOT PUT THE KEY IN THIS OR ANY OTHER SOURCE CODE! 
+     */
     public PollyDemo(String accessKey, String secretKey) {
-        // Initialize AWS Polly Client
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
         this.polly = AmazonPollyClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
@@ -29,17 +37,19 @@ public class PollyDemo {
                 .build();
     }
 
+    /**
+     * Method to sythesize speech from text, adds mp3 file of speech
+     * @param text String text to be synthesized
+     * @throws IOException Result of error in input or output, file or data mismatch
+     */
     public void synthesize(String text) throws IOException {
-        // Create a speech synthesis request
         SynthesizeSpeechRequest synthReq = new SynthesizeSpeechRequest()
                 .withText(text)
-                .withVoiceId("Joanna") // Choose a voice ID
+                .withVoiceId("Mia") // Language and Accent dependent on name
                 .withOutputFormat(OutputFormat.Mp3);
 
-        // Synthesize speech
         SynthesizeSpeechResult synthRes = polly.synthesizeSpeech(synthReq);
 
-        // Get the audio stream and write it to a file
         try (InputStream inStream = synthRes.getAudioStream();
              FileOutputStream outputStream = new FileOutputStream(outputFileName)) {
             byte[] buffer = new byte[2 * 1024];
@@ -73,7 +83,7 @@ public static void main(String[] args) {
 
         PollyDemo pollyDemo = new PollyDemo(accessKey, secretKey);
         try {
-            pollyDemo.synthesize("Hello, my name is Polly! I'm from AWS!");
+            pollyDemo.synthesize("Hola! Como Estas? Como te LLamas?");
         } catch (IOException e) {
             e.printStackTrace();
         }
