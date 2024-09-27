@@ -56,24 +56,37 @@ public class PollyDemo {
     /**
      * Method to synthesize speech from text with default file name speech
      * @param text String text to be synthesized
+     * @param language String of the language the phrase is in
      * @throws IOException Result of error in input or output, file or data mismatch
      */
-    public void synthesize(String text) throws IOException{
+    public void synthesize(String text, String language) throws IOException{
         outputFileName = "speech";
-        synthesize(text, outputFileName);
+        synthesize(text, outputFileName, language);
     }
 
     /**
      * Method to sythesize speech from text, adds mp3 file of speech
      * @param text String text to be synthesized
      * @param outputFile String of file name, will be a .mp3
+     * @param voice String of the voice to be used
      * @throws IOException Result of error in input or output, file or data mismatch
      */
-    public void synthesize(String text, String outputFile) throws IOException {
+    public void synthesize(String text, String language, String outputFile) throws IOException {
         outputFileName = outputFile + ".mp3";
+        String voice = "english";
+        language = language.toLowerCase();
+        if (language.equals("spanish")) voice = "Mia";            
+        else if (language.equals("french")) voice = "Mathieu";     
+        else if (language.equals("german")) voice = "Vicki";   
+        else if (language.equals("italian")) voice = "Carla";   
+        else if (language.equals("portuguese")) voice = "Ines";     
+        else if (language.equals("japanese")) voice = "Mizuki";   
+        else if (language.equals("chinese")) voice = "Zhiyu";     
+        else voice = "Joanna";                             
+        
         SynthesizeSpeechRequest synthReq = new SynthesizeSpeechRequest()
                 .withText(text)
-                .withVoiceId("Mia") // Language and Accent dependent on name
+                .withVoiceId(voice)
                 .withOutputFormat(OutputFormat.Mp3);
 
         SynthesizeSpeechResult synthRes = polly.synthesizeSpeech(synthReq);
@@ -89,4 +102,5 @@ public class PollyDemo {
             System.out.println("Speech synthesized and saved as " + outputFileName);
         }
     }
+    
 }
