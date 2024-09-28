@@ -1,2 +1,0 @@
-Instructions for team members of big sneeze to be able to access Polly locally:
-
