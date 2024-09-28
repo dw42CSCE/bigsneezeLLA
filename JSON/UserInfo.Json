@@ -1,53 +1,71 @@
 {
     "users": [
-      {
+    {
+        "uuid": "a1b2c3d4-e5f6-7890-1234-56789abcdef0",
         "firstname": "Alice",
         "lastname": "Smith",
         "email": "alice.smith@example.com",
         "phone number": "123-456-7890",
+        "ProfPoints": 150,
+        "settings": {
+        "emailNotifications": "On",
+        "darkMode": "Off"
+        },
         "courses": [
-          {
+        {
             "language": "Spanish",
             "progress": 5
-          },
-          {
+        },
+        {
             "title": "Japanese",
             "progress": 40.75
-          }
+        }
         ]
-      },
-      {
+    },
+    {
+        "uuid": "b1c2d3e4-f5g6-7890-2345-67890abcdef1",
         "firstname": "Bob",
         "lastname": "Johnson",
         "email": "bob.johnson@example.com",
         "phone number": "987-654-3210",
+        "ProfPoints": 200,
+        "settings": {
+        "emailNotifications": "Off",
+        "darkMode": "On"
+        },
         "courses": [
-          {
+        {
             "title": "Spanish",
             "progress": 92.5
-          },
-          {
+        },
+        {
             "title": "German",
             "progress": 30.25
-          }
+        }
         ]
-      },
-      {
+    },
+    {
+        "uuid": "c1d2e3f4-g5h6-7890-3456-78901abcdef2",
         "firstname": "Charlie",
         "lastname": "Davis",
         "email": "charlie.davis@example.com",
         "phone number": "555-123-4567",
+        "ProfPoints": 175,
+        "settings": {
+        "emailNotifications": "On",
+        "darkMode": "On"
+        },
         "courses": [
-          {
+        {
             "title": "Spanish",
             "progress": 60
-          },
-          {
+        },
+        {
             "title": "French",
             "progress": 50
-          }
+        }
         ]
-      }
+    }
     ]
-  }
+}
   
