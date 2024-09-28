@@ -1,0 +1,65 @@
+{
+    "course": {
+        "language": "Spanish",
+        "progress": 0,
+        "lessons": [
+            {
+            "title": "Introduction to Spanish",
+            "progress": 0,
+            "intro": "Welcome to Big Sneeze's Spanish course! To start off we would like to say, Hola! That means \"Hello\" in Spanish!\nSome basic greetings are:\n",
+            "keywords": [
+                "Buenas Noches : Good Night",
+                "Buenas Tardes : Good Afternoon",
+                "Buenas Dias : Good Morning",
+                "Como te llamas? : What is your name?"
+                ],
+            "questions": [
+                {
+                "question": "How do you say \"Hello\" in Spanish?",
+                "options": "Hola  |  Como te llamas  |  Buenas dias  |  Buenas Noches",
+                "answer": "Hola"
+                },
+                {
+                "question": "How do you say \"What is your name\" in Spanish?",
+                "options": "Quando Quenta  |  Como te llamas  |  Buenas dias  |  Buenas noches",
+                "answer": "Como te llamas"
+                },
+                {
+                "question": "Fill in the blank to say \"Good Morning\"\nBuenas ______",
+                "options": "Llamas  |  Tardes  |  Dias  |  Noches",
+                "answer": "Dias"
+                }
+                ]
+            },
+            {
+            "title": "Common Spanish Phrases",
+            "progress": 0,
+            "intro": "In this lesson, we'll explore some commonly used Spanish phrases that will help you in daily conversations.",
+            "keywords": [
+                "Lo siento : I'm sorry",
+                "Gracias : Thank you",
+                "Por favor : Please",
+                "De nada : You're welcome"
+            ],
+            "questions": [
+                {
+                "question": "How do you say \"I'm sorry\" in Spanish?",
+                "options": "Gracias  |  Lo siento  |  De nada  |  Por favor",
+                "answer": "Lo siento"
+                },
+                {
+                "question": "What is the correct phrase to say \"Thank you\" in Spanish?",
+                "options": "Por favor  |  Gracias  |  Lo siento  |  De nada",
+                "answer": "Gracias"
+                },
+                {
+                "question": "How do you respond to someone thanking you by saying \"You're welcome\"?",
+                "options": "Gracias  |  Por favor  |  De nada  |  Lo siento",
+                "answer": "De nada"
+                }
+            ]
+            }
+      ]
+    }
+  }
+  

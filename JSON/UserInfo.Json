@@ -1,0 +1,53 @@
+{
+    "users": [
+      {
+        "firstname": "Alice",
+        "lastname": "Smith",
+        "email": "alice.smith@example.com",
+        "phone number": "123-456-7890",
+        "courses": [
+          {
+            "language": "Spanish",
+            "progress": 5
+          },
+          {
+            "title": "Japanese",
+            "progress": 40.75
+          }
+        ]
+      },
+      {
+        "firstname": "Bob",
+        "lastname": "Johnson",
+        "email": "bob.johnson@example.com",
+        "phone number": "987-654-3210",
+        "courses": [
+          {
+            "title": "Spanish",
+            "progress": 92.5
+          },
+          {
+            "title": "German",
+            "progress": 30.25
+          }
+        ]
+      },
+      {
+        "firstname": "Charlie",
+        "lastname": "Davis",
+        "email": "charlie.davis@example.com",
+        "phone number": "555-123-4567",
+        "courses": [
+          {
+            "title": "Spanish",
+            "progress": 60
+          },
+          {
+            "title": "French",
+            "progress": 50
+          }
+        ]
+      }
+    ]
+  }
+  

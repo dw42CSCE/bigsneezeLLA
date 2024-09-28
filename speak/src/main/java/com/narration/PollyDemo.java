@@ -68,7 +68,7 @@ public class PollyDemo {
      * Method to sythesize speech from text, adds mp3 file of speech
      * @param text String text to be synthesized
      * @param outputFile String of file name, will be a .mp3
-     * @param voice String of the voice to be used
+     * @param language String of the voice to be used
      * @throws IOException Result of error in input or output, file or data mismatch
      */
     public void synthesize(String text, String language, String outputFile) throws IOException {
