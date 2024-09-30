@@ -15,17 +15,20 @@
                 ],
             "questions": [
                 {
-                "question": "How do you say \"Hello\" in Spanish?",
+                "question": "\"Hello\" in spanish is: _______",
+                "type": "Fill_In",
                 "options": "Hola  |  Como te llamas  |  Buenas dias  |  Buenas Noches",
                 "answer": "Hola"
                 },
                 {
-                "question": "How do you say \"What is your name\" in Spanish?",
+                "question": "\"What is your name\" in Spanish is: __________",
+                "type":"Fill_In",
                 "options": "Quando Quenta  |  Como te llamas  |  Buenas dias  |  Buenas noches",
                 "answer": "Como te llamas"
                 },
                 {
                 "question": "Fill in the blank to say \"Good Morning\"\nBuenas ______",
+                "type":"Fill_In",
                 "options": "Llamas  |  Tardes  |  Dias  |  Noches",
                 "answer": "Dias"
                 }
@@ -43,17 +46,20 @@
             ],
             "questions": [
                 {
-                "question": "How do you say \"I'm sorry\" in Spanish?",
+                "question": "\"I'm sorry\" in Spanish is: _________",
+                "type":"Fill_In",
                 "options": "Gracias  |  Lo siento  |  De nada  |  Por favor",
                 "answer": "Lo siento"
                 },
                 {
                 "question": "What is the correct phrase to say \"Thank you\" in Spanish?",
+                "type":"Matching",
                 "options": "Por favor  |  Gracias  |  Lo siento  |  De nada",
                 "answer": "Gracias"
                 },
                 {
                 "question": "How do you respond to someone thanking you by saying \"You're welcome\"?",
+                "type":"Conversation",
                 "options": "Gracias  |  Por favor  |  De nada  |  Lo siento",
                 "answer": "De nada"
                 }
