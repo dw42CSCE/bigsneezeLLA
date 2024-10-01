@@ -6,7 +6,6 @@
         "lastname": "Smith",
         "username": "asmith",
         "email": "alice.smith@example.com",
-        "phone number": "123-456-7890",
         "ProfPoints": 150,
         "settings": {
         "emailNotifications": "On",
@@ -29,7 +28,6 @@
         "lastname": "Johnson",
         "username": "bigbob",
         "email": "bob.johnson@example.com",
-        "phone number": "987-654-3210",
         "ProfPoints": 200,
         "settings": {
         "emailNotifications": "Off",
@@ -52,7 +50,6 @@
         "lastname": "Davis",
         "username": "charlestheusername",
         "email": "charlie.davis@example.com",
-        "phone number": "555-123-4567",
         "ProfPoints": 175,
         "settings": {
         "emailNotifications": "On",
