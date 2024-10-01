@@ -1,13 +1,21 @@
 {
     "course": {
         "language": "Spanish",
+        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
         "progress": 0,
         "lessons": [
             {
-            "title": "Introduction to Spanish",
+            "subject": "Introduction to Spanish",
             "progress": 0,
             "intro": "Welcome to Big Sneeze's Spanish course! To start off we would like to say, Hola! That means \"Hello\" in Spanish!\nSome basic greetings are:\n",
             "keywords": [
+                "Bueno : Good",
+                "Tardes : Afternoon",
+                "Dias : Morning",
+                "Noches : Night",
+                "Llamas : Name"
+                ],
+            "keyphrases": [
                 "Buenas Noches : Good Night",
                 "Buenas Tardes : Good Afternoon",
                 "Buenas Dias : Good Morning",
@@ -35,10 +43,14 @@
                 ]
             },
             {
-            "title": "Common Spanish Phrases",
+            "subject": "Common Spanish Phrases",
             "progress": 0,
             "intro": "In this lesson, we'll explore some commonly used Spanish phrases that will help you in daily conversations.",
             "keywords": [
+                "Siento : Sorry",
+                "Gracias : Thank you"
+            ],
+            "keyphrases": [
                 "Lo siento : I'm sorry",
                 "Gracias : Thank you",
                 "Por favor : Please",
