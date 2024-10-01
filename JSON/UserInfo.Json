@@ -6,6 +6,7 @@
         "lastname": "Smith",
         "username": "asmith",
         "email": "alice.smith@example.com",
+        "password": "password",
         "ProfPoints": 150,
         "settings": {
         "emailNotifications": "On",
@@ -17,7 +18,7 @@
             "progress": 5
         },
         {
-            "title": "Japanese",
+            "language": "Japanese",
             "progress": 40.75
         }
         ]
@@ -28,6 +29,7 @@
         "lastname": "Johnson",
         "username": "bigbob",
         "email": "bob.johnson@example.com",
+        "password": "password",
         "ProfPoints": 200,
         "settings": {
         "emailNotifications": "Off",
@@ -35,11 +37,11 @@
         },
         "courses": [
         {
-            "title": "Spanish",
+            "language": "Spanish",
             "progress": 92.5
         },
         {
-            "title": "German",
+            "language": "German",
             "progress": 30.25
         }
         ]
@@ -50,6 +52,7 @@
         "lastname": "Davis",
         "username": "charlestheusername",
         "email": "charlie.davis@example.com",
+        "password": "password",
         "ProfPoints": 175,
         "settings": {
         "emailNotifications": "On",
@@ -57,11 +60,11 @@
         },
         "courses": [
         {
-            "title": "Spanish",
+            "language": "Spanish",
             "progress": 60
         },
         {
-            "title": "French",
+            "language": "French",
             "progress": 50
         }
         ]
