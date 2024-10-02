@@ -28,9 +28,9 @@
         "firstname": "John",
         "lastname": "Doe",
         "username": "JohnDoe",
-        "email": "bob.johnson@example.com",
+        "email": "ex@gmail.com",
         "password": "password",
-        "ProfPoints": 200,
+        "ProfPoints": 0,
         "settings": {
         "emailNotifications": "Off",
         "darkMode": "On"
@@ -38,7 +38,7 @@
         "courses": [
         {
             "language": "Spanish",
-            "progress": 92
+            "progress": 0
         },
         {
             "language": "German",
