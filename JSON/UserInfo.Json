@@ -19,15 +19,15 @@
         },
         {
             "language": "Japanese",
-            "progress": 40.75
+            "progress": 40
         }
         ]
     },
     {
         "uuid": "cf874699-564c-43d8-8b24-87171c663ab7",
-        "firstname": "Bob",
-        "lastname": "Johnson",
-        "username": "bigbob",
+        "firstname": "John",
+        "lastname": "Doe",
+        "username": "JohnDoe",
         "email": "bob.johnson@example.com",
         "password": "password",
         "ProfPoints": 200,
@@ -38,11 +38,11 @@
         "courses": [
         {
             "language": "Spanish",
-            "progress": 92.5
+            "progress": 92
         },
         {
             "language": "German",
-            "progress": 30.25
+            "progress": 30
         }
         ]
     },
