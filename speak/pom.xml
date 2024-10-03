@@ -17,12 +17,22 @@
 
     <dependencies>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>com.googlecode.soundlibs</groupId>
             <artifactId>soundlibs</artifactId>
             <version>1.4</version>
             <type>pom</type>
         </dependency>
+=======
+    <dependency>
+        <groupId>javazoom</groupId>
+        <artifactId>jlayer</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+
+</dependencies>
+>>>>>>> 2c0dd5ae3423b6ca5e6c08713a8809c7c5486bbd
 
 
         <dependency>
