@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.narration</groupId>
-    <artifactId>speak</artifactId>
+    <groupId>com.narriation</groupId>
+    <artifactId>speek</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -13,28 +13,51 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+
+
     <dependencies>
-    <!-- AWS SDK for Polly -->
-    <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk-polly</artifactId>
-        <version>1.12.632</version> <!-- Check for the latest version -->
-    </dependency>
-    
-    <!-- AWS SDK Core -->
-    <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk-core</artifactId>
-        <version>1.12.632</version> <!-- Check for the latest version -->
-    </dependency>
 
-    <dependency>
-        <groupId>javazoom</groupId>
-        <artifactId>jlayer</artifactId>
-        <version>1.0.1</version>
-    </dependency>
-
-</dependencies>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>soundlibs</artifactId>
+            <version>1.4</version>
+            <type>pom</type>
+        </dependency>
 
 
+        <dependency>
+            <groupId>javazoom</groupId>
+            <artifactId>jlayer</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>archetypes</artifactId>
+            <version>2.27.3</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>polly</artifactId>
+            <version>2.27.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.1.0-alpha1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.1.0-alpha1</version>
+        </dependency>
+
+    </dependencies>
 </project>
