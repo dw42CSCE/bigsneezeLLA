@@ -11,7 +11,7 @@ public class Course {
     private UUID uuid;
 
     public Course(Language language) {
-
+        this.language = language;
     }
 
     public Lesson getLesson(int index) {
