@@ -20,6 +20,10 @@ import java.util.List;
 import java.io.InputStream;
 import java.io.FileOutputStream;
 
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.advanced.AdvancedPlayer;
+import javazoom.jl.player.advanced.PlaybackListener;
+
 public class PollyDemo {
     private AmazonPolly polly;
     private String outputFileName = "speech"; // OUTPUT FILE NAME
@@ -93,14 +97,23 @@ public class PollyDemo {
 
         try (InputStream inStream = synthRes.getAudioStream();
              FileOutputStream outputStream = new FileOutputStream(outputFileName)) {
-            byte[] buffer = new byte[2 * 1024];
-            int readBytes;
+            // byte[] buffer = new byte[2 * 1024];
+            // int readBytes;        
+            AdvancedPlayer player = new AdvancedPlayer(inStream,
+            javazoom.jl.player.FactoryRegistry.systemRegistry().createAudioDevice());
+        
+            player.setPlayBackListener(new PlaybackListener(){});
 
-            while ((readBytes = inStream.read(buffer)) > 0) {
-                outputStream.write(buffer, 0, readBytes);
-            }
-            System.out.println("Speech synthesized and saved as " + outputFileName);
+            player.play();
+
+            // while ((readBytes = inStream.read(buffer)) > 0) {
+            //     outputStream.write(buffer, 0, readBytes);
+            // }
+            System.out.println("Speech spoke");
+        } catch (JavaLayerException e){
+            System.out.println("Error");
         }
+
     }
     
 }
