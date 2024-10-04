@@ -1,4 +1,8 @@
+package com.narration;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class User {
     private String userName;
@@ -81,23 +85,28 @@ public class User {
     }
 
     public String toString(){
-
+        return 
+            "Username: "+ userName+
+            "\nName: "+firstName+" "+lastName+
+            "\nEmail: "+emailAddress+
+            "\nProficiency Points: "+proficiencyPointTotal;
     }
 
     public boolean isMatch(String username, String password){
-        
+       return this.userName.equals(username) && this.password.equals(password);
     }
 
-    public setSettings(Boolean darkModeOn, Boolean emailNotifsOn){
-
+    public void setSettings(Boolean darkModeOn, Boolean emailNotifsOn){
+       settings.toggleDarkMode(false);
+       settings.toggleEmailNotificaiton(false);
     }
 
-    public getSettings(){
+    public Settings getSettings(){
         return settings;
     }
 
-    private UUID creatUUID(){
-
+    private UUID createUUID(){
+        return UUID.randomUUID();
     }
 
 
