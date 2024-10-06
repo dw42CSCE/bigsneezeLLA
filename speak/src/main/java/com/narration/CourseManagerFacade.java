@@ -1,3 +1,5 @@
+package com.narration;
+
 public class CourseManagerFacade {
     private User user;
     private Settings settings;
@@ -16,7 +18,7 @@ public class CourseManagerFacade {
         return null;
     }
 
-    public Course getCourse(string language) {
+    public Course getCourse(String language) {
         return null;
     }
 
@@ -45,7 +47,7 @@ public class CourseManagerFacade {
     }
 
     public boolean isCorrect(String userAnswer) {
-        return null;
+        return true;
     }
 
     public void logOut() {

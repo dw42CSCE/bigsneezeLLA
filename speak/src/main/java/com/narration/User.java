@@ -32,7 +32,7 @@ public class User {
         this.userName=userName;
         this.password=password;
         this.emailAddress=emailAddress;
-
+        this.uuid = createUUID();
     }
 
     public String getUsername(){
@@ -56,15 +56,11 @@ public class User {
     }
 
     public Course getCourse(String language){
-        Course course;
-
-        return course;
+        return null;
     }
 
     public int getCourseProgress(Course course){
-        int courseProgress;
-
-        return courseProgress;
+        return 0;
     }
 
     public void setName(String firstName, String lastName){

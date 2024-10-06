@@ -1,3 +1,5 @@
+package com.narration;
+
 public class Settings {
     private boolean emailNotifications;
     private boolean isDarkMode;

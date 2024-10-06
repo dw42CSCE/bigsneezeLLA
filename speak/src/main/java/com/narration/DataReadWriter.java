@@ -15,4 +15,8 @@ public class DataReadWriter {
     public static ArrayList<Course> getCourse() {
         return null;
     }
+
+    public static void main(String[] args) {
+        
+    }
 }
