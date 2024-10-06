@@ -17,6 +17,7 @@ public class DataReadWriter extends DataConstants{
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
+        //change later
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
