@@ -87,12 +87,18 @@ public class User {
         
     }
 
-    public String toString(){
-        return 
-            "Username: "+ userName+
-            "\nName: "+firstName+" "+lastName+
-            "\nEmail: "+emailAddress+
-            "\nProficiency Points: "+proficiencyPointTotal;
+    // public String toString(){
+    //     return 
+    //         "Username: "+ userName+
+    //         "\nName: "+firstName+" "+lastName+
+    //         "\nEmail: "+emailAddress+
+    //         "\nProficiency Points: "+proficiencyPointTotal;
+    // }
+
+    //Temporary toString
+    public String toString() {
+        return "Username: "+ userName +
+        "\nName: " + firstName+" "+lastName;
     }
 
     public boolean isMatch(String username, String password){

@@ -18,7 +18,7 @@ public class VoiceList {
 
     public static void showVoices(Region region){
         PollyClient polly = PollyClient.builder().region(region).build();
-
+        
         displayVoices(polly);
         polly.close();
     }

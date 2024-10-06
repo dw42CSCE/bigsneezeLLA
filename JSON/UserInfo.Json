@@ -1,5 +1,4 @@
-{
-    "users": [
+[
     {
         "uuid": "1b889c9e-a1b2-4a0f-84c5-960eddabb7e0",
         "firstname": "Alice",
@@ -69,6 +68,4 @@
         }
         ]
     }
-    ]
-}
-  
+]

@@ -8,13 +8,9 @@ import java.util.ArrayList;
 import java.io.FileReader;
 import java.util.UUID;
 
-// import org.json.simple.JSONArray;
-// import org.json.simple.JSONObject;
-// import org.json.simple.parser.JSONParser;
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class DataReadWriter extends DataConstants{
     
@@ -23,11 +19,11 @@ public class DataReadWriter extends DataConstants{
 
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
-            JsonParser parser = new JsonParser() {};
-            JsonArrayFormatVisitor peopleJSON = (JsonArrayFormatVisitor)new JsonParser(). {}.parse;
-
-            for (int i = 0; i < peopleJSON; i++) {
-                JSONPObject personJSON = (JSONPObject)peopleJSON.get(i);
+            JSONParser parser = new JSONParser();
+            JSONArray peopleJSON = (JSONArray)parser.parse(reader);
+            
+            for (int i = 0; i < peopleJSON.size(); i++) {
+                JSONObject personJSON = (JSONObject)peopleJSON.get(i);
                 String firstname = (String)personJSON.get(USER_FIRST_NAME);
                 String lastname = (String)personJSON.get(USER_LAST_NAME);
                 String username = (String)personJSON.get(USER_USER_NAME);
@@ -50,6 +46,9 @@ public class DataReadWriter extends DataConstants{
     }
 
     public static void main(String[] args) {
-        
+        ArrayList<User> users = getUsers();
+        for (User user : users) {
+            System.out.println(user);
+        }
     }
 }
