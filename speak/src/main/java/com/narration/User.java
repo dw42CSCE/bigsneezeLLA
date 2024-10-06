@@ -28,11 +28,18 @@ public class User {
     this.settings=settings;                    
     }
 
-    public User(String userName, String password, String emailAddress){
-        this.userName=userName;
-        this.password=password;
-        this.emailAddress=emailAddress;
-        this.uuid = createUUID();
+    // public User(String userName, String password, String emailAddress){
+    //     this.userName=userName;
+    //     this.password=password;
+    //     this.emailAddress=emailAddress;
+    //     this.uuid = createUUID();
+    // }
+
+    //Temporary User Constructor for testing
+    public User(String firstname, String lastname, String username) {
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.userName = username;
     }
 
     public String getUsername(){
