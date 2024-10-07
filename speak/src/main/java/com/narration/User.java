@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import software.amazon.awssdk.services.polly.endpoints.internal.Value.Int;
+
 public class User {
     private String userName;
     private String password;
@@ -64,6 +66,18 @@ public class User {
 
     public Course getCourse(String language){
         return null;
+    }
+
+    public UUID getUuid(){
+        return this.uuid;
+    }
+
+    public int getProfPoints(){
+        return this.proficiencyPointTotal;
+    }
+
+    public HashMap<Course, Integer> getCourses(){
+        return this.courses;
     }
 
     public int getCourseProgress(Course course){

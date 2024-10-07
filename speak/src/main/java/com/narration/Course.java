@@ -18,6 +18,10 @@ public class Course {
         return null;
     }
 
+    public UUID getUuid(){
+        return this.uuid;
+    }
+
     private void addLesson(Lesson lesson) {
 
     }
