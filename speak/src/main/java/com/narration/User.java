@@ -30,19 +30,19 @@ public class User {
     this.settings=settings;                    
     }
 
-    // public User(String userName, String password, String emailAddress){
-    //     this.userName=userName;
-    //     this.password=password;
-    //     this.emailAddress=emailAddress;
-    //     this.uuid = createUUID();
-    // }
-
-    //Temporary User Constructor for testing
-    public User(String firstname, String lastname, String username) {
-        this.firstName = firstname;
-        this.lastName = lastname;
-        this.userName = username;
+    public User(String userName, String password, String emailAddress){
+        this.userName=userName;
+        this.password=password;
+        this.emailAddress=emailAddress;
+        this.uuid = createUUID();
     }
+
+    // //Temporary User Constructor for testing
+    // public User(String firstname, String lastname, String username) {
+    //     this.firstName = firstname;
+    //     this.lastName = lastname;
+    //     this.userName = username;
+    // }
 
     public String getUsername(){
         return userName;
@@ -81,7 +81,7 @@ public class User {
     }
 
     public int getCourseProgress(Course course){
-        return 0;
+        return courses.get(course);
     }
 
     public void setName(String firstName, String lastName){
@@ -102,7 +102,9 @@ public class User {
     }
 
     public void addCourseProgress(Course course, int lesson, int lessonProgress){
-        
+        int addProgress = 1/courses.size();
+        int progress = courses.get(course) + addProgress;
+        courses.put( course, progress);
     }
 
     // public String toString(){
@@ -135,8 +137,4 @@ public class User {
     private UUID createUUID(){
         return UUID.randomUUID();
     }
-
-
-
-
 }
