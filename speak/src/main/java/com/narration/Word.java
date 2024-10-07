@@ -5,22 +5,23 @@ public class Word {
     private String meaning;
 
     public Word(String word, String meaning){
-        //ToDo
+        this.word = word;
+        this.meaning = meaning;
     }
 
     public String getWord(){
-        return "ToDo";
+        return this.word;
     }
 
     public String getMeaning(){
-        return "ToDo";
+        return this.meaning;
     }
 
     public void speak(){
-        //Uses Polly
+        Narrator.playSound(this.word);
     }
 
     public String toString(){
-        return "ToDo";
+        return (this.word+":\n"+this.meaning);
     }
 }
