@@ -36,7 +36,7 @@ public class CourseManagerFacade {
     }
 
     public void toggleDarkMode(boolean isDarkMode) {
-
+        
     }
 
     public void toggleEmailNotification(boolean emailNotification) {

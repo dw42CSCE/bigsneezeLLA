@@ -3,7 +3,6 @@ package com.narration;
 public class Settings {
     private boolean emailNotifications;
     private boolean isDarkMode;
-    private User user ;
 
     public Settings(boolean emailNotif, boolean darkMode) {
         this.emailNotifications = emailNotif;
