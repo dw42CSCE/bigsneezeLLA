@@ -40,6 +40,13 @@ public class DataReadWriter extends DataConstants{
         return null;
     }
 
+    private Settings parseSettings(JSONObject settings) {
+        if (settings == null) {
+            return null;
+        }
+        return null;
+    }
+
     /**
      * Updates user JSON File from arraylist of Users
      * @param users Array of current Users kept in UserList class
