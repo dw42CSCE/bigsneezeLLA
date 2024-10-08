@@ -12,11 +12,15 @@ public class CourseList {
     }
 
     public static CourseList getInstance() {
-        return null;
+        if (courseList != null){
+            courseList = new CourseList();
+        }
+        return courseList;
     }
 
     public void addCourse(Language language, ArrayList<Lesson> lessons) {
-
+        Course course = new Course(language);
+        courses.add(course);
     }
 
     public Course getCourse(Language language) {

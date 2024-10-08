@@ -17,6 +17,12 @@ public class UserList {
 
     }
 
+    public UserList getInstance(){
+      if(userList==null)
+        userList=new UserList();
+      return userList;
+    }
+
     public void addUser(String username, String email, String password) {
       boolean isMatch=false;
       for(int i=0; i<users.size();i++){
