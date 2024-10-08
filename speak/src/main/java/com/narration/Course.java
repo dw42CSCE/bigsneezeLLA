@@ -10,12 +10,13 @@ public class Course {
     private int proficiencyPts;
     private UUID uuid;
 
-    public Course(Language language) {
+    public Course(Language language, ArrayList<Lesson> lessons) {
         this.language = language;
+        this.lessons = lessons;
     }
 
     public Lesson getLesson(int index) {
-        return null;
+        return lessons.get(index);
     }
 
     public UUID getUuid(){
@@ -23,11 +24,11 @@ public class Course {
     }
 
     private void addLesson(Lesson lesson) {
-
+        lessons.add(lesson);
     }
 
     public Language getLanguage() {
-        return null;
+        return this.language;
     }
 
     public int getProgress() {
