@@ -41,7 +41,7 @@ public class DataReadWriter extends DataConstants{
     }
 
     /**
-     * Updates user JSON File
+     * Updates user JSON File from arraylist of Users
      * @param users Array of current Users kept in UserList class
      */
     public static void updateUsers(ArrayList<User> users) {
@@ -69,7 +69,7 @@ public class DataReadWriter extends DataConstants{
             jsonBuilder.append("    \"courses\": [\n");
             for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
                 Course course = entry.getKey();
-                int progress = entry.getValue(); // Get the progress from the HashMap
+                int progress = entry.getValue();
 
                 jsonBuilder.append("      {\n");
                 jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
@@ -102,7 +102,7 @@ public class DataReadWriter extends DataConstants{
         try (FileWriter writer = new FileWriter("users.json")) {
             writer.write(jsonBuilder.toString());
         } catch (IOException e) {
-            e.printStackTrace(); // Handle any IO exceptions
+            e.printStackTrace();
         }
     }
 
