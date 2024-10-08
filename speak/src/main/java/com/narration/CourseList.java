@@ -1,6 +1,7 @@
 package com.narration;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class CourseList {
 
@@ -8,7 +9,7 @@ public class CourseList {
     private static CourseList courseList;
 
     private CourseList() {
-
+        courses = new ArrayList<Course>();
     }
 
     public static CourseList getInstance() {
@@ -23,7 +24,9 @@ public class CourseList {
         courses.add(course);
     }
 
-    public Course getCourse(Language language) {
-        return null;
+    public Course getCourse(UUID uuid) {
+        for (Course course : courses){
+            
+        }
     }
 }
