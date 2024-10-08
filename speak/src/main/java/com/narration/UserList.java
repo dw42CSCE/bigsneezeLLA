@@ -18,8 +18,17 @@ public class UserList {
     }
 
     public void addUser(String username, String email, String password) {
+      boolean isMatch=false;
+      for(int i=0; i<users.size();i++){
+          User tempUser=users.get(i);
+          if(tempUser.getUsername().equals(username)||tempUser.getEmailAddress().equals(email)){
+            isMatch=true;
+          }
+        }
+        if(isMatch==false){
         User newUser=new User(username, email, password);
         users.add(newUser);
+        }
     }
 
     public void editUser(String firstName, String lastName, String email, String password) {
@@ -35,10 +44,11 @@ public class UserList {
       }
     }
 
-    public UserList getUsers() {
-        if(userList==null)
-          userList=new UserList();
-        return userList;
+    public User getUser(String username, String password) {
+        for(int i=0; i<users.size()-1;i++){
+
+        }
+        return ;
     }
 
     public void removeUser(String username, String password) {
