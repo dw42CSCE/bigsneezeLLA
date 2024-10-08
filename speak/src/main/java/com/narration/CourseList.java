@@ -8,7 +8,7 @@ public class CourseList {
     private static CourseList courseList;
 
     private CourseList() {
-
+        courses = new ArrayList<Course>();
     }
 
     public static CourseList getInstance() {

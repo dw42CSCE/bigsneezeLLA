@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import software.amazon.awssdk.services.polly.endpoints.internal.Value.Int;
-
 public class User {
     private String userName;
     private String password;
