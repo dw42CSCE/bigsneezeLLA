@@ -26,4 +26,5 @@ public abstract class DataConstants {
     protected static final String TYPE = "type";
     protected static final String OPTIONS = "options";
     protected static final String ANSWER = "answer";
+
 }

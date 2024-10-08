@@ -5,6 +5,11 @@ public class Settings {
     private boolean isDarkMode;
     private User user ;
 
+    public Settings(boolean emailNotif, boolean darkMode) {
+        this.emailNotifications = emailNotif;
+        this.isDarkMode = darkMode;
+    }
+
     public void toggleDarkMode(boolean isDarkMode){
 
     }
