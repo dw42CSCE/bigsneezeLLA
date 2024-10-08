@@ -19,7 +19,7 @@ public class CourseList {
     }
 
     public void addCourse(Language language, ArrayList<Lesson> lessons) {
-        Course course = new Course(language);
+        Course course = new Course(language, lessons);
         courses.add(course);
     }
 

@@ -14,7 +14,6 @@ public abstract class DataConstants {
     protected static final String USER_DARK_MODE = "darkMode";
     protected static final String USER_COURSES = "courses";
     protected static final String USER_LANGUAGE = "language";
-    protected static final String USER_COURSE_UUID = "uuif";
+    protected static final String USER_COURSE_UUID = "uuid";
     protected static final String USER_COURSE_PROGRESS = "progress";
-
 }
