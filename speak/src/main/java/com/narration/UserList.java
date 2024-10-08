@@ -51,9 +51,20 @@ public class UserList {
     }
 
     public User getUser(String username, String password) {
+        User notFound= new User("NotFound","NotFound","NotFound");
         for(int i=0; i<users.size()-1;i++){
+<<<<<<< HEAD
+=======
+          User tempUser=users.get(i);
+          if(tempUser.getUsername().equals(username) && tempUser.getPassword().equals(password))
+            return users.get(i);
+>>>>>>> 3b78c949e48d67b2b69bafdcf7c4bb9b9db90ff0
         }
-        return ;
+        return notFound;
+    }
+
+    public ArrayList<User> getUsers(){
+      return users;
     }
 
     public void removeUser(String username, String password) {
