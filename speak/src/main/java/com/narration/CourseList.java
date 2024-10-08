@@ -23,7 +23,13 @@ public class CourseList {
         courses.add(course);
     }
 
-    public Course getCourse(Language language) {
-        return null;
+    public Course getCourse(String language) {
+        if(language.toLowerCase() == "spanish"){
+            return courses.
+        } else if (language.toLowerCase() == "french"){
+            return courses.
+        } else if (language.toLowerCase() == "japanese"){
+            return courses.
+        } else {return null;}
     }
 }
