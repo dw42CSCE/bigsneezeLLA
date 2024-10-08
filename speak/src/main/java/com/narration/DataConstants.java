@@ -13,7 +13,6 @@ public abstract class DataConstants {
     protected static final String EMAIL_NOTIF = "emailNotifications";
     protected static final String DARK_MODE = "darkMode";
     protected static final String COURSES = "courses";
-    protected static final String COURSE_LANGUAGE = "language";
     protected static final String COURSE_PROGRESS = "progress";
 
     protected static final String LESSONS = "lessons";

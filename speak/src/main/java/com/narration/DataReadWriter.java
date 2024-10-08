@@ -28,13 +28,18 @@ public class DataReadWriter extends DataConstants{
             
             for (int i = 0; i < peopleJSON.size(); i++) {
                 JSONObject personJSON = (JSONObject)peopleJSON.get(i);
+                UUID uuid = UUID.fromString((String)personJSON.get(USER_UUID));
                 String firstname = (String)personJSON.get(USER_FIRST_NAME);
                 String lastname = (String)personJSON.get(USER_LAST_NAME);
                 String username = (String)personJSON.get(USER_USER_NAME);
                 String email = (String)personJSON.get(USER_EMAIL);
                 String password = (String)personJSON.get(USER_PASSWORD);
                 int profPts = ((Long)personJSON.get(USER_PROFICIENCY_PTS)).intValue();
-                Settings settings = parseSettings((JSONObject)peopleJSON)
+                
+                JSONObject settingsObj = (JSONObject)personJSON.get(SETTINGS);
+                Settings settings = parseSettings(settingsObj);
+
+                JSONObject courseObj = (JSONObject)personJSON.get(COURSES);
 
                 users.add(new User(firstname,lastname,username));
             }
@@ -45,7 +50,7 @@ public class DataReadWriter extends DataConstants{
         return null;
     }
 
-    private Settings parseSettings(JSONObject settings) {
+    private static Settings parseSettings(JSONObject settings) {
         if (settings == null) {
             return null;
         }
@@ -53,6 +58,17 @@ public class DataReadWriter extends DataConstants{
         boolean darkMode = (Boolean)settings.get(DARK_MODE);
         return new Settings(emailNotif,darkMode);
     }
+
+    private static Course parseCourse(JSONObject course) {
+        if (course == null) {
+            return null;
+        }
+        UUID uuid = UUID.fromString((String)course.get(USER_UUID));
+        int progress = ((Long)course.get(COURSE_PROGRESS)).intValue();
+        return null;
+        // new Course(uuid, progress);
+    }
+        
 
     /**
      * Updates user JSON File from arraylist of Users
