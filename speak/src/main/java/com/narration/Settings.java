@@ -6,7 +6,7 @@ public class Settings {
     private User user ;
 
     public void toggleDarkMode(boolean isDarkMode){
-
+        this.isDarkMode = isDarkMode;
     }
 
     public boolean getDarkMode(){
@@ -14,7 +14,7 @@ public class Settings {
     }
 
     public void toggleEmailNotificaiton(boolean emailNotification){
-
+        this.emailNotifications = emailNotification;
     }
 
     public boolean getEmailNotifications(){
