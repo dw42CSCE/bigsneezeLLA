@@ -8,8 +8,8 @@
         "password": "password",
         "ProfPoints": 150,
         "settings": {
-        "emailNotifications": "On",
-        "darkMode": "Off"
+        "emailNotifications": true,
+        "darkMode": false
         },
         "courses": [
         {
@@ -33,8 +33,8 @@
         "password": "password",
         "ProfPoints": 0,
         "settings": {
-        "emailNotifications": "Off",
-        "darkMode": "On"
+        "emailNotifications": false,
+        "darkMode": true
         },
         "courses": [
         {
@@ -58,8 +58,8 @@
         "password": "password",
         "ProfPoints": 175,
         "settings": {
-        "emailNotifications": "On",
-        "darkMode": "On"
+        "emailNotifications": true,
+        "darkMode": true
         },
         "courses": [
         {
