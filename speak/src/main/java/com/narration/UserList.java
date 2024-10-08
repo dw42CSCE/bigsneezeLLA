@@ -6,19 +6,38 @@ public class UserList {
     private UserList userList;
 
     private UserList() {
+        users=new ArrayList<User>();
+        User user1=new User("Mary", "Swanson", "Samsonite1994");
+        User user2=new User("Lloyd", "Christmas", "Limo_Man" );
+        User user3=new User("Harry", "Dunne", "MuttCutts");
+
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
 
     }
 
     public void addUser(String username, String email, String password) {
-
+        User newUser=new User(username, email, password);
+        users.add(newUser);
     }
 
     public void editUser(String firstName, String lastName, String email, String password) {
-
+      for(int i=0;i<users.size()-1;i++){
+        User tempUser=users.get(i);
+        if(tempUser.getEmailAddress().equals(email) && tempUser.equals(password)){
+                tempUser.setName(firstName, lastName);
+                tempUser.setEmailAddress(email);
+                tempUser.setPassword(password);
+                users.remove(i);
+                users.add(i,tempUser);   
+        }
+      }
     }
 
-    public User getUser(String username, String password) {
-        return null;
+    public ArrayList<User> getUsers(String username, String password) {
+        
+        return users;
     }
 
     public void removeUser(String username, String password) {

@@ -9,7 +9,15 @@ public class Settings {
 
     }
 
+    public boolean getDarkMode(){
+        return this.isDarkMode;
+    }
+
     public void toggleEmailNotificaiton(boolean emailNotification){
 
+    }
+
+    public boolean getEmailNotifications(){
+        return this.emailNotifications;
     }
 }

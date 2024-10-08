@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import software.amazon.awssdk.services.polly.endpoints.internal.Value.Int;
+
 public class User {
     private String userName;
     private String password;
@@ -28,19 +30,19 @@ public class User {
     this.settings=settings;                    
     }
 
-    // public User(String userName, String password, String emailAddress){
-    //     this.userName=userName;
-    //     this.password=password;
-    //     this.emailAddress=emailAddress;
-    //     this.uuid = createUUID();
-    // }
-
-    //Temporary User Constructor for testing
-    public User(String firstname, String lastname, String username) {
-        this.firstName = firstname;
-        this.lastName = lastname;
-        this.userName = username;
+    public User(String userName, String password, String emailAddress){
+        this.userName=userName;
+        this.password=password;
+        this.emailAddress=emailAddress;
+        this.uuid = createUUID();
     }
+
+    // //Temporary User Constructor for testing
+    // public User(String firstname, String lastname, String username) {
+    //     this.firstName = firstname;
+    //     this.lastName = lastname;
+    //     this.userName = username;
+    // }
 
     public String getUsername(){
         return userName;
@@ -66,8 +68,20 @@ public class User {
         return null;
     }
 
+    public UUID getUuid(){
+        return this.uuid;
+    }
+
+    public int getProfPoints(){
+        return this.proficiencyPointTotal;
+    }
+
+    public HashMap<Course, Integer> getCourses(){
+        return this.courses;
+    }
+
     public int getCourseProgress(Course course){
-        return 0;
+        return courses.get(course);
     }
 
     public void setName(String firstName, String lastName){
@@ -83,8 +97,14 @@ public class User {
         
     }
 
+    public void setPassword(String password){
+        this.password=password;
+    }
+
     public void addCourseProgress(Course course, int lesson, int lessonProgress){
-        
+        int addProgress = 1/courses.size();
+        int progress = courses.get(course) + addProgress;
+        courses.put( course, progress);
     }
 
     // public String toString(){
@@ -117,8 +137,4 @@ public class User {
     private UUID createUUID(){
         return UUID.randomUUID();
     }
-
-
-
-
 }
