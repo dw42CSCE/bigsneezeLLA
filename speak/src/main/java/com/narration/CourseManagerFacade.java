@@ -1,3 +1,4 @@
+package com.narration;
 public class CourseManagerFacade {
     private User user;
     private Settings settings;
