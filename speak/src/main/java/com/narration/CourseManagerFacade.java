@@ -1,4 +1,3 @@
-package com.narration;
 public class CourseManagerFacade {
     private User user;
     private Settings settings;
@@ -6,27 +5,34 @@ public class CourseManagerFacade {
     private CourseList courses;
 
     public CourseManagerFacade() {
-
+        courses = CourseList.getInstance();
+        users = UserList.getInstance();
     }
 
     public void login(String username, String password) {
-        
+        user = users.getUser(username, password);
+        if(user == null) {
+            System.out.println("Account with provided credentials does not exist. Try different credentials or sign up.");
+        }
     }
 
     public User signUp(String username, String email, String password) {
-        return null;
+        if(users.getUser(username, password) == null) {
+            users.addUser(username, email, password);
+        }
+        user = users.getUser(username, password);
     }
 
-    public Course getCourse(string language) {
+    public Course getCourse(String language) {
         return null;
     }
 
     public CourseList getAllCourses() {
-        return null;
+        return courses;
     }
 
     public UserList getUsers() {
-        return null;    
+        return users;  
     }
 
     public void toggleDarkMode(boolean isDarkMode) {
@@ -46,7 +52,7 @@ public class CourseManagerFacade {
     }
 
     public boolean isCorrect(String userAnswer) {
-        return null;
+        return true;
     }
 
     public void logOut() {
@@ -54,6 +60,6 @@ public class CourseManagerFacade {
     }
 
     public Settings getUserSettings() {
-        return null;
+        return user.getSettings();
     }
 }
