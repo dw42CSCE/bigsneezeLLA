@@ -1,3 +1,5 @@
+package com.narration;
+
 public class CourseManagerFacade {
     private User user;
     private Settings settings;
@@ -6,7 +8,7 @@ public class CourseManagerFacade {
 
     public CourseManagerFacade() {
         courses = CourseList.getInstance();
-        users = UserList.getInstance();
+        // users = UserList.getInstance();
     }
 
     public void login(String username, String password) {
@@ -21,10 +23,12 @@ public class CourseManagerFacade {
             users.addUser(username, email, password);
         }
         user = users.getUser(username, password);
+        return user;
     }
 
     public Course getCourse(String language) {
-        return courses.getCourse(language);
+        // return courses.getCourse(language);
+        return null;
     }
 
     public CourseList getAllCourses() {
@@ -56,7 +60,7 @@ public class CourseManagerFacade {
     }
 
     public void logOut() {
-        DataReadWriter.updateUsers(users.getUserList());
+        // DataReadWriter.updateUsers(users.getUserList());
     }
 
     public Settings getUserSettings() {
