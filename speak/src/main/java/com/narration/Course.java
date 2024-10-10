@@ -26,10 +26,15 @@ public class Course {
         return lessons.get(index);
     }
 
+    public ArrayList<Lesson> getLessons() {
+        return lessons;
+    }
+
     public UUID getUuid(){
         return this.uuid;
     }
 
+    // Needed?
     private void addLesson(Lesson lesson) {
         lessons.add(lesson);
     }

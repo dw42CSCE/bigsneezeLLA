@@ -152,7 +152,7 @@ public class DataReadWriter extends DataConstants{
                 Language language = Language.valueOf(((String) courseJSON.get("language")).toUpperCase());
     
                 // Assuming getLessons() is a method that retrieves lessons for each course
-                ArrayList<Lesson> lessons = getLessons((JSONArray) courseJSON.get("lessons"));
+                ArrayList<Lesson> lessons = getLessons((JSONArray) courseJSON.get(LESSONS));
     
                 // Create the course and add it to the list
                 courses.add(new Course(language, uuid, lessons));
@@ -167,6 +167,34 @@ public class DataReadWriter extends DataConstants{
     }
 
     private static ArrayList<Lesson> getLessons(JSONArray lessonsJSON){
+
+        ArrayList<Lesson> lessons = new ArrayList<>();
+
+        for (int i = 0; i < lessonsJSON.size(); i++){
+
+            JSONObject lessonJSON = (JSONObject) lessonsJSON.get(i);
+
+            String subject = (String)lessonJSON.get(SUBJECT);
+            String intro = (String)lessonJSON.get(INTRO);
+            ArrayList<Exercise> exercises = getExercises((JSONArray) lessonJSON.get(EXERCISES));
+            Word[] words = getKeyWords((JSONArray) lessonJSON.get(KEYWORDS));
+            Phrase[] phrases = getKeyPhrases((JSONArray) lessonJSON.get(KEYPHRASES));
+
+
+            lessons.add(new Lesson(subject, intro, exercises, words, phrases));
+        }
+        return lessons;
+    }
+
+    private static ArrayList<Exercise> getExercises(JSONArray exercisesJSON){
+        return null;
+    }
+
+    private static Word[] getKeyWords(JSONArray keywordsJSON){
+        return null;
+    }
+
+    private static Phrase[] getKeyPhrases(JSONArray keyphrasesJSON){
         return null;
     }
 
@@ -178,7 +206,7 @@ public class DataReadWriter extends DataConstants{
     //     }
     // }
 
-// TEST FOR GETCOURSES, GET LESSONS NOT IMPLEMENTED
+// TEST FOR GETCOURSES, Exercises, Words, and Phrases NOT IMPLEMENTED
 //     public static void main(String[] args) {
 //         ArrayList<Course> courses = getCourses();
 
@@ -186,6 +214,10 @@ public class DataReadWriter extends DataConstants{
 //         for (Course course : courses) {
 //             System.out.println("Course Language: " + course.getLanguage());
 //             System.out.println("Course UUID: " + course.getUuid());
+//             for(int i = 0; i < course.getLessons().size(); i++){
+//                 System.out.println("Lesson " + (i+1) + "\nSubject: \n" + course.getLesson(i).getSubject());
+//                 System.out.println("Intro: \n" + course.getLesson(i).getIntro());
+//             }
 //         }
 //     }
 }
