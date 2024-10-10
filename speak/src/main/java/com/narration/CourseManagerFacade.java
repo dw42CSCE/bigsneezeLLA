@@ -8,7 +8,7 @@ public class CourseManagerFacade {
 
     public CourseManagerFacade() {
         courses = CourseList.getInstance();
-        // users = UserList.getInstance();
+        users = UserList.getInstance();
     }
 
     public void login(String username, String password) {
