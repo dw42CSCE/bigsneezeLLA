@@ -15,6 +15,13 @@ public class Course {
         this.lessons = lessons;
     }
 
+    public Course(Language language, UUID uuid, ArrayList<Lesson> lessons) {
+        this.language = language;
+        this.lessons = lessons;
+        this.uuid = uuid;
+        proficiencyPts = 0;
+    }
+
     public Lesson getLesson(int index) {
         return lessons.get(index);
     }

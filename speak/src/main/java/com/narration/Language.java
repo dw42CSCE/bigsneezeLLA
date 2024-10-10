@@ -2,7 +2,7 @@ package com.narration;
 
 public enum Language {
     SPANISH("Spanish"),
-    FRNECH("French"),
+    FRENCH("French"),
     JAPANESE("Japanese");
 
     private String label;

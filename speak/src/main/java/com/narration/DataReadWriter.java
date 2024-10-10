@@ -20,7 +20,6 @@ public class DataReadWriter extends DataConstants{
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
-        //change later
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
@@ -39,7 +38,7 @@ public class DataReadWriter extends DataConstants{
                 JSONObject settingsObj = (JSONObject)personJSON.get(SETTINGS);
                 Settings settings = parseSettings(settingsObj);
 
-                JSONObject courseObj = (JSONObject)personJSON.get(COURSES);
+                JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
 
                 users.add(new User(firstname,lastname,username));
             }
@@ -137,18 +136,56 @@ public class DataReadWriter extends DataConstants{
     }
 
     public static ArrayList<Course> getCourses() {
+        ArrayList<Course> courses = new ArrayList<>();
+    
+        try {
+            FileReader reader = new FileReader(COURSE_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONObject data = (JSONObject) parser.parse(reader); // Parse the root JSON object
+            JSONArray coursesJSON = (JSONArray) data.get("courses"); // Get the array of courses
+    
+            for (int i = 0; i < coursesJSON.size(); i++) {
+                JSONObject courseJSON = (JSONObject) coursesJSON.get(i);
+    
+                // Extract course details
+                UUID uuid = UUID.fromString((String) courseJSON.get("uuid"));
+                Language language = Language.valueOf(((String) courseJSON.get("language")).toUpperCase());
+    
+                // Assuming getLessons() is a method that retrieves lessons for each course
+                ArrayList<Lesson> lessons = getLessons((JSONArray) courseJSON.get("lessons"));
+    
+                // Create the course and add it to the list
+                courses.add(new Course(language, uuid, lessons));
+            }
+    
+            return courses;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+        return null;
+    }
+
+    private static ArrayList<Lesson> getLessons(JSONArray lessonsJSON){
         return null;
     }
 
 // TEST FOR SIMPLE READWRITER
+    public static void main(String[] args) {
+        ArrayList<User> users = getUsers();
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+// TEST FOR GETCOURSES, GET LESSONS NOT IMPLEMENTED
 //     public static void main(String[] args) {
-//         ArrayList<User> users = getUsers();
-//         for (User user : users) {
-//             System.out.println(user);
+//         ArrayList<Course> courses = getCourses();
+
+//         // Print the courses to verify the data
+//         for (Course course : courses) {
+//             System.out.println("Course Language: " + course.getLanguage());
+//             System.out.println("Course UUID: " + course.getUuid());
 //         }
 //     }
-// }
-
-// TEST FOR UPDATE METHOD
-
 }
