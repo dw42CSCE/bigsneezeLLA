@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.io.FileReader;
 import java.util.UUID;
 import java.util.concurrent.atomic.LongAdder;
+import java.util.HashMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -115,8 +116,6 @@ public class DataReadWriter extends DataConstants{
             
             jsonBuilder.append("    ]\n");
 
-            jsonBuilder.append("    ]\n");
-
             jsonBuilder.append("  }");
 
             if (i < users.size() - 1) {
@@ -127,8 +126,8 @@ public class DataReadWriter extends DataConstants{
 
         jsonBuilder.append("]");
 
-        // Write the JSON string to the file
-        try (FileWriter writer = new FileWriter("users.json")) {
+        // Write the JSON string to the file CHANGE FILE NAME
+        try (FileWriter writer = new FileWriter("JSON\\tempusers.json")) {
             writer.write(jsonBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -220,4 +219,20 @@ public class DataReadWriter extends DataConstants{
     //         }
     //     }
     // }
+
+// TEST FOR updateUsers
+    public static void main(String[] args){
+        ArrayList<User> users = new ArrayList<>();
+        HashMap<Course, Integer> courses = new HashMap();
+
+        Settings settings = new Settings(false, false);
+
+        Course course = getCourses().get(0);
+
+        courses.put(course, 1);
+
+        users.add(new User("DWade", "Password", UUID.randomUUID() , "Dallas" , "Wade" , "dw@email.com", courses, 2, settings));
+
+        updateUsers(users);
+    }
 }
