@@ -32,4 +32,13 @@ public class CourseList {
         }
     return null;
     }
+
+    public Course getCourse(Language language) {
+        for (Course course : courses){
+            if (course.getLanguage() == language) {
+                return course;
+            }
+        }
+    return null;
+    }
 }
