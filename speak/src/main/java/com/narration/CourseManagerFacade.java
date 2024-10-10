@@ -27,7 +27,6 @@ public class CourseManagerFacade {
     }
 
     public Course getCourse(String language) {
-        // return courses.getCourse(language);
         return null;
     }
 
@@ -60,7 +59,7 @@ public class CourseManagerFacade {
     }
 
     public void logOut() {
-        // DataReadWriter.updateUsers(users.getUserList());
+        DataReadWriter.updateUsers(users.getUserList());
     }
 
     public Settings getUserSettings() {

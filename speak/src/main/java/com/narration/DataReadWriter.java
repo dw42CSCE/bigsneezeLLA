@@ -207,17 +207,17 @@ public class DataReadWriter extends DataConstants{
     // }
 
 // TEST FOR GETCOURSES, Exercises, Words, and Phrases NOT IMPLEMENTED
-//     public static void main(String[] args) {
-//         ArrayList<Course> courses = getCourses();
+    // public static void main(String[] args) {
+    //     ArrayList<Course> courses = getCourses();
 
-//         // Print the courses to verify the data
-//         for (Course course : courses) {
-//             System.out.println("Course Language: " + course.getLanguage());
-//             System.out.println("Course UUID: " + course.getUuid());
-//             for(int i = 0; i < course.getLessons().size(); i++){
-//                 System.out.println("Lesson " + (i+1) + "\nSubject: \n" + course.getLesson(i).getSubject());
-//                 System.out.println("Intro: \n" + course.getLesson(i).getIntro());
-//             }
-//         }
-//     }
+    //     // Print the courses to verify the data
+    //     for (Course course : courses) {
+    //         System.out.println("Course Language: " + course.getLanguage());
+    //         System.out.println("Course UUID: " + course.getUuid());
+    //         for(int i = 0; i < course.getLessons().size(); i++){
+    //             System.out.println("Lesson " + (i+1) + "\nSubject: \n" + course.getLesson(i).getSubject());
+    //             System.out.println("Intro: \n" + course.getLesson(i).getIntro());
+    //         }
+    //     }
+    // }
 }
