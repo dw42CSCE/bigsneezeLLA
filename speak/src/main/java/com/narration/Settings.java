@@ -17,7 +17,7 @@ public class Settings {
         return this.isDarkMode;
     }
 
-    public void toggleEmailNotificaiton(boolean emailNotification){
+    public void toggleEmailNotification(boolean emailNotification){
         this.emailNotifications = emailNotification;
     }
 
