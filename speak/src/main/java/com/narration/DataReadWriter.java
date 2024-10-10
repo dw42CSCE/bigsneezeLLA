@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.io.FileReader;
 import java.util.UUID;
 import java.util.concurrent.atomic.LongAdder;
+import java.util.HashMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -115,8 +116,6 @@ public class DataReadWriter extends DataConstants{
             
             jsonBuilder.append("    ]\n");
 
-            jsonBuilder.append("    ]\n");
-
             jsonBuilder.append("  }");
 
             if (i < users.size() - 1) {
@@ -127,8 +126,8 @@ public class DataReadWriter extends DataConstants{
 
         jsonBuilder.append("]");
 
-        // Write the JSON string to the file
-        try (FileWriter writer = new FileWriter("users.json")) {
+        // Write the JSON string to the file CHANGE FILE NAME
+        try (FileWriter writer = new FileWriter("JSON\\tempusers.json")) {
             writer.write(jsonBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -207,17 +206,33 @@ public class DataReadWriter extends DataConstants{
     // }
 
 // TEST FOR GETCOURSES, Exercises, Words, and Phrases NOT IMPLEMENTED
-//     public static void main(String[] args) {
-//         ArrayList<Course> courses = getCourses();
+    // public static void main(String[] args) {
+    //     ArrayList<Course> courses = getCourses();
 
-//         // Print the courses to verify the data
-//         for (Course course : courses) {
-//             System.out.println("Course Language: " + course.getLanguage());
-//             System.out.println("Course UUID: " + course.getUuid());
-//             for(int i = 0; i < course.getLessons().size(); i++){
-//                 System.out.println("Lesson " + (i+1) + "\nSubject: \n" + course.getLesson(i).getSubject());
-//                 System.out.println("Intro: \n" + course.getLesson(i).getIntro());
-//             }
-//         }
-//     }
+    //     // Print the courses to verify the data
+    //     for (Course course : courses) {
+    //         System.out.println("Course Language: " + course.getLanguage());
+    //         System.out.println("Course UUID: " + course.getUuid());
+    //         for(int i = 0; i < course.getLessons().size(); i++){
+    //             System.out.println("Lesson " + (i+1) + "\nSubject: \n" + course.getLesson(i).getSubject());
+    //             System.out.println("Intro: \n" + course.getLesson(i).getIntro());
+    //         }
+    //     }
+    // }
+
+// TEST FOR updateUsers
+    public static void main(String[] args){
+        ArrayList<User> users = new ArrayList<>();
+        HashMap<Course, Integer> courses = new HashMap();
+
+        Settings settings = new Settings(false, false);
+
+        Course course = getCourses().get(0);
+
+        courses.put(course, 1);
+
+        users.add(new User("DWade", "Password", UUID.randomUUID() , "Dallas" , "Wade" , "dw@email.com", courses, 2, settings));
+
+        updateUsers(users);
+    }
 }

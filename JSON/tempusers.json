@@ -1,12 +1,22 @@
 [
-    {
-        "firstname": "John",
-        "lastname": "Doe",
-        "username": "iamjohndoe"
+  {
+    "uuid": "57a552bf-96cf-47b1-a5ef-888891ca82bb",
+    "firstname": "Dallas",
+    "lastname": "Wade",
+    "username": "DWade",
+    "email": "dw@email.com",
+    "password": "Password",
+    "ProfPoints": 2,
+    "settings": {
+      "emailNotifications": "false",
+      "darkMode": "false"
     },
-    {
-        "firstname": "Jane",
-        "lastname": "Doe",
-        "username": "iamjanedoe"
-    }
+    "courses": [
+      {
+        "language": "SPANISH",
+        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
+        "progress": 1
+      }
+    ]
+  }
 ]
