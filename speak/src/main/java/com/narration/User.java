@@ -66,20 +66,20 @@ public class User {
         return null;
     }
 
-    public UUID getUuid(){
-        return this.uuid;
-    }
-
-    public int getProfPoints(){
-        return this.proficiencyPointTotal;
+    public int getCourseProgress(Course course){
+        return courses.get(course);
     }
 
     public HashMap<Course, Integer> getCourses(){
         return this.courses;
     }
 
-    public int getCourseProgress(Course course){
-        return courses.get(course);
+    public UUID getUuid(){
+        return this.uuid;
+    }
+
+    public int getProfPoints(){
+        return this.proficiencyPointTotal;
     }
 
     public void setName(String firstName, String lastName){
