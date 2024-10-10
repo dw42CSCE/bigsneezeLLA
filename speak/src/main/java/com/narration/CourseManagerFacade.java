@@ -2,9 +2,11 @@ package com.narration;
 
 public class CourseManagerFacade {
     private User user;
-    private Settings settings;
     private UserList users;
     private CourseList courses;
+    private Course course;
+    private Lesson lesson;
+    private Exercise exercise;
 
     public CourseManagerFacade() {
         courses = CourseList.getInstance();
@@ -26,9 +28,13 @@ public class CourseManagerFacade {
         return user;
     }
 
-    public Course getCourse(String language) {
-        // return courses.getCourse(language);
-        return null;
+    public void setCourse(String language) {
+        Language l = Language.valueOf(language.trim().toUpperCase());
+        course = courses.getCourse(l);
+    }
+
+    public Course getCourse() {
+        return course;
     }
 
     public CourseList getAllCourses() {
@@ -40,27 +46,35 @@ public class CourseManagerFacade {
     }
 
     public void toggleDarkMode(boolean isDarkMode) {
-        
+        user.getSettings().toggleDarkMode(isDarkMode);
     }
 
     public void toggleEmailNotification(boolean emailNotification) {
-
+        user.getSettings().toggleEmailNotification(emailNotification);
     }
 
-    public Lesson getLesson(int index) {
-        return null;
+    public void setLesson(int index) {
+        lesson = course.getLesson(index);
     }
 
-    public Exercise getExercise(int index) {
-        return null;
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setExercise(int index) {
+        exercise = lesson.getExercise(index);
+    }
+
+    public Exercise getExercise() {
+        return exercise;
     }
 
     public boolean isCorrect(String userAnswer) {
-        return true;
+        return exercise.isCorrect(userAnswer);
     }
 
     public void logOut() {
-        // DataReadWriter.updateUsers(users.getUserList());
+        DataReadWriter.updateUsers(users.getUsers());
     }
 
     public Settings getUserSettings() {
