@@ -6,11 +6,11 @@ public class Exercise {
     protected Word answer;
     protected String type;
 
-    public Exercise(String question, String answer){
+    public Exercise(String question, Word answer){
         // ToDo
     }
 
-    public boolean isCorrect(String username){
+    public boolean isCorrect(String userAnswer){
         return true;
     }
 

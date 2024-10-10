@@ -10,7 +10,7 @@ public class Conversation {
         // ToDo
     }
 
-    public boolean isCorrect(String username){
+    public boolean isCorrect(String useranswer){
         return true;
     }
 
