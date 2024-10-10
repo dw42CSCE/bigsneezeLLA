@@ -7,31 +7,40 @@ public class CourseManagerFacade {
     private CourseList courses;
 
     public CourseManagerFacade() {
-
+        courses = CourseList.getInstance();
+        // users = UserList.getInstance();
     }
 
     public void login(String username, String password) {
-        
+        user = users.getUser(username, password);
+        if(user == null) {
+            System.out.println("Account with provided credentials does not exist. Try different credentials or sign up.");
+        }
     }
 
     public User signUp(String username, String email, String password) {
-        return null;
+        if(users.getUser(username, password) == null) {
+            users.addUser(username, email, password);
+        }
+        user = users.getUser(username, password);
+        return user;
     }
 
     public Course getCourse(String language) {
+        // return courses.getCourse(language);
         return null;
     }
 
     public CourseList getAllCourses() {
-        return null;
+        return courses;
     }
 
     public UserList getUsers() {
-        return null;    
+        return users;  
     }
 
     public void toggleDarkMode(boolean isDarkMode) {
-
+        
     }
 
     public void toggleEmailNotification(boolean emailNotification) {
@@ -51,10 +60,10 @@ public class CourseManagerFacade {
     }
 
     public void logOut() {
-
+        // DataReadWriter.updateUsers(users.getUserList());
     }
 
     public Settings getUserSettings() {
-        return null;
+        return user.getSettings();
     }
 }

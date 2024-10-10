@@ -1,5 +1,6 @@
 {
-    "course": {
+    "courses": [
+        {
         "language": "Spanish",
         "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
         "progress": 0,
@@ -79,5 +80,6 @@
             }
       ]
     }
-  }
+  ]
+}
   

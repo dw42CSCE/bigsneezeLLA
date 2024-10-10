@@ -12,14 +12,20 @@ public class Lesson {
     private int progress;
 
     public Lesson(String subject, String intro, ArrayList<Exercise> exercises,
-                    Word[] words, Phrase[] phrases, int progress) {
-        
+                    Word[] words, Phrase[] phrases) {
+
+        this.subject = subject;
+        this.intro = intro;
+        this.exercises = exercises;
+        this.keyWords = words;
+        this.keyPhrases = phrases;        
     }
 
     public Exercise getExercise(int index) {
-        return null;
+        return exercises.get(index);
     }
 
+    // Needed?
     private void addExercise(Exercise exercise) {
 
     }
@@ -29,15 +35,15 @@ public class Lesson {
     }
 
     public String getSubject() {
-        return "";
+        return subject;
     }
 
     public String getIntro() {
-        return "";
+        return intro;
     }
 
     public int getProgress() {
-        return 0;
+        return progress;
     }
 
     public String toString() {
@@ -45,7 +51,7 @@ public class Lesson {
     }
 
     public void addProficiencyPoint() {
-
+        
     }
 
     public void increaseProgress() {
