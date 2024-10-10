@@ -12,7 +12,7 @@ public class Lesson {
     private int progress;
 
     public Lesson(String subject, String intro, ArrayList<Exercise> exercises,
-                    Word[] words, Phrase[] phrases) {
+                    Word[] words, Phrase[] phrases, int progress) {
 
         this.subject = subject;
         this.intro = intro;

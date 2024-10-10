@@ -21,7 +21,7 @@ public class User {
     this.password=password;
     this.uuid=uuid;
     this.firstName=firstName;
-    this.lastName=lastName;
+    this.lastName=lastName; 
     this.emailAddress=emailAddress;
     this.courses=courses;
     this.proficiencyPointTotal=proficiencyPointTotal;
