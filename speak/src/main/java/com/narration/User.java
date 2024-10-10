@@ -125,7 +125,7 @@ public class User {
 
     public void setSettings(Boolean darkModeOn, Boolean emailNotifsOn){
        settings.toggleDarkMode(false);
-       settings.toggleEmailNotificaiton(false);
+       settings.toggleEmailNotification(false);
     }
 
     public Settings getSettings(){
