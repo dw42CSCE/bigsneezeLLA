@@ -171,12 +171,12 @@ public class DataReadWriter extends DataConstants{
     }
 
 // TEST FOR SIMPLE READWRITER
-    public static void main(String[] args) {
-        ArrayList<User> users = getUsers();
-        for (User user : users) {
-            System.out.println(user);
-        }
-    }
+    // public static void main(String[] args) {
+    //     ArrayList<User> users = getUsers();
+    //     for (User user : users) {
+    //         System.out.println(user);
+    //     }
+    // }
 
 // TEST FOR GETCOURSES, GET LESSONS NOT IMPLEMENTED
 //     public static void main(String[] args) {
