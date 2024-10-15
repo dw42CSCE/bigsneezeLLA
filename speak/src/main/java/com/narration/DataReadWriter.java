@@ -244,16 +244,21 @@ public class DataReadWriter extends DataConstants{
         return phrases;
     }
 
-    private static HashMap<UUID,Integer> parseUserCourses(JSONArray userCourses) {
-        HashMap<UUID,Integer> courses = new HashMap<>();
-        for (int i = 0; i < userCourses.size(); i++) {
-            JSONObject courseJSON = (JSONObject) userCourses.get(i);
-            UUID uuid = UUID.fromString((String)courseJSON.get(USER_UUID));
-            int progress = ((Long)courseJSON.get(COURSE_PROGRESS)).intValue();
-            courses.put(uuid, progress);
+    private static HashMap<UUID, Integer> parseUserCourses(JSONArray userCourses) {
+        HashMap<UUID, Integer> courses = new HashMap<>();
+        if (userCourses != null) {
+            for (int i = 0; i < userCourses.size(); i++) {
+                JSONObject courseJSON = (JSONObject) userCourses.get(i);
+                UUID uuid = UUID.fromString((String) courseJSON.get(USER_UUID));
+                int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
+                courses.put(uuid, progress);
+            }
+        } else {
+            System.out.println("userCourses is null.");
         }
         return courses;
     }
+    
 
 // TEST FOR SIMPLE READWRITER
     // public static void main(String[] args) {
