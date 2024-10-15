@@ -209,9 +209,9 @@ public class DataReadWriter extends DataConstants{
 
         for (int i = 0; i < keyphrasesJSON.size(); i++) {
             String[] data = ((String)keyphrasesJSON.get(i)).split(":");
-            String word = data[0].trim();
+            String phrase = data[0].trim();
             String meaning = data[1].trim();
-            phrases[i] = new Phrase(word, meaning);
+            phrases[i] = new Phrase(phrase, meaning);
         }
         return phrases;
     }
