@@ -39,10 +39,10 @@ public class DataReadWriter extends DataConstants{
                 JSONObject settingsObj = (JSONObject)personJSON.get(SETTINGS);
                 Settings settings = parseSettings(settingsObj);
 
-                //JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
-                Course course = CourseList.getInstance().getCourse()
+                JSONArray coursesJSON = (JSONArray) personJSON.get(COURSES);
+                HashMap<UUID,Integer> courses = parseUserCourses(coursesJSON);
 
-                users.add(new User(firstname,lastname,username));
+                users.add(new User(username, password, uuid, firstname, lastname, email, courses, profPts, settings));
             }
             return users;
         } catch (Exception e) {
@@ -214,6 +214,17 @@ public class DataReadWriter extends DataConstants{
             phrases[i] = new Phrase(phrase, meaning);
         }
         return phrases;
+    }
+
+    private static HashMap<UUID,Integer> parseUserCourses(JSONArray userCourses) {
+        HashMap<UUID,Integer> courses = new HashMap<>();
+        for (int i = 0; i < userCourses.size(); i++) {
+            JSONObject courseJSON = (JSONObject) userCourses.get(i);
+            UUID uuid = UUID.fromString((String)courseJSON.get(USER_UUID));
+            int progress = ((Long)courseJSON.get(COURSE_PROGRESS)).intValue();
+            courses.put(uuid, progress);
+        }
+        return courses;
     }
 
 // TEST FOR SIMPLE READWRITER
