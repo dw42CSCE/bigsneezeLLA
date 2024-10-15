@@ -205,15 +205,15 @@ public class DataReadWriter extends DataConstants{
     }
 
     private static Phrase[] getKeyPhrases(JSONArray keyphrasesJSON){
-        Word[] words = new Word[keyphrasesJSON.size()];
+        Phrase[] phrases = new Phrase[keyphrasesJSON.size()];
 
         for (int i = 0; i < keyphrasesJSON.size(); i++) {
             String[] data = ((String)keyphrasesJSON.get(i)).split(":");
             String word = data[0].trim();
             String meaning = data[1].trim();
-            words[i] = new Word(word, meaning);
+            phrases[i] = new Phrase(word, meaning);
         }
-        return words;
+        return phrases;
     }
 
 // TEST FOR SIMPLE READWRITER

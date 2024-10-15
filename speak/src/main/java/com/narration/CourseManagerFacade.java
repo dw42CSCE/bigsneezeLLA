@@ -79,11 +79,7 @@ public class CourseManagerFacade {
     }
 
     public void logOut() {
-<<<<<<< HEAD
-        DataReadWriter.updateUsers(users.getUserList());
-=======
         DataReadWriter.updateUsers(users.getUsers());
->>>>>>> 69a4c5e2ffbf5c840e9b2269b41a5208bf232836
     }
 
     public Settings getUserSettings() {
