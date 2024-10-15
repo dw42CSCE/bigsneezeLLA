@@ -7,7 +7,7 @@ public class Matching {
     protected String type;
 
     public Matching(String question, String answer){
-        String questions=DataReadWriter.getKeyWords()
+     
     }
 
     public boolean isCorrect(String username){

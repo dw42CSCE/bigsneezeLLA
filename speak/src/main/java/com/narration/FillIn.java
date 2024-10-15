@@ -7,7 +7,7 @@ public class FillIn {
     protected String type;
 
     public FillIn(String question, String answer){
-      question=DataReadWriter.getExercises();
+      //question=DataReadWriter.getExercises();
     }
 
     public boolean isCorrect(String useranswer){
