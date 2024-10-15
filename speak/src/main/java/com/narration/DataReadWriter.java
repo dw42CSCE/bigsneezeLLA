@@ -57,8 +57,18 @@ public class DataReadWriter extends DataConstants{
         if (settings == null) {
             return null;
         }
-        boolean emailNotif = (Boolean)settings.get(EMAIL_NOTIF);
-        boolean darkMode = (Boolean)settings.get(DARK_MODE);
+
+        boolean emailNotif = true;
+        boolean darkMode = true;
+
+        if (settings.get(EMAIL_NOTIF) == "false"){
+            emailNotif = false;
+        }
+        if (settings.get(DARK_MODE) == "false"){
+            darkMode = true;
+        }
+
+
         return new Settings(emailNotif,darkMode);
     }
 
@@ -100,22 +110,25 @@ public class DataReadWriter extends DataConstants{
 
             // Courses
             jsonBuilder.append("    \"courses\": [\n");
-            for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
-                Course course = entry.getKey();
+            for (Map.Entry<UUID, Integer> entry : user.getCourses().entrySet()) {
+                UUID courseUuid = entry.getKey();
                 int progress = entry.getValue();
-
+            
+                Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
+            
                 jsonBuilder.append("      {\n");
                 jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
                 jsonBuilder.append("        \"uuid\": \"").append(course.getUuid()).append("\",\n");
                 jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
                 jsonBuilder.append("      }");
-
+            
                 // Add comma if not the last entry
                 if (!entry.equals(user.getCourses().entrySet().toArray()[user.getCourses().size() - 1])) {
                     jsonBuilder.append(",");
                 }
                 jsonBuilder.append("\n");
             }
+            
             
             jsonBuilder.append("    ]\n");
 

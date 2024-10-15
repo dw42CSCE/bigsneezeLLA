@@ -9,8 +9,8 @@ public class CourseManagerFacade {
     private Exercise exercise;
 
     public CourseManagerFacade() {
+        users = UserList.getInstance(); 
         courses = CourseList.getInstance();
-        users = UserList.getInstance();
     }
 
     public void login(String username, String password) {
@@ -93,23 +93,6 @@ public class CourseManagerFacade {
         } else {
             System.out.println("Login failed.");
         }
-    
-        // Attempt to log in with incorrect credentials
-        System.out.println("\nAttempting login with incorrect credentials...");
-        CMF.login("Dw", "wrongPassword");
-        User incorrectLoginUser = CMF.getUsers().getUser("Dw", "wrongPassword");
-    
-        if (incorrectLoginUser != null) {
-            System.out.println("Login successful. Welcome " + incorrectLoginUser.getUsername() + "!");
-        } else {
-            System.out.println("Login failed with incorrect credentials.");
-        }
-    
-        // Ensure user data is saved after logging in
-        System.out.println("\nCurrent logged-in user data:");
-        System.out.println("Username: " + loggedInUser.getUsername());
-        System.out.println("Email: " + loggedInUser.getEmailAddress());
 
-        CMF.logOut();
     } 
 }

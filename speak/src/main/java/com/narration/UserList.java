@@ -6,15 +6,8 @@ public class UserList {
     private static UserList userList;
 
     private UserList() {
-        users=new ArrayList<User>();
-        User user1=new User("Mary", "Swanson", "Samsonite1994");
-        User user2=new User("Lloyd", "Christmas", "Limo_Man" );
-        User user3=new User("Harry", "Dunne", "MuttCutts");
-
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
-
+      DataReadWriter drt = new DataReadWriter();
+      users = drt.getUsers();
     }
 
     public static UserList getInstance(){
