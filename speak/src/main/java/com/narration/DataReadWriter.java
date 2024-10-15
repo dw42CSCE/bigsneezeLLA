@@ -183,13 +183,26 @@ public class DataReadWriter extends DataConstants{
             Phrase[] phrases = getKeyPhrases((JSONArray) lessonJSON.get(KEYPHRASES));
 
 
-            lessons.add(new Lesson(subject, intro, exercises, words, phrases));
+            lessons.add(new Lesson(subject, intro, exercises, words, phrases, progress));
         }
         return lessons;
     }
 
     private static ArrayList<Exercise> getExercises(JSONArray exercisesJSON){
-        return null;
+        ArrayList<Exercise> exercises = new ArrayList<>();
+
+        for (int i = 0; i <exercisesJSON.size(); i++){
+            JSONObject exerciseJSON = (JSONObject) exercisesJSON.get(i);
+
+            String question = (String)exerciseJSON.get(QUESTION);
+            String type = (String)exerciseJSON.get(TYPE);
+            String options = (String)exerciseJSON.get(OPTIONS);
+            String answer = (String)exerciseJSON.get(ANSWER);
+
+            exercises.add(new Exercise(question, answer));
+        }
+
+        return exercises;
     }
 
     private static Word[] getKeyWords(JSONArray keywordsJSON){

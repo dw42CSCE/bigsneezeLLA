@@ -28,18 +28,8 @@ public class CourseManagerFacade {
         return user;
     }
 
-<<<<<<< HEAD
     public Course getCourse(String language) {
         return null;
-=======
-    public void setCourse(String language) {
-        Language l = Language.valueOf(language.trim().toUpperCase());
-        course = courses.getCourse(l);
-    }
-
-    public Course getCourse() {
-        return course;
->>>>>>> 69a4c5e2ffbf5c840e9b2269b41a5208bf232836
     }
 
     public CourseList getAllCourses() {
@@ -79,11 +69,7 @@ public class CourseManagerFacade {
     }
 
     public void logOut() {
-<<<<<<< HEAD
-        DataReadWriter.updateUsers(users.getUserList());
-=======
         DataReadWriter.updateUsers(users.getUsers());
->>>>>>> 69a4c5e2ffbf5c840e9b2269b41a5208bf232836
     }
 
     public Settings getUserSettings() {
