@@ -75,4 +75,10 @@ public class CourseManagerFacade {
     public Settings getUserSettings() {
         return user.getSettings();
     }
+
+    public static void main(String[] args) {
+        CourseManagerFacade CMF = new CourseManagerFacade();
+        User user = CMF.signUp("Dw", "dw@gmail.com", "pw");
+        System.out.println(user.getEmailAddress());
+    }
 }
