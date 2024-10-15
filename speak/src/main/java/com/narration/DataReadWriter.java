@@ -39,7 +39,8 @@ public class DataReadWriter extends DataConstants{
                 JSONObject settingsObj = (JSONObject)personJSON.get(SETTINGS);
                 Settings settings = parseSettings(settingsObj);
 
-                JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
+                //JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
+                Course course = CourseList.getInstance().getCourse()
 
                 users.add(new User(firstname,lastname,username));
             }
@@ -147,8 +148,9 @@ public class DataReadWriter extends DataConstants{
                 JSONObject courseJSON = (JSONObject) coursesJSON.get(i);
     
                 // Extract course details
-                UUID uuid = UUID.fromString((String) courseJSON.get("uuid"));
                 Language language = Language.valueOf(((String) courseJSON.get("language")).toUpperCase());
+                UUID uuid = UUID.fromString((String) courseJSON.get(COURSE_UUID));
+                int progress = ((Long)courseJSON.get(COURSE_PROGRESS)).intValue();
     
                 // Assuming getLessons() is a method that retrieves lessons for each course
                 ArrayList<Lesson> lessons = getLessons((JSONArray) courseJSON.get(LESSONS));
@@ -174,6 +176,7 @@ public class DataReadWriter extends DataConstants{
             JSONObject lessonJSON = (JSONObject) lessonsJSON.get(i);
 
             String subject = (String)lessonJSON.get(SUBJECT);
+            int progress = ((Long)lessonJSON.get(COURSE_PROGRESS)).intValue();
             String intro = (String)lessonJSON.get(INTRO);
             ArrayList<Exercise> exercises = getExercises((JSONArray) lessonJSON.get(EXERCISES));
             Word[] words = getKeyWords((JSONArray) lessonJSON.get(KEYWORDS));
@@ -190,11 +193,27 @@ public class DataReadWriter extends DataConstants{
     }
 
     private static Word[] getKeyWords(JSONArray keywordsJSON){
-        return null;
+        Word[] words = new Word[keywordsJSON.size()];
+
+        for (int i = 0; i < keywordsJSON.size(); i++) {
+            String[] data = ((String)keywordsJSON.get(i)).split(":");
+            String word = data[0].trim();
+            String meaning = data[1].trim();
+            words[i] = new Word(word, meaning);
+        }
+        return words;
     }
 
     private static Phrase[] getKeyPhrases(JSONArray keyphrasesJSON){
-        return null;
+        Word[] words = new Word[keyphrasesJSON.size()];
+
+        for (int i = 0; i < keyphrasesJSON.size(); i++) {
+            String[] data = ((String)keyphrasesJSON.get(i)).split(":");
+            String word = data[0].trim();
+            String meaning = data[1].trim();
+            words[i] = new Word(word, meaning);
+        }
+        return words;
     }
 
 // TEST FOR SIMPLE READWRITER
