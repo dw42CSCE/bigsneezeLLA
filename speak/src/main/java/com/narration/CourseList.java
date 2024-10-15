@@ -9,7 +9,8 @@ public class CourseList {
     private static CourseList courseList;
 
     private CourseList() {
-        courses = new ArrayList<Course>();
+        DataReadWriter drw = new DataReadWriter();
+        courses = DataReadWriter.getCourses();
     }
 
     public static CourseList getInstance() {

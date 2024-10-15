@@ -1,22 +1,41 @@
 [
   {
-    "uuid": "57a552bf-96cf-47b1-a5ef-888891ca82bb",
-    "firstname": "Dallas",
-    "lastname": "Wade",
-    "username": "DWade",
-    "email": "dw@email.com",
-    "password": "Password",
-    "ProfPoints": 2,
+    "uuid": "3826a26e-3b36-4d22-8fca-9b9d3c22d0f0",
+    "firstname": "null",
+    "lastname": "null",
+    "username": "Samme",
+    "email": "Samsonite1994",
+    "password": "pw",
+    "ProfPoints": 0,
     "settings": {
       "emailNotifications": "false",
       "darkMode": "false"
-    },
-    "courses": [
-      {
-        "language": "SPANISH",
-        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
-        "progress": 1
-      }
-    ]
+    }
+  },
+  {
+    "uuid": "c2d5e5cc-db5c-45e4-8c58-302226ec0967",
+    "firstname": "null",
+    "lastname": "null",
+    "username": "Lloyd",
+    "email": "Limo_Man",
+    "password": "Christmas",
+    "ProfPoints": 0,
+    "settings": {
+      "emailNotifications": "false",
+      "darkMode": "false"
+    }
+  },
+  {
+    "uuid": "dcfd92c1-21fb-4fb7-92f9-a004ecc505aa",
+    "firstname": "null",
+    "lastname": "null",
+    "username": "Harry",
+    "email": "MuttCutts",
+    "password": "Dunne",
+    "ProfPoints": 0,
+    "settings": {
+      "emailNotifications": "false",
+      "darkMode": "false"
+    }
   }
 ]

@@ -22,7 +22,7 @@
                 "Buenos Dias : Good Morning",
                 "Como te llamas? : What is your name?"
                 ],
-            "questions": [
+            "exercises": [
                 {
                 "question": "\"Hello\" in spanish is: _______",
                 "type": "Fill_In",

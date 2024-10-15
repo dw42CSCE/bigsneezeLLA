@@ -6,7 +6,7 @@ public class Exercise {
     protected Word answer;
     protected String type;
 
-    public Exercise(String question, Word answer){
+    public Exercise(String question, String answer){
         // ToDo
     }
 

@@ -39,9 +39,12 @@ public class DataReadWriter extends DataConstants{
                 JSONObject settingsObj = (JSONObject)personJSON.get(SETTINGS);
                 Settings settings = parseSettings(settingsObj);
 
-                JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
+                // JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
+                // Course course = CourseList.getInstance().getCourse();
+                JSONArray coursesJSON = (JSONArray) personJSON.get(COURSES);
+                HashMap<UUID,Integer> courses = parseUserCourses(coursesJSON);
 
-                users.add(new User(firstname,lastname,username));
+                users.add(new User(username, password, uuid, firstname, lastname, email, courses, profPts, settings));
             }
             return users;
         } catch (Exception e) {
@@ -54,8 +57,18 @@ public class DataReadWriter extends DataConstants{
         if (settings == null) {
             return null;
         }
-        boolean emailNotif = (Boolean)settings.get(EMAIL_NOTIF);
-        boolean darkMode = (Boolean)settings.get(DARK_MODE);
+
+        boolean emailNotif = true;
+        boolean darkMode = true;
+
+        if (settings.get(EMAIL_NOTIF) == "false"){
+            emailNotif = false;
+        }
+        if (settings.get(DARK_MODE) == "false"){
+            darkMode = true;
+        }
+
+
         return new Settings(emailNotif,darkMode);
     }
 
@@ -97,22 +110,25 @@ public class DataReadWriter extends DataConstants{
 
             // Courses
             jsonBuilder.append("    \"courses\": [\n");
-            for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
-                Course course = entry.getKey();
+            for (Map.Entry<UUID, Integer> entry : user.getCourses().entrySet()) {
+                UUID courseUuid = entry.getKey();
                 int progress = entry.getValue();
-
+            
+                Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
+            
                 jsonBuilder.append("      {\n");
                 jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
                 jsonBuilder.append("        \"uuid\": \"").append(course.getUuid()).append("\",\n");
                 jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
                 jsonBuilder.append("      }");
-
+            
                 // Add comma if not the last entry
                 if (!entry.equals(user.getCourses().entrySet().toArray()[user.getCourses().size() - 1])) {
                     jsonBuilder.append(",");
                 }
                 jsonBuilder.append("\n");
             }
+            
             
             jsonBuilder.append("    ]\n");
 
@@ -147,8 +163,9 @@ public class DataReadWriter extends DataConstants{
                 JSONObject courseJSON = (JSONObject) coursesJSON.get(i);
     
                 // Extract course details
-                UUID uuid = UUID.fromString((String) courseJSON.get("uuid"));
                 Language language = Language.valueOf(((String) courseJSON.get("language")).toUpperCase());
+                UUID uuid = UUID.fromString((String) courseJSON.get(COURSE_UUID));
+                int progress = ((Long)courseJSON.get(COURSE_PROGRESS)).intValue();
     
                 // Assuming getLessons() is a method that retrieves lessons for each course
                 ArrayList<Lesson> lessons = getLessons((JSONArray) courseJSON.get(LESSONS));
@@ -174,28 +191,74 @@ public class DataReadWriter extends DataConstants{
             JSONObject lessonJSON = (JSONObject) lessonsJSON.get(i);
 
             String subject = (String)lessonJSON.get(SUBJECT);
+            int progress = ((Long)lessonJSON.get(COURSE_PROGRESS)).intValue();
             String intro = (String)lessonJSON.get(INTRO);
             ArrayList<Exercise> exercises = getExercises((JSONArray) lessonJSON.get(EXERCISES));
             Word[] words = getKeyWords((JSONArray) lessonJSON.get(KEYWORDS));
             Phrase[] phrases = getKeyPhrases((JSONArray) lessonJSON.get(KEYPHRASES));
 
 
-            lessons.add(new Lesson(subject, intro, exercises, words, phrases));
+            lessons.add(new Lesson(subject, intro, exercises, words, phrases, progress));
         }
         return lessons;
     }
 
     private static ArrayList<Exercise> getExercises(JSONArray exercisesJSON){
-        return null;
+        ArrayList<Exercise> exercises = new ArrayList<>();
+
+        for (int i = 0; i <exercisesJSON.size(); i++){
+            JSONObject exerciseJSON = (JSONObject) exercisesJSON.get(i);
+
+            String question = (String)exerciseJSON.get(QUESTION);
+            String type = (String)exerciseJSON.get(TYPE);
+            String options = (String)exerciseJSON.get(OPTIONS);
+            String answer = (String)exerciseJSON.get(ANSWER);
+
+            exercises.add(new Exercise(question, answer));
+        }
+
+        return exercises;
     }
 
     private static Word[] getKeyWords(JSONArray keywordsJSON){
-        return null;
+        Word[] words = new Word[keywordsJSON.size()];
+
+        for (int i = 0; i < keywordsJSON.size(); i++) {
+            String[] data = ((String)keywordsJSON.get(i)).split(":");
+            String word = data[0].trim();
+            String meaning = data[1].trim();
+            words[i] = new Word(word, meaning);
+        }
+        return words;
     }
 
     private static Phrase[] getKeyPhrases(JSONArray keyphrasesJSON){
-        return null;
+        Phrase[] phrases = new Phrase[keyphrasesJSON.size()];
+
+        for (int i = 0; i < keyphrasesJSON.size(); i++) {
+            String[] data = ((String)keyphrasesJSON.get(i)).split(":");
+            String phrase = data[0].trim();
+            String meaning = data[1].trim();
+            phrases[i] = new Phrase(phrase, meaning);
+        }
+        return phrases;
     }
+
+    private static HashMap<UUID, Integer> parseUserCourses(JSONArray userCourses) {
+        HashMap<UUID, Integer> courses = new HashMap<>();
+        if (userCourses != null) {
+            for (int i = 0; i < userCourses.size(); i++) {
+                JSONObject courseJSON = (JSONObject) userCourses.get(i);
+                UUID uuid = UUID.fromString((String) courseJSON.get(USER_UUID));
+                int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
+                courses.put(uuid, progress);
+            }
+        } else {
+            System.out.println("userCourses is null.");
+        }
+        return courses;
+    }
+    
 
 // TEST FOR SIMPLE READWRITER
     // public static void main(String[] args) {
@@ -221,18 +284,18 @@ public class DataReadWriter extends DataConstants{
     // }
 
 // TEST FOR updateUsers
-    public static void main(String[] args){
-        ArrayList<User> users = new ArrayList<>();
-        HashMap<Course, Integer> courses = new HashMap();
+    // public static void main(String[] args){
+    //     ArrayList<User> users = new ArrayList<>();
+    //     HashMap<Course, Integer> courses = new HashMap();
 
-        Settings settings = new Settings(false, false);
+    //     Settings settings = new Settings(false, false);
 
-        Course course = getCourses().get(0);
+    //     Course course = getCourses().get(0);
 
-        courses.put(course, 1);
+    //     courses.put(course, 1);
 
-        users.add(new User("DWade", "Password", UUID.randomUUID() , "Dallas" , "Wade" , "dw@email.com", courses, 2, settings));
+    //     users.add(new User("DWade", "Password", UUID.randomUUID() , "Dallas" , "Wade" , "dw@email.com", courses, 2, settings));
 
-        updateUsers(users);
-    }
+    //     updateUsers(users);
+    // }
 }

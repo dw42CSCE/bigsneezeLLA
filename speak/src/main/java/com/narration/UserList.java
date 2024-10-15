@@ -6,17 +6,13 @@ public class UserList {
     private static UserList userList;
 
     private UserList() {
-        users=new ArrayList<User>();
-        User user1=new User("Mary", "Swanson", "Samsonite1994");
-        User user2=new User("Lloyd", "Christmas", "Limo_Man" );
-        User user3=new User("Harry", "Dunne", "MuttCutts");
-
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
-
-    }
-
+      DataReadWriter drt = new DataReadWriter();
+      users = drt.getUsers();
+      if (users == null) {
+          users = new ArrayList<>();  // Initialize with an empty list if null
+      }
+  }
+  
     public static UserList getInstance(){
       if(userList==null)
         userList=new UserList();
@@ -32,7 +28,7 @@ public class UserList {
           }
         }
         if(isMatch==false){
-        User newUser=new User(username, email, password);
+        User newUser=new User(username, password, email);
         users.add(newUser);
         }
     }
@@ -51,14 +47,15 @@ public class UserList {
     }
 
     public User getUser(String username, String password) {
-        User notFound= new User("NotFound","NotFound","NotFound");
-        for(int i=0; i<users.size()-1;i++){
-          User tempUser=users.get(i);
-          if(tempUser.getUsername().equals(username) && tempUser.getPassword().equals(password))
-            return users.get(i);
-        }
-        return notFound;
-    }
+      for (int i = 0; i < users.size(); i++) {  // Fix: iterate through the entire list
+          User tempUser = users.get(i);
+          if (tempUser.getUsername().equals(username) && tempUser.getPassword().equals(password)) {
+              return users.get(i);  // Return the matching user
+          }
+      }
+      return null;  // Return the "NotFound" user if no match is found
+  }
+  
 
     public ArrayList<User> getUsers(){
       return users;

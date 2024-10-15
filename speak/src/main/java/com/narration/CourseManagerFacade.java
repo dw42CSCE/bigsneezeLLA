@@ -1,4 +1,5 @@
 package com.narration;
+import java.util.ArrayList;
 
 public class CourseManagerFacade {
     private User user;
@@ -9,37 +10,42 @@ public class CourseManagerFacade {
     private Exercise exercise;
 
     public CourseManagerFacade() {
+        users = UserList.getInstance(); 
         courses = CourseList.getInstance();
+    }
+
+    public User login(String username, String password) {
         users = UserList.getInstance();
-    }
-
-    public void login(String username, String password) {
         user = users.getUser(username, password);
-        if(user == null) {
+        if (user == null || user.getUsername().equals("NotFound")) {  // Adjusted for "NotFound" logic
             System.out.println("Account with provided credentials does not exist. Try different credentials or sign up.");
+        } else {
+            System.out.println("Login successful.");
         }
-    }
 
-    public User signUp(String username, String email, String password) {
-        if(users.getUser(username, password) == null) {
-            users.addUser(username, email, password);
-        }
-        user = users.getUser(username, password);
         return user;
     }
+    
 
-<<<<<<< HEAD
+    public User signUp(String username, String email, String password) {
+
+        users = UserList.getInstance();
+
+        User newUser = new User(username, password, email);
+
+        ArrayList<User> curUsers = users.getUsers();
+        for (int i = 0; i < curUsers.size(); i++){
+            if (users.getUser(username, password) == newUser){
+                return users.getUser(username, password);
+            }
+        }
+        users.addUser(username, email, password);
+        return newUser;
+    }
+    
+
     public Course getCourse(String language) {
         return null;
-=======
-    public void setCourse(String language) {
-        Language l = Language.valueOf(language.trim().toUpperCase());
-        course = courses.getCourse(l);
-    }
-
-    public Course getCourse() {
-        return course;
->>>>>>> 69a4c5e2ffbf5c840e9b2269b41a5208bf232836
     }
 
     public CourseList getAllCourses() {
@@ -79,14 +85,40 @@ public class CourseManagerFacade {
     }
 
     public void logOut() {
-<<<<<<< HEAD
-        DataReadWriter.updateUsers(users.getUserList());
-=======
         DataReadWriter.updateUsers(users.getUsers());
->>>>>>> 69a4c5e2ffbf5c840e9b2269b41a5208bf232836
     }
 
     public Settings getUserSettings() {
         return user.getSettings();
     }
+
+// TEST FOR SIGNUP, will not write new user to json yet
+//     public static void main(String[] args) {
+//         CourseManagerFacade CMF = new CourseManagerFacade();
+    
+//         // Sign up a new user
+//         User user1 = CMF.signUp("Dw", "dw@gmail.com", "pw");
+//         System.out.println("User signed up with email: " + user1.getEmailAddress());
+    
+//         // Attempt to log in with the correct credentials
+//         System.out.println("\nAttempting login with correct credentials...");
+//         CMF.login("Dw", "pw");
+//         User loggedInUser = CMF.getUsers().getUser("Dw", "pw");
+    
+//         if (loggedInUser != null) {
+//             System.out.println("Login successful. Welcome " + loggedInUser.getUsername() + "!");
+//         } else {
+//             System.out.println("Login failed.");
+//         }
+
+//     } 
+
+// TEST FOR LOGIN
+    // public static void main(String[] args) {
+    //     CourseManagerFacade cmf = new CourseManagerFacade();
+
+    //     User user = cmf.login("Samme", "pw");
+
+    //     System.out.println("Sammy's email: " + user.getEmailAddress());
+    // }
 }
