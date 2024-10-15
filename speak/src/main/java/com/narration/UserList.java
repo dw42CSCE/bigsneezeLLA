@@ -51,14 +51,16 @@ public class UserList {
     }
 
     public User getUser(String username, String password) {
-        User notFound= new User("NotFound","NotFound","NotFound");
-        for(int i=0; i<users.size()-1;i++){
-          User tempUser=users.get(i);
-          if(tempUser.getUsername().equals(username) && tempUser.getPassword().equals(password))
-            return users.get(i);
-        }
-        return notFound;
-    }
+      User notFound = new User("NotFound", "NotFound", "NotFound");
+      for (int i = 0; i < users.size(); i++) {  // Fix: iterate through the entire list
+          User tempUser = users.get(i);
+          if (tempUser.getUsername().equals(username) && tempUser.getPassword().equals(password)) {
+              return users.get(i);  // Return the matching user
+          }
+      }
+      return notFound;  // Return the "NotFound" user if no match is found
+  }
+  
 
     public ArrayList<User> getUsers(){
       return users;

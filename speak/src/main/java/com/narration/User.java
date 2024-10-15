@@ -13,7 +13,7 @@ public class User {
     private String emailAddress;
     private HashMap<Course, Integer> courses;
     private int proficiencyPointTotal;
-    private Settings settings;
+    private Settings settings = new Settings(false, false);
 
     public User(String userName, String password, UUID uuid, String firstName, String lastName, 
                 String emailAddress, HashMap<Course, Integer> courses, int proficiencyPointTotal, Settings settings ){

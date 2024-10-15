@@ -1,8 +1,8 @@
 package com.narration;
 
 public class Settings {
-    private boolean emailNotifications;
-    private boolean isDarkMode;
+    private boolean emailNotifications = false;
+    private boolean isDarkMode = false;
 
     public Settings(boolean emailNotif, boolean darkMode) {
         this.emailNotifications = emailNotif;

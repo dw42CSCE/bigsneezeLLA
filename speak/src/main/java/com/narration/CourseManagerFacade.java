@@ -78,7 +78,38 @@ public class CourseManagerFacade {
 
     public static void main(String[] args) {
         CourseManagerFacade CMF = new CourseManagerFacade();
-        User user = CMF.signUp("Dw", "dw@gmail.com", "pw");
-        System.out.println(user.getEmailAddress());
-    }
+    
+        // Sign up a new user
+        User user1 = CMF.signUp("Dw", "dw@gmail.com", "pw");
+        System.out.println("User signed up with email: " + user1.getEmailAddress());
+    
+        // Attempt to log in with the correct credentials
+        System.out.println("\nAttempting login with correct credentials...");
+        CMF.login("Dw", "pw");
+        User loggedInUser = CMF.getUsers().getUser("Dw", "pw");
+    
+        if (loggedInUser != null) {
+            System.out.println("Login successful. Welcome " + loggedInUser.getUsername() + "!");
+        } else {
+            System.out.println("Login failed.");
+        }
+    
+        // Attempt to log in with incorrect credentials
+        System.out.println("\nAttempting login with incorrect credentials...");
+        CMF.login("Dw", "wrongPassword");
+        User incorrectLoginUser = CMF.getUsers().getUser("Dw", "wrongPassword");
+    
+        if (incorrectLoginUser != null) {
+            System.out.println("Login successful. Welcome " + incorrectLoginUser.getUsername() + "!");
+        } else {
+            System.out.println("Login failed with incorrect credentials.");
+        }
+    
+        // Ensure user data is saved after logging in
+        System.out.println("\nCurrent logged-in user data:");
+        System.out.println("Username: " + loggedInUser.getUsername());
+        System.out.println("Email: " + loggedInUser.getEmailAddress());
+
+        CMF.logOut();
+    } 
 }

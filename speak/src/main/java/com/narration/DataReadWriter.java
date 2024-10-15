@@ -39,8 +39,8 @@ public class DataReadWriter extends DataConstants{
                 JSONObject settingsObj = (JSONObject)personJSON.get(SETTINGS);
                 Settings settings = parseSettings(settingsObj);
 
-                //JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
-                Course course = CourseList.getInstance().getCourse()
+                // JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
+                // Course course = CourseList.getInstance().getCourse();
 
                 users.add(new User(firstname,lastname,username));
             }
@@ -253,18 +253,18 @@ public class DataReadWriter extends DataConstants{
     // }
 
 // TEST FOR updateUsers
-    public static void main(String[] args){
-        ArrayList<User> users = new ArrayList<>();
-        HashMap<Course, Integer> courses = new HashMap();
+    // public static void main(String[] args){
+    //     ArrayList<User> users = new ArrayList<>();
+    //     HashMap<Course, Integer> courses = new HashMap();
 
-        Settings settings = new Settings(false, false);
+    //     Settings settings = new Settings(false, false);
 
-        Course course = getCourses().get(0);
+    //     Course course = getCourses().get(0);
 
-        courses.put(course, 1);
+    //     courses.put(course, 1);
 
-        users.add(new User("DWade", "Password", UUID.randomUUID() , "Dallas" , "Wade" , "dw@email.com", courses, 2, settings));
+    //     users.add(new User("DWade", "Password", UUID.randomUUID() , "Dallas" , "Wade" , "dw@email.com", courses, 2, settings));
 
-        updateUsers(users);
-    }
+    //     updateUsers(users);
+    // }
 }
