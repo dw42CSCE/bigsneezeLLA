@@ -20,16 +20,12 @@ public class UserList {
     }
 
     public void addUser(String username, String email, String password) {
-      boolean isMatch=false;
       for(int i=0; i<users.size();i++){
           User tempUser=users.get(i);
-          if(tempUser.getUsername().equals(username)||tempUser.getEmailAddress().equals(email)){
-            isMatch=true;
+          if(!tempUser.getUsername().equals(username)||!tempUser.getEmailAddress().equals(email)){
+            User newUser=new User(username, password, email);
+            users.add(newUser);
           }
-        }
-        if(isMatch==false){
-        User newUser=new User(username, password, email);
-        users.add(newUser);
         }
     }
 
