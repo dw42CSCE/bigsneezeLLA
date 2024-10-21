@@ -1,20 +1,13 @@
 package com.narration;
 
-public class Exercise {
-    protected String questions;
-    protected String options;
-    protected Word answer;
-    protected String type;
+import java.util.ArrayList;
 
-    public Exercise(String question, String answer){
-        // ToDo
-    }
+public abstract class Exercise {
+    protected String question;
+    protected ArrayList<String> options;
+    protected String answer;
 
-    public boolean isCorrect(String username){
-        return true;
-    }
+    public abstract boolean isCorrect(String userAnswer);
 
-    public String toString(){
-        return "ToDo";
-    }
+    public abstract String toString();
 }

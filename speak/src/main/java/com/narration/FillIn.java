@@ -1,20 +1,29 @@
 package com.narration;
 
-public class FillIn {
-    protected String questions;
-    protected String options;
-    protected Word answer;
-    protected String type;
+import java.util.ArrayList;
 
-    public FillIn(String question, String answer){
-        // ToDo
+public class FillIn extends Exercise {
+    protected String question;
+    protected ArrayList<String> options;
+    protected String answer;
+
+    public FillIn(String question, ArrayList<String> options, String answer){
+        this.question = question;
+        this.options = options;
+        this.answer = answer;
     }
 
-    public boolean isCorrect(String username){
-        return true;
+    public boolean isCorrect(String userAnswer){
+        if (answer.equalsIgnoreCase(userAnswer.replaceAll("\\s+","")))
+            return true;
+        for (String option : options)  {
+            if (option.equalsIgnoreCase(userAnswer.replaceAll("\\s+","")))
+                return true;
+        }
+        return false;
     }
 
     public String toString(){
-        return "ToDo";
+        return (this.question);
     }
 }
