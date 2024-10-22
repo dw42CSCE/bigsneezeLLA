@@ -27,7 +27,7 @@ public class CourseList {
 
     public Course getCourse(UUID uuid) {
         for (Course course : courses){
-            if (course.getUuid() == uuid) {
+            if (course.getUuid().equals(uuid)) {
                 return course;
             }
         }

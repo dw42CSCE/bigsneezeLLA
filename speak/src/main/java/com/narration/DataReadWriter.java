@@ -253,20 +253,28 @@ public class DataReadWriter extends DataConstants{
 
     private static HashMap<Course, Integer> parseUserCourses(JSONArray userCourses) {
         HashMap<Course, Integer> courses = new HashMap<>();
-        CourseList courselist = CourseList.getInstance();
+        CourseList courselist = CourseList.getInstance();  // Ensure CourseList is populated before this step
+    
         if (userCourses != null) {
             for (int i = 0; i < userCourses.size(); i++) {
                 JSONObject courseJSON = (JSONObject) userCourses.get(i);
-                UUID uuid = UUID.fromString((String) courseJSON.get(USER_UUID));
+                UUID uuid = UUID.fromString(((String) courseJSON.get("uuid")).trim());
+    
+                // Fetch the course using the UUID from CourseList
                 Course course = courselist.getCourse(uuid);
-                int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
-                courses.put(course, progress);
+                if (course != null) {
+                    int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
+                    courses.put(course, progress);
+                } else {
+                    System.out.println("Course with UUID " + uuid + " not found in CourseList.");
+                }
             }
         } else {
             System.out.println("userCourses is null.");
         }
         return courses;
     }
+    
     
 
 // TEST FOR SIMPLE READWRITER

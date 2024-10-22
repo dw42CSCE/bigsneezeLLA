@@ -1,5 +1,6 @@
 package com.narration;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class CourseManagerFacade {
@@ -103,8 +104,23 @@ public class CourseManagerFacade {
 
         User user = cmf.login("asmith", "password");
 
-        System.out.println("Alice's email: " + user.getEmailAddress());
+        System.out.println("Login successful. Welcome " + user.getUsername() + "!");
+        System.out.println("User's email is " + user.getEmailAddress());
 
-        cmf.logOut();
-    }
+        HashMap<Course, Integer> userCourses = user.getCourses();
+
+        if (userCourses != null && !userCourses.isEmpty()) {
+            Course firstCourse = userCourses.keySet().iterator().next();
+
+            if (firstCourse != null) {
+                System.out.println("First course language: " + firstCourse.getLanguage());
+                System.out.println("First Lesson: " + firstCourse.getLesson(0).getIntro() + "\n" + firstCourse.getLesson(0).getExercise(0).toString());
+            } else {
+                System.out.println("First course is null.");
+            }
+        } else {
+            System.out.println("User has no courses or course list is null.");
+        }
+
+    }   
 }

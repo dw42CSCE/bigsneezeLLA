@@ -48,6 +48,6 @@ public class Course {
     }
 
     public String toString() {
-        return "";
+        return "Test";
     }
 }
