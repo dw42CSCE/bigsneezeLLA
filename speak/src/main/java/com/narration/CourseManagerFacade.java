@@ -1,6 +1,7 @@
 package com.narration;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class CourseManagerFacade {
@@ -98,29 +99,47 @@ public class CourseManagerFacade {
 
 //     } 
 
-// TEST FOR LOGIN
-    public static void main(String[] args) {
-        CourseManagerFacade cmf = new CourseManagerFacade();
+// FULL TEST FOR LOGGING IN, ANSWERING QUESTIONS, DOES NOT ATTEMPT TO SAVE
+    // public static void main(String[] args) {
 
-        User user = cmf.login("asmith", "password");
+    //     Scanner k = new Scanner(System.in);
+    //     CourseManagerFacade cmf = new CourseManagerFacade();
 
-        System.out.println("Login successful. Welcome " + user.getUsername() + "!");
-        System.out.println("User's email is " + user.getEmailAddress());
+    //     User user = cmf.login("asmith", "password");
 
-        HashMap<Course, Integer> userCourses = user.getCourses();
+    //     System.out.println("Login successful. Welcome " + user.getUsername() + "!");
+    //     System.out.println("User's email is " + user.getEmailAddress());
 
-        if (userCourses != null && !userCourses.isEmpty()) {
-            Course firstCourse = userCourses.keySet().iterator().next();
+    //     HashMap<Course, Integer> userCourses = user.getCourses();
 
-            if (firstCourse != null) {
-                System.out.println("First course language: " + firstCourse.getLanguage());
-                System.out.println("First Lesson: " + firstCourse.getLesson(0).getIntro() + "\n" + firstCourse.getLesson(0).getExercise(0).toString());
-            } else {
-                System.out.println("First course is null.");
-            }
-        } else {
-            System.out.println("User has no courses or course list is null.");
-        }
+    //     if (userCourses != null && !userCourses.isEmpty()) {
+    //         Course firstCourse = userCourses.keySet().iterator().next();
 
-    }   
+    //         if (firstCourse != null) {
+    //             System.out.println("First course language: " + firstCourse.getLanguage());
+
+    //             for (Lesson lesson : firstCourse.getLessons()){
+    //                 System.out.println(lesson.toString());
+    //                 for (Exercise exercise : lesson.getExercises()){
+    //                     boolean wrong = true;
+    //                     while (wrong){
+    //                         System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
+    //                         String answer = k.nextLine();
+    //                         System.out.println(exercise.answer.getWord());
+    //                         if (exercise.isCorrect(answer)){
+    //                            wrong = false; 
+    //                         } 
+    //                     }
+    //                 }
+    //             }
+
+    //         } else {
+    //             System.out.println("First course is null.");
+    //         }
+
+    //     } else {
+    //         System.out.println("User has no courses or course list is null.");
+    //     }
+
+    // }   
 }

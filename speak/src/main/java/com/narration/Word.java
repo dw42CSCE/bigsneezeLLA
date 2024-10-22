@@ -27,7 +27,7 @@ public class Word {
     }
 
     public String toString(){
-        return (this.word+":\n"+this.meaning);
+        return (this.word+" : "+this.meaning);
     }
 
     public UUID setUUID(){
