@@ -11,12 +11,12 @@ public class User {
     private String firstName;
     private String lastName;
     private String emailAddress;
-    private HashMap<UUID, Integer> courses;
+    private HashMap<Course, Integer> courses;
     private int proficiencyPointTotal;
     private Settings settings = new Settings(false, false);
 
     public User(String userName, String password, UUID uuid, String firstName, String lastName, 
-                String emailAddress, HashMap<UUID, Integer> courses, int proficiencyPointTotal, Settings settings ){
+                String emailAddress, HashMap<Course, Integer> courses, int proficiencyPointTotal, Settings settings ){
     this.userName=userName;
     this.password=password;
     this.uuid=uuid;
@@ -70,7 +70,7 @@ public class User {
         return courses.get(course);
     }
 
-    public HashMap<UUID, Integer> getCourses(){
+    public HashMap<Course, Integer> getCourses(){
         return this.courses;
     }
 

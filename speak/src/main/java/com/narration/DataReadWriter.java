@@ -16,8 +16,15 @@ import org.json.simple.parser.JSONParser;
 
 @SuppressWarnings("unused")
 
+/**
+ * Class that loads and saves application data
+ */
 public class DataReadWriter extends DataConstants{
     
+    /**
+     * Method to load users from JSON file into application
+     * @return An array list of Users
+     */
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
@@ -42,7 +49,7 @@ public class DataReadWriter extends DataConstants{
                 // JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
                 // Course course = CourseList.getInstance().getCourse();
                 JSONArray coursesJSON = (JSONArray) personJSON.get(COURSES);
-                HashMap<UUID,Integer> courses = parseUserCourses(coursesJSON);
+                HashMap<Course,Integer> courses = parseUserCourses(coursesJSON);
 
                 users.add(new User(username, password, uuid, firstname, lastname, email, courses, profPts, settings));
             }
@@ -244,14 +251,15 @@ public class DataReadWriter extends DataConstants{
         return phrases;
     }
 
-    private static HashMap<UUID, Integer> parseUserCourses(JSONArray userCourses) {
-        HashMap<UUID, Integer> courses = new HashMap<>();
+    private static HashMap<Course, Integer> parseUserCourses(JSONArray userCourses) {
+        HashMap<Course, Integer> courses = new HashMap<>();
         if (userCourses != null) {
             for (int i = 0; i < userCourses.size(); i++) {
                 JSONObject courseJSON = (JSONObject) userCourses.get(i);
                 UUID uuid = UUID.fromString((String) courseJSON.get(USER_UUID));
+                Course course = CourseList.getInstance().getCourse(uuid);
                 int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
-                courses.put(uuid, progress);
+                courses.put(course, progress);
             }
         } else {
             System.out.println("userCourses is null.");
