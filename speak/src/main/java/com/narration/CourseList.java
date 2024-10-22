@@ -14,7 +14,7 @@ public class CourseList {
     }
 
     public static CourseList getInstance() {
-        if (courseList != null){
+        if (courseList == null){
             courseList = new CourseList();
         }
         return courseList;

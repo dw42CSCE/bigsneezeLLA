@@ -118,14 +118,14 @@ public class DataReadWriter extends DataConstants{
             // Courses
             jsonBuilder.append("    \"courses\": [\n");
             for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
-                Course course = entry.getKey();
+                UUID courseUuid = entry.getKey().getUuid();
                 int progress = entry.getValue();
             
-                UUID coursUuid = course.getUuid();  // Fetch the Course object using the UUID
+                //Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
             
                 jsonBuilder.append("      {\n");
-                jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
-                jsonBuilder.append("        \"uuid\": \"").append(course.getUuid()).append("\",\n");
+                //jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
+                jsonBuilder.append("        \"uuid\": \"").append(courseUuid).append("\",\n");
                 jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
                 jsonBuilder.append("      }");
             
@@ -253,11 +253,12 @@ public class DataReadWriter extends DataConstants{
 
     private static HashMap<Course, Integer> parseUserCourses(JSONArray userCourses) {
         HashMap<Course, Integer> courses = new HashMap<>();
+        CourseList courselist = CourseList.getInstance();
         if (userCourses != null) {
             for (int i = 0; i < userCourses.size(); i++) {
                 JSONObject courseJSON = (JSONObject) userCourses.get(i);
                 UUID uuid = UUID.fromString((String) courseJSON.get(USER_UUID));
-                Course course = CourseList.getInstance().getCourse(uuid);
+                Course course = courselist.getCourse(uuid);
                 int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
                 courses.put(course, progress);
             }

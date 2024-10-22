@@ -8,17 +8,13 @@
         "password": "password",
         "ProfPoints": 150,
         "settings": {
-        "emailNotifications": true,
-        "darkMode": false
+        "emailNotifications": "true",
+        "darkMode": "false"
         },
         "courses": [
         {
             "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
             "progress": 5
-        },
-        {
-            "uuid": "b1303bf7-6575-41ea-93fb-4bb8da654321",
-            "progress": 40
         }
         ]
     },
@@ -38,10 +34,6 @@
         {
             "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
             "progress": 0
-        },
-        {
-            "uuid": "b1303bf7-6575-41ea-93fb-4bb8da123456",
-            "progress": 30
         }
         ]
     },
@@ -61,10 +53,6 @@
         {
             "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
             "progress": 60
-        },
-        {
-            "uuid": "b1303bf7-6575-41ea-93fb-4bb8da234fds",
-            "progress": 50
         }
         ]
     }

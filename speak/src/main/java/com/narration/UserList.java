@@ -6,8 +6,8 @@ public class UserList {
     private static UserList userList;
 
     private UserList() {
-      DataReadWriter drt = new DataReadWriter();
-      users = drt.getUsers();
+      //DataReadWriter drt = new DataReadWriter();
+      users = DataReadWriter.getUsers();
       if (users == null) {
           users = new ArrayList<>();  // Initialize with an empty list if null
       }
