@@ -24,19 +24,6 @@ public class CourseManagerFacade {
 
     public void signUp(String username, String email, String password) {
         users.addUser(username, email, password);
-        /*
-        users = UserList.getInstance();
-
-        User newUser = new User(username, password, email);
-
-        ArrayList<User> curUsers = users.getUsers();
-        for (int i = 0; i < curUsers.size(); i++){
-            if (users.getUser(username, password) == newUser){
-                return users.getUser(username, password);
-            }
-        }
-        users.addUser(username, email, password);
-        return newUser; */
     }
     
 
