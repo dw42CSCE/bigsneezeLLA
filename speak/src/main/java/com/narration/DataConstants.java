@@ -1,7 +1,7 @@
 package com.narration;
 
 public abstract class DataConstants {
-    protected static final String USER_FILE_NAME = "JSON/tempusers.json";
+    protected static final String USER_FILE_NAME = "JSON/UserInfo.Json";
     protected static final String USER_UUID = "uuid";
     protected static final String USER_FIRST_NAME = "firstname";
     protected static final String USER_LAST_NAME = "lastname";

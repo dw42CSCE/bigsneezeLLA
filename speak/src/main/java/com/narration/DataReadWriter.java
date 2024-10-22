@@ -253,11 +253,12 @@ public class DataReadWriter extends DataConstants{
 
     private static HashMap<Course, Integer> parseUserCourses(JSONArray userCourses) {
         HashMap<Course, Integer> courses = new HashMap<>();
+        CourseList courselist = CourseList.getInstance();
         if (userCourses != null) {
             for (int i = 0; i < userCourses.size(); i++) {
                 JSONObject courseJSON = (JSONObject) userCourses.get(i);
                 UUID uuid = UUID.fromString((String) courseJSON.get(USER_UUID));
-                Course course = CourseList.getInstance().getCourse(uuid);
+                Course course = courselist.getCourse(uuid);
                 int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
                 courses.put(course, progress);
             }
