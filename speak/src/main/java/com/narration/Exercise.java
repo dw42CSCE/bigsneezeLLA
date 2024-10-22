@@ -1,13 +1,14 @@
 package com.narration;
 
 public class Exercise {
-    protected String questions;
-    protected String options;
+    protected String question;
+    //protected String options;
     protected Word answer;
-    protected String type;
+    //protected String type;
 
-    public Exercise(String question, String answer){
-        // ToDo
+    public Exercise(String question, Word answer){
+        this.question = question;
+        this.answer = answer;
     }
 
     public boolean isCorrect(String userAnswer){

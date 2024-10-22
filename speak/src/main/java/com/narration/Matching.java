@@ -1,10 +1,11 @@
 package com.narration;
 
-public class Matching {
-    protected String questions;
-    protected String options;
-    protected Word answer;
-    protected String type;
+public class Matching extends Exercise{
+    // protected String questions;
+    // protected String options;
+    // protected Word answer;
+    // protected String type;
+    private Word[] mathcingArray;
 
     public Matching(String question, String answer){
      

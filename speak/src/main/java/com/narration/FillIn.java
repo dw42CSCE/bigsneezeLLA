@@ -1,10 +1,11 @@
 package com.narration;
 
-public class FillIn {
-    protected String questions;
-    protected String options;
-    protected Word answer;
-    protected String type;
+public class FillIn extends Exercise{
+    // protected String questions;
+    // protected String options;
+    // protected Word answer;
+    // protected String type;
+    private Word[] answers;
 
     public FillIn(String question, String answer){
       //question=DataReadWriter.getExercises();
