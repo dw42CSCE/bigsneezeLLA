@@ -117,14 +117,14 @@ public class DataReadWriter extends DataConstants{
 
             // Courses
             jsonBuilder.append("    \"courses\": [\n");
-            for (Map.Entry<UUID, Integer> entry : user.getCourses().entrySet()) {
-                UUID courseUuid = entry.getKey();
+            for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
+                UUID courseUuid = entry.getKey().getUuid();
                 int progress = entry.getValue();
             
                 Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
             
                 jsonBuilder.append("      {\n");
-                jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
+                //jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
                 jsonBuilder.append("        \"uuid\": \"").append(course.getUuid()).append("\",\n");
                 jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
                 jsonBuilder.append("      }");
