@@ -1,5 +1,6 @@
 package com.narration;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class CourseManagerFacade {
     private User user;
@@ -39,8 +40,9 @@ public class CourseManagerFacade {
     }
     
 
-    public Course getCourse(String language) {
-        return null;
+    public Course getCourse(UUID language) {
+        course = user.getCourse(language);
+        return course;
     }
 
     public CourseList getAllCourses() {
