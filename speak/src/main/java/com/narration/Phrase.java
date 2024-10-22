@@ -26,11 +26,11 @@ public class Phrase {
         return this.phrase;
     }
 
-    public String Translation(){
+    public String getTranslation(){
         return this.translation;
     }
 
     public String toString(){
-        return (this.getPhrase()+"("+this.translation+")"+":\n"+this.meaning);
+        return (this.getPhrase() + " means " + this.getTranslation());
     }
 }
