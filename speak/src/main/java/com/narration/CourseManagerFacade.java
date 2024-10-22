@@ -10,8 +10,8 @@ public class CourseManagerFacade {
     private Exercise exercise;
 
     public CourseManagerFacade() {
-        users = UserList.getInstance(); 
         courses = CourseList.getInstance();
+        users = UserList.getInstance(); 
     }
 
     public User login(String username, String password) {
@@ -109,11 +109,13 @@ public class CourseManagerFacade {
 //     } 
 
 // TEST FOR LOGIN
-    // public static void main(String[] args) {
-    //     CourseManagerFacade cmf = new CourseManagerFacade();
+    public static void main(String[] args) {
+        CourseManagerFacade cmf = new CourseManagerFacade();
 
-    //     User user = cmf.login("Samme", "pw");
+        User user = cmf.login("asmith", "password");
 
-    //     System.out.println("Sammy's email: " + user.getEmailAddress());
-    // }
+        System.out.println("Alice's email: " + user.getEmailAddress());
+
+        cmf.logOut();
+    }
 }
