@@ -7,7 +7,7 @@ public class Matching {
     protected String type;
 
     public Matching(String question, String answer){
-        // ToDo
+     
     }
 
     public boolean isCorrect(String username){

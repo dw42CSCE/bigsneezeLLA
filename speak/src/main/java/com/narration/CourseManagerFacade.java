@@ -17,18 +17,13 @@ public class CourseManagerFacade {
     public User login(String username, String password) {
         users = UserList.getInstance();
         user = users.getUser(username, password);
-        if (user == null || user.getUsername().equals("NotFound")) {  // Adjusted for "NotFound" logic
-            System.out.println("Account with provided credentials does not exist. Try different credentials or sign up.");
-        } else {
-            System.out.println("Login successful.");
-        }
-
         return user;
     }
     
 
-    public User signUp(String username, String email, String password) {
-
+    public void signUp(String username, String email, String password) {
+        users.addUser(username, email, password);
+        /*
         users = UserList.getInstance();
 
         User newUser = new User(username, password, email);
@@ -40,7 +35,7 @@ public class CourseManagerFacade {
             }
         }
         users.addUser(username, email, password);
-        return newUser;
+        return newUser; */
     }
     
 
