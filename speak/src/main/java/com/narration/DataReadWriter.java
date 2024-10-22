@@ -121,11 +121,11 @@ public class DataReadWriter extends DataConstants{
                 UUID courseUuid = entry.getKey().getUuid();
                 int progress = entry.getValue();
             
-                Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
+                //Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
             
                 jsonBuilder.append("      {\n");
                 //jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
-                jsonBuilder.append("        \"uuid\": \"").append(course.getUuid()).append("\",\n");
+                jsonBuilder.append("        \"uuid\": \"").append(courseUuid).append("\",\n");
                 jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
                 jsonBuilder.append("      }");
             
