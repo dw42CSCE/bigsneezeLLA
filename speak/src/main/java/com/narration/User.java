@@ -62,7 +62,7 @@ public class User {
         return emailAddress;
     }
 
-    public Course getCourse(String language){
+    public Course getCourse(UUID language){
         return null;
     }
 
@@ -102,7 +102,7 @@ public class User {
     public void addCourseProgress(Course course, int lesson, int lessonProgress){
         int addProgress = 1/courses.size();
         int progress = courses.get(course) + addProgress;
-        courses.put( course, progress);
+        courses.put(course, progress);
     }
 
     // public String toString(){
