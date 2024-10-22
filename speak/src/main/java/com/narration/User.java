@@ -102,8 +102,7 @@ public class User {
     public void addCourseProgress(Course course, int lesson, int lessonProgress){
         int addProgress = 1/courses.size();
         int progress = courses.get(course) + addProgress;
-        UUID uuid = course.getUuid();
-        courses.put(uuid, progress);
+        courses.put(course, progress);
     }
 
     // public String toString(){
