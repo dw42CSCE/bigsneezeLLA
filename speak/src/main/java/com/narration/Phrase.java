@@ -31,6 +31,6 @@ public class Phrase {
     }
 
     public String toString(){
-        return (this.getPhrase() + " means " + this.getTranslation());
+        return (this.phrase + " : " + this.translation);
     }
 }

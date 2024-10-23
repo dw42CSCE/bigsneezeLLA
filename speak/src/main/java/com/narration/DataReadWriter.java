@@ -221,7 +221,7 @@ public class DataReadWriter extends DataConstants{
             String options = (String)exerciseJSON.get(OPTIONS);
             String answer = (String)exerciseJSON.get(ANSWER);
 
-            exercises.add(new Exercise(question, answer));
+            exercises.add(new Exercise(question, options, answer));
         }
 
         return exercises;
