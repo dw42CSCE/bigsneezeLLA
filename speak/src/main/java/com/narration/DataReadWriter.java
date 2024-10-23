@@ -117,25 +117,26 @@ public class DataReadWriter extends DataConstants{
 
             // Courses
             jsonBuilder.append("    \"courses\": [\n");
-            for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
-                UUID courseUuid = entry.getKey().getUuid();
-                int progress = entry.getValue();
-            
-                //Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
-            
-                jsonBuilder.append("      {\n");
-                //jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
-                jsonBuilder.append("        \"uuid\": \"").append(courseUuid).append("\",\n");
-                jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
-                jsonBuilder.append("      }");
-            
-                // Add comma if not the last entry
-                if (!entry.equals(user.getCourses().entrySet().toArray()[user.getCourses().size() - 1])) {
-                    jsonBuilder.append(",");
+            if (user.getCourses() != null){
+                for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
+                    UUID courseUuid = entry.getKey().getUuid();
+                    int progress = entry.getValue();
+                
+                    //Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
+                
+                    jsonBuilder.append("      {\n");
+                    //jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
+                    jsonBuilder.append("        \"uuid\": \"").append(courseUuid).append("\",\n");
+                    jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
+                    jsonBuilder.append("      }");
+                
+                    // Add comma if not the last entry
+                    if (!entry.equals(user.getCourses().entrySet().toArray()[user.getCourses().size() - 1])) {
+                        jsonBuilder.append(",");
+                    }
+                    jsonBuilder.append("\n");
                 }
-                jsonBuilder.append("\n");
             }
-            
             
             jsonBuilder.append("    ]\n");
 
@@ -150,7 +151,7 @@ public class DataReadWriter extends DataConstants{
         jsonBuilder.append("]");
 
         // Write the JSON string to the file CHANGE FILE NAME
-        try (FileWriter writer = new FileWriter("JSON\\tempusers.json")) {
+        try (FileWriter writer = new FileWriter("JSON\\UserInfo.json")) {
             writer.write(jsonBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
