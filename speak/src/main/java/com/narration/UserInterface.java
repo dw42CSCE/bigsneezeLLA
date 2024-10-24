@@ -7,28 +7,25 @@ public class UserInterface {
     private static  CourseManagerFacade facade;
 
     public UserInterface(){
-        facade= new CourseManagerFacade();
+        facade = new CourseManagerFacade();
     }
-    
-    public static void run(){
+
+    public static void main(String[] args) {
         Scenario1();
     }
-    //Unfinished
+
     public static void Scenario1(){
 
-         facade.signUp("pacman83", "pacman83@gmail.com", "123password");
-         facade.login("pacman83", "123password");
+        CourseManagerFacade cmf = new CourseManagerFacade();
 
-         facade.getCourse(b1303bf7-6575-41ea-93fb-4bb8da658eda);
- 
-         //Pulling Lessons
-         facade.setLesson(0);
-         facade.getLesson();
-         facade.setExercise(0);
-         facade.getExercise();
+        facade.signUp("ttomacka", "ttom@gmail.com", "pw");
 
-         //Logout
-         facade.logOut();
+        facade.signUp("ttom", "ttom@gmail.com", "pw");
+
+        User user = facade.login("ttom", "pw");
+
+        facade.logOut();
+
  
     }
 
