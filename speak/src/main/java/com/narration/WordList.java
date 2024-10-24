@@ -6,9 +6,12 @@ public class WordList {
     private ArrayList<Word> words = new ArrayList<>();
     private WordList wordList;
 
-    private WordList(){
+   /* private WordList(){
         
-    };
+    };*/
+    public WordList(){
+        words=new ArrayList<Word>();
+    }
 
     public Word addWord(String word, String meaning){
         Word newWord = (new Word(word, meaning));
