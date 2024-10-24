@@ -127,6 +127,7 @@ public class CourseManagerFacade {
                             }
                             System.out.println(exercise.answer.getWord());
                             if (exercise.isCorrect(answer)){
+                                
                                 correct++;
                             } 
                         }
