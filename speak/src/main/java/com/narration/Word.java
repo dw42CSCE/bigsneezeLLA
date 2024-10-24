@@ -1,8 +1,13 @@
 package com.narration;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class Word {
     private String word;
     private String meaning;
+    private ArrayList<Word> similarWords;
+    private UUID uuid;
 
     public Word(String word, String meaning){
         this.word = word;
@@ -22,6 +27,16 @@ public class Word {
     }
 
     public String toString(){
-        return (this.word+":\n"+this.meaning);
+        return (this.word+" : "+this.meaning);
     }
+
+    public UUID setUUID(){
+        return this.uuid;
+    }
+
+    public ArrayList<Word> getSimilarWords(){
+        
+        return similarWords;
+    }
+        
 }

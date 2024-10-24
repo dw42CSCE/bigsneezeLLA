@@ -25,9 +25,8 @@ public class Lesson {
         return exercises.get(index);
     }
 
-    // Needed?
-    private void addExercise(Exercise exercise) {
-
+    public ArrayList<Exercise> getExercises() {
+        return this.exercises;
     }
 
     private void calcProgress() {
@@ -47,7 +46,23 @@ public class Lesson {
     }
 
     public String toString() {
-        return "";
+        return (this.subject + "\n" + this.intro) + getWords(keyWords) + getPhrases(keyPhrases);
+    }
+
+    private String getWords(Word[] words){
+        String sentence = "\n";
+        for (int i = 0; i < words.length; i++){
+            sentence += words[i].toString() + "\n";
+        }
+        return sentence;
+    }
+
+    private String getPhrases(Phrase[] phrases){
+        String sentence = "\n";
+        for (int i = 0; i < phrases.length; i++){
+            sentence += phrases[i].toString() + "\n";
+        }
+        return sentence;
     }
 
     public void addProficiencyPoint() {

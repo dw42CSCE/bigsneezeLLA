@@ -1,5 +1,8 @@
 package com.narration;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class FillIn extends Exercise{
     // protected String questions;
     // protected String options;
@@ -7,15 +10,23 @@ public class FillIn extends Exercise{
     // protected String type;
     private Word[] answers;
 
-    public FillIn(String question, String answer){
-      //question=DataReadWriter.getExercises();
+    //Maybe make it a phrase
+    public FillIn(ArrayList<Word> words) {
+        super(words);
+        Random rand = new Random();
+        this.answer = words.get(rand.nextInt(0, words.size()));
     }
 
     public boolean isCorrect(String useranswer){
         return true;
     }
 
+    public void generateQuestion(ArrayList<Word> words) {
+        
+    }
+
     public String toString(){
-        return "ToDo";
+        return "The spanish translation for " + answer.getMeaning() + " is: _______" +
+                "1. " +;
     }
 }

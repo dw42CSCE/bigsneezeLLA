@@ -117,25 +117,26 @@ public class DataReadWriter extends DataConstants{
 
             // Courses
             jsonBuilder.append("    \"courses\": [\n");
-            for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
-                UUID courseUuid = entry.getKey().getUuid();
-                int progress = entry.getValue();
-            
-                //Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
-            
-                jsonBuilder.append("      {\n");
-                //jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
-                jsonBuilder.append("        \"uuid\": \"").append(courseUuid).append("\",\n");
-                jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
-                jsonBuilder.append("      }");
-            
-                // Add comma if not the last entry
-                if (!entry.equals(user.getCourses().entrySet().toArray()[user.getCourses().size() - 1])) {
-                    jsonBuilder.append(",");
+            if (user.getCourses() != null){
+                for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
+                    UUID courseUuid = entry.getKey().getUuid();
+                    int progress = entry.getValue();
+                
+                    //Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
+                
+                    jsonBuilder.append("      {\n");
+                    //jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
+                    jsonBuilder.append("        \"uuid\": \"").append(courseUuid).append("\",\n");
+                    jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
+                    jsonBuilder.append("      }");
+                
+                    // Add comma if not the last entry
+                    if (!entry.equals(user.getCourses().entrySet().toArray()[user.getCourses().size() - 1])) {
+                        jsonBuilder.append(",");
+                    }
+                    jsonBuilder.append("\n");
                 }
-                jsonBuilder.append("\n");
             }
-            
             
             jsonBuilder.append("    ]\n");
 
@@ -150,7 +151,7 @@ public class DataReadWriter extends DataConstants{
         jsonBuilder.append("]");
 
         // Write the JSON string to the file CHANGE FILE NAME
-        try (FileWriter writer = new FileWriter("JSON\\tempusers.json")) {
+        try (FileWriter writer = new FileWriter("JSON\\UserInfo.json")) {
             writer.write(jsonBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -221,7 +222,7 @@ public class DataReadWriter extends DataConstants{
             String options = (String)exerciseJSON.get(OPTIONS);
             String answer = (String)exerciseJSON.get(ANSWER);
 
-            exercises.add(new Exercise(question, answer));
+            exercises.add(new Exercise(question, options, answer));
         }
 
         return exercises;
@@ -253,19 +254,28 @@ public class DataReadWriter extends DataConstants{
 
     private static HashMap<Course, Integer> parseUserCourses(JSONArray userCourses) {
         HashMap<Course, Integer> courses = new HashMap<>();
+        CourseList courselist = CourseList.getInstance();  // Ensure CourseList is populated before this step
+    
         if (userCourses != null) {
             for (int i = 0; i < userCourses.size(); i++) {
                 JSONObject courseJSON = (JSONObject) userCourses.get(i);
-                UUID uuid = UUID.fromString((String) courseJSON.get(USER_UUID));
-                Course course = CourseList.getInstance().getCourse(uuid);
-                int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
-                courses.put(course, progress);
+                UUID uuid = UUID.fromString(((String) courseJSON.get("uuid")).trim());
+    
+                // Fetch the course using the UUID from CourseList
+                Course course = courselist.getCourse(uuid);
+                if (course != null) {
+                    int progress = ((Long) courseJSON.get(COURSE_PROGRESS)).intValue();
+                    courses.put(course, progress);
+                } else {
+                    System.out.println("Course with UUID " + uuid + " not found in CourseList.");
+                }
             }
         } else {
             System.out.println("userCourses is null.");
         }
         return courses;
     }
+    
     
 
 // TEST FOR SIMPLE READWRITER

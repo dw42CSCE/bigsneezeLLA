@@ -14,7 +14,7 @@ public class CourseList {
     }
 
     public static CourseList getInstance() {
-        if (courseList != null){
+        if (courseList == null){
             courseList = new CourseList();
         }
         return courseList;
@@ -27,7 +27,7 @@ public class CourseList {
 
     public Course getCourse(UUID uuid) {
         for (Course course : courses){
-            if (course.getUuid() == uuid) {
+            if (course.getUuid().equals(uuid)) {
                 return course;
             }
         }
