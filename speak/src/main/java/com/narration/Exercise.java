@@ -7,7 +7,7 @@ public abstract class Exercise {
     //protected String question;
     //protected String options;
     // protected String options;
-    // protected Word answer;
+    protected Word answer;
     protected ArrayList<Word> words;
     //protected String type;
 

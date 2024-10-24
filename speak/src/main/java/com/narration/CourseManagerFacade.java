@@ -126,6 +126,7 @@ public class CourseManagerFacade {
                                 return;
                             }
                             if (exercise.isCorrect(answer)){
+                                
                                 correct++;
                             } 
                         }

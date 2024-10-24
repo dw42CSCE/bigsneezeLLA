@@ -1,6 +1,7 @@
 package com.narration;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Lesson {
     
@@ -27,6 +28,23 @@ public class Lesson {
 
     public ArrayList<Exercise> getExercises() {
         return this.exercises;
+    }
+
+    public void generateExercise() {
+        Random rand = new Random();
+        int choice = rand.nextInt(0,4);
+        switch (choice) {
+            case 0: //Fill In
+                break;
+            case 1: //Matching
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
     }
 
     private void calcProgress() {
