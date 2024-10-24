@@ -20,14 +20,21 @@ public class UserList {
     }
 
     public void addUser(String username, String email, String password) {
-      for(int i=0; i<users.size();i++){
-          User tempUser=users.get(i);
-          if(!tempUser.getUsername().equals(username)||!tempUser.getEmailAddress().equals(email)){
-            User newUser=new User(username, password, email);
-            users.add(newUser);
+      for (User tempUser : users) {
+          if (tempUser.getUsername().equals(username)) {
+              System.out.println("Username already exists.");
+              return;
           }
-        }
-    }
+          if (tempUser.getEmailAddress().equals(email)) {
+              System.out.println("Email already exists.");
+              return;
+          }
+      }
+      User newUser = new User(username, password, email);
+      users.add(newUser);
+      System.out.println("User added successfully.");
+  }
+  
 
     public void editUser(String firstName, String lastName, String email, String password) {
       for(int i=0;i<users.size()-1;i++){

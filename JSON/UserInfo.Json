@@ -1,59 +1,74 @@
 [
-    {
-        "uuid": "1b889c9e-a1b2-4a0f-84c5-960eddabb7e0",
-        "firstname": "Alice",
-        "lastname": "Smith",
-        "username": "asmith",
-        "email": "alice.smith@example.com",
-        "password": "password",
-        "ProfPoints": 150,
-        "settings": {
-        "emailNotifications": "true",
-        "darkMode": "false"
-        },
-        "courses": [
-        {
-            "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
-            "progress": 5
-        }
-        ]
+  {
+    "uuid": "1b889c9e-a1b2-4a0f-84c5-960eddabb7e0",
+    "firstname": "Alice",
+    "lastname": "Smith",
+    "username": "asmith",
+    "email": "alice.smith@example.com",
+    "password": "password",
+    "ProfPoints": 150,
+    "settings": {
+      "emailNotifications": "true",
+      "darkMode": "true"
     },
-    {
-        "uuid": "cf874699-564c-43d8-8b24-87171c663ab7",
-        "firstname": "John",
-        "lastname": "Doe",
-        "username": "JohnDoe",
-        "email": "ex@gmail.com",
-        "password": "password",
-        "ProfPoints": 0,
-        "settings": {
-        "emailNotifications": false,
-        "darkMode": true
-        },
-        "courses": [
-        {
-            "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
-            "progress": 0
-        }
-        ]
+    "courses": [
+      {
+        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
+        "progress": 5
+      }
+    ]
+  },
+  {
+    "uuid": "cf874699-564c-43d8-8b24-87171c663ab7",
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "JohnDoe",
+    "email": "ex@gmail.com",
+    "password": "password",
+    "ProfPoints": 0,
+    "settings": {
+      "emailNotifications": "true",
+      "darkMode": "true"
     },
-    {
-        "uuid": "965dd353-fd93-4902-a1e7-d95f98ed8b08",
-        "firstname": "Charlie",
-        "lastname": "Davis",
-        "username": "charlestheusername",
-        "email": "charlie.davis@example.com",
-        "password": "password",
-        "ProfPoints": 175,
-        "settings": {
-        "emailNotifications": true,
-        "darkMode": true
-        },
-        "courses": [
-        {
-            "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
-            "progress": 60
-        }
-        ]
-    }
+    "courses": [
+      {
+        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
+        "progress": 0
+      }
+    ]
+  },
+  {
+    "uuid": "965dd353-fd93-4902-a1e7-d95f98ed8b08",
+    "firstname": "Charlie",
+    "lastname": "Davis",
+    "username": "charlestheusername",
+    "email": "charlie.davis@example.com",
+    "password": "password",
+    "ProfPoints": 175,
+    "settings": {
+      "emailNotifications": "true",
+      "darkMode": "true"
+    },
+    "courses": [
+      {
+        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
+        "progress": 60
+      }
+    ]
+  },
+  {
+    "uuid": "37218af2-e1f4-49e0-b9e4-631fc5142812",
+    "firstname": "null",
+    "lastname": "null",
+    "username": "Dw",
+    "email": "dw@gmail.com",
+    "password": "pw",
+    "ProfPoints": 0,
+    "settings": {
+      "emailNotifications": "true",
+      "darkMode": "true"
+    },
+    "courses": [
+    ]
+  }
 ]
