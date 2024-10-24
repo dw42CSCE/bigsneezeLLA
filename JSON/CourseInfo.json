@@ -10,17 +10,37 @@
             "progress": 0,
             "intro": "Welcome to Big Sneeze's Spanish course! To start off we would like to say, Hola! That means \"Hello\" in Spanish!\nSome basic greetings are:\n",
             "keywords": [
-                "Bueno : Good",
-                "Tardes : Afternoon",
-                "Dias : Morning",
-                "Noches : Night",
-                "Llamas : Name"
+                {
+                    "word": "Buenas",
+                    "meaning": "Good",
+                    "uuid": 
+                },
+                {
+                    "word": "Tardes",
+                    "meaning": "Afternoon",
+                    "uuid":  
+                },
+                {
+                    "word": "Dias",
+                    "meaning": "Morning",
+                    "uuid":  
+                },
+                {
+                    "word": "Noches",
+                    "meaning": "Night",
+                    "uuid":  
+                },
+                 : ,
+                "Llamas : Name",
+                "Hola : Hello",
+                "Bienvindo : Welcome"
                 ],
             "keyphrases": [
                 "Buenas Noches : Good Night",
                 "Buenas Tardes : Good Afternoon",
                 "Buenos Dias : Good Morning",
-                "Como te llamas? : What is your name?"
+                "Como te llamas? : What is your name?",
+                "Hola y bien"
                 ],
             "exercises": [
                 {

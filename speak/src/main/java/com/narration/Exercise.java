@@ -1,24 +1,21 @@
 package com.narration;
 
-public class Exercise {
-    protected String question;
-    protected String options;
+import java.util.ArrayList;
+import java.util.Random;
+
+public abstract class Exercise {
+    //protected String question;
+    //protected String options;
+    // protected String options;
     protected Word answer;
-    protected String type;
+    protected ArrayList<Word> words;
+    //protected String type;
 
-    public Exercise(String question, String options, String answer){
-        this.question = question;
-        Word word = new Word(answer, "Translation");
-        this.answer = word;
-        this.options = options;
+    public Exercise(ArrayList<Word> words) {
+        this.words = words;
     }
 
-    public boolean isCorrect(String userAnswer) {
-        return userAnswer.trim().equalsIgnoreCase(answer.getWord().trim());
-    }
-    
+    public abstract boolean isCorrect(String userInput);
 
-    public String toString(){
-        return this.question + "\n" + this.options;
-    }
+    public abstract String toString();
 }
