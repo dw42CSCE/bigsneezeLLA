@@ -16,7 +16,7 @@ public class UserInterface {
 
     public static void Scenario1(){
 
-        CourseManagerFacade cmf = new CourseManagerFacade();
+        CourseManagerFacade facade = new CourseManagerFacade();
 
         facade.signUp("ttomacka", "ttom@gmail.com", "pw");
 
@@ -26,7 +26,6 @@ public class UserInterface {
 
         facade.logOut();
 
- 
     }
 
 }

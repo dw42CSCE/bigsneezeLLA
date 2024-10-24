@@ -3,7 +3,7 @@ package com.narration;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Matching extends Exercise{
+public class Matching extends Exercise1{
     protected Word answer;
     protected ArrayList<Word> answers;
     private ArrayList<String> choices;

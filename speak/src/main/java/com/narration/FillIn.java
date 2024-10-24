@@ -3,7 +3,7 @@ package com.narration;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class FillIn extends Exercise{
+public class FillIn extends Exercise1{
 
     public FillIn(ArrayList<Word> words) {
         super(words);
