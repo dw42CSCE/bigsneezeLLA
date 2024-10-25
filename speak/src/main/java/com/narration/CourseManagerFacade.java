@@ -119,7 +119,6 @@ public class CourseManagerFacade {
                             System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
                             String answer = k.nextLine();
                             if (answer.equalsIgnoreCase("quit")){
-                                userProgress++;
                                 userCourses.put(firstCourse, userProgress);
                                 user.setCourseProgress(null);
                                 System.out.println(userProgress);
