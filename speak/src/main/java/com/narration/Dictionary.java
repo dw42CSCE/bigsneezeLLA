@@ -6,9 +6,12 @@ public class Dictionary {
     private ArrayList<Word> words = new ArrayList<>();
     private Dictionary dictionary;
 
-    private Dictionary(){
+   /* private WordList(){
         
-    };
+    };*/
+    public WordList(){
+        words=new ArrayList<Word>();
+    }
 
     public Word addWord(String word, String meaning){
         Word newWord = (new Word(word, meaning));

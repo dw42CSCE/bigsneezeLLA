@@ -13,7 +13,9 @@ public class User {
     private String emailAddress;
     private HashMap<Course, Integer> courses;
     private int proficiencyPointTotal;
-    private Settings settings;
+    private Settings settings = new Settings(false, false);
+    private WordList correctWords;
+    private WordList incorrectWords;
 
     public User(String userName, String password, UUID uuid, String firstName, String lastName, 
                 String emailAddress, HashMap<Course, Integer> courses, int proficiencyPointTotal, Settings settings ){
@@ -25,7 +27,9 @@ public class User {
     this.emailAddress=emailAddress;
     this.courses=courses;
     this.proficiencyPointTotal=proficiencyPointTotal;
-    this.settings=settings;                    
+    this.settings=settings;      
+    correctWords= new WordList(); 
+    incorrectWords=new WordList();             
     }
 
     // public User(String userName, String password, String emailAddress){
