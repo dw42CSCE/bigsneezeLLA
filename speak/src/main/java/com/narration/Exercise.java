@@ -1,5 +1,17 @@
 package com.narration;
 
+public abstract class Exercise {
+    protected String question;
+
+    public abstract boolean isCorrect(String userAnswer);
+
+    public abstract String toString();
+
+}
+
+/*
+package com.narration;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,18 +28,8 @@ public class Exercise {
         this.type = type;
     }
 
-    public boolean isCorrect(String userInput){
-        if(userInput.equals(answer)){
-            return true;
-        }
-        return false;
-    }
+    public abstract boolean isCorrect(String userInput);
 
-    public String toString(){
-        if(type.equals("Audio")){
-            Narrator.playSound(answer);
-            return (question + "\n" + options);
-        };
-        return (question + "\n" + options);
-    }
+    public abstract String toString();
 }
+*/
