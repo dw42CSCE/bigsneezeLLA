@@ -7,11 +7,13 @@ public class Exercise {
     protected String question;
     protected String options;
     protected String answer;
+    protected String type;
 
-    public Exercise(String question, String options, String answer) {
+    public Exercise(String question, String type, String options, String answer) {
         this.question = question;
         this.options = options;
         this.answer = answer;
+        this.type = type;
     }
 
     public boolean isCorrect(String userInput){
@@ -22,6 +24,10 @@ public class Exercise {
     }
 
     public String toString(){
+        if(type.equals("Audio")){
+            Narrator.playSound(answer);
+            return (question + "\n" + options);
+        };
         return (question + "\n" + options);
     }
 }

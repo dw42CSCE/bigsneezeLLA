@@ -28,16 +28,28 @@
                 "answer": "Hola"
                 },
                 {
-                "question": "\"What is your name\" in Spanish is: __________",
-                "type":"Fill_In",
-                "options": "Quando Quenta  |  Como te llamas  |  Buenas dias  |  Buenas noches",
-                "answer": "Como te llamas"
+                "question": "Find the match: What is your name?",
+                "type":"Matching",
+                "options": "1. Quando Quenta \n2. Como te llamas \n3. Buenas dias \n4. Buenas noches",
+                "answer": "2"
                 },
                 {
                 "question": "Fill in the blank to say \"Good Morning\"\nBuenas ______",
                 "type":"Fill_In",
                 "options": "Llamas  |  Tardes  |  Dias  |  Noches",
                 "answer": "Dias"
+                },
+                {
+                "question": "Respond to the following: Beunas Dias!",
+                "type":"Conversation",
+                "options": "Llamas  |  Buanas Tardes  |  Buenas Dias  |  Buanas Noches",
+                "answer": "Buenas Dias"
+                },
+                {
+                "question": "Listen to the following audio and select an answer",
+                "type":"Audio",
+                "options": "Llamas  |  Tardes  |  Buenas Dias  |  Hola",
+                "answer": "Hola"
                 }
                 ]
             },
@@ -65,14 +77,26 @@
                 {
                 "question": "What is the correct phrase to say \"Thank you\" in Spanish?",
                 "type":"Matching",
-                "options": "Por favor  |  Gracias  |  Lo siento  |  De nada",
-                "answer": "Gracias"
+                "options": "1. Por favor \n2. Gracias \n3. Lo siento \n4. De nada",
+                "answer": "2"
                 },
                 {
-                "question": "How do you respond to someone thanking you by saying \"You're welcome\"?",
+                "question": "Respond to someone saying \"Gracias\"",
                 "type":"Conversation",
                 "options": "Gracias  |  Por favor  |  De nada  |  Lo siento",
                 "answer": "De nada"
+                },
+                {
+                "question": "Listen to the following audio and select an answer",
+                "type":"Audio",
+                "options": "Gracias  |  Lo siento  |  De nada  |  Por favor",
+                "answer": "Lo siento"
+                },
+                {
+                "question": "What would you say if you accidentally stepped on someone's foot?",
+                "type":"Matching",
+                "options": "Gracias  |  Lo siento  |  De nada  |  Por favor",
+                "answer": "Lo siento"
                 }
             ]
             }

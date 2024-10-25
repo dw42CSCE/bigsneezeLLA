@@ -22,6 +22,10 @@ public class CourseManagerFacade {
         user = users.getUser(username, password);
         return user;
     }
+
+    public void addUserCourse(Course course){
+        user.addCourse(course);
+    }
     
 
     public void signUp(String username, String email, String password) {
@@ -87,6 +91,7 @@ public class CourseManagerFacade {
     }
 
     public void logOut() {
+        this.user = null;
         DataReadWriter.updateUsers(users.getUsers());
     }
 
@@ -94,10 +99,8 @@ public class CourseManagerFacade {
         return user.getSettings();
     }
 
-    public void playGame(User user){
+    public void playGame(){
         
-        this.user = user;
-
         Scanner k = new Scanner(System.in);
         CourseManagerFacade cmf = new CourseManagerFacade();
 
@@ -117,27 +120,36 @@ public class CourseManagerFacade {
                     System.out.println(lesson.toString());
                     Narrator.playSound(lesson.getIntro());
                     for (Exercise exercise : lesson.getExercises()){
-                            System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
-                            String answer = k.nextLine();
-                            if (answer.equalsIgnoreCase("quit")){
-                                userProgress++;
-                                userCourses.put(firstCourse, userProgress);
-                                user.setCourseProgress(null);
-                                System.out.println(userProgress);
-                                return;
-                            }
-                            if (exercise.isCorrect(answer)){
-                                
-                                correct++;
-                            } 
+                        System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
+                        if(exercise.type.equals("Audio")){
+                            Narrator.playSound(exercise.answer);
+                            System.out.println("Type v to hear it again");
                         }
+                        String answer = k.nextLine();
+
+                        while(answer.equalsIgnoreCase("v")){
+                            Narrator.playSound(exercise.answer);
+                            answer = k.nextLine();
+                        }
+                        
+                        if (answer.equalsIgnoreCase("quit")){
+                            userCourses.put(firstCourse, userProgress);
+                            return;
+                        }
+                        if (exercise.isCorrect(answer)){
+                            
+                            correct++;
+                        } 
+                    }
                     System.out.println("You got " + correct + "\\" + lesson.getExercises().size());
 
-                    if(correct/lesson.getExercises().size() == 1){
+                    if (correct/lesson.getExercises().size() > .7){
                         userProgress++;
                         userCourses.put(firstCourse, userProgress);
                         user.setCourseProgress(null);
-                        System.out.println(userProgress);
+                        System.out.println("You may move on");
+                    } else { 
+                        System.out.println("YOu did not pass! Try again");
                     }
                 }
                 
@@ -185,7 +197,7 @@ public class CourseManagerFacade {
         System.out.println("Login successful. Welcome " + user.getUsername() + "!");
         System.out.println("User's email is " + user.getEmailAddress());
 
-        cmf.playGame(user);
+        cmf.playGame();
 
         cmf.logOut();
 

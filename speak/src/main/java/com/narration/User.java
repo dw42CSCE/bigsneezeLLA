@@ -104,6 +104,10 @@ public class User {
     }
 
     public void addCourse(Course course){
+        if(courses == null){
+            courses = new HashMap<Course, Integer>();
+
+        }
         courses.put(course, 0);
     }
 
