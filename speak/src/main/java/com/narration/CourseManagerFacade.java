@@ -120,10 +120,25 @@ public class CourseManagerFacade {
                     System.out.println(lesson.toString());
                     Narrator.playSound(lesson.getIntro());
                     for (Exercise exercise : lesson.getExercises()){
+<<<<<<< HEAD
                         System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
                         if(exercise.type.equals("Audio")){
                             Narrator.playSound(exercise.answer);
                             System.out.println("Type v to hear it again");
+=======
+                            System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
+                            String answer = k.nextLine();
+                            if (answer.equalsIgnoreCase("quit")){
+                                userCourses.put(firstCourse, userProgress);
+                                user.setCourseProgress(null);
+                                System.out.println(userProgress);
+                                return;
+                            }
+                            if (exercise.isCorrect(answer)){
+                                
+                                correct++;
+                            } 
+>>>>>>> main
                         }
                         String answer = k.nextLine();
 
