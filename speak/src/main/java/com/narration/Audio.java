@@ -1,18 +1,36 @@
 package com.narration;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Collections;
 
 // Audio Exercise Class
 public class Audio extends Exercise {
-    protected ArrayList<String> options;
-    protected String answer;
+    protected ArrayList<Word> options;
+    protected Word answer;
+
+    /**
+     * Constructor for Audio
+     * param options Arraylist of strings to generate question from
+     *
+    public Audio(ArrayList<String> options) {
+        this.options = options;
+        Random random = new Random();
+        int r = random.nextInt(options.size());
+        this.answer = options.get(r);
+    }
+    */
 
     /**
      * Constructor for Audio
      * @param options Arraylist of strings to generate question from
      */
-    public Audio(ArrayList<String> options) {
-        this.options = options;
+    public Audio(Word[] words) {
+        this.options = new ArrayList<Word>();
+        for (Word word : words) {
+            this.options.add(word);
+        }
+
+        Collections.shuffle(options);
         Random random = new Random();
         int r = random.nextInt(options.size());
         this.answer = options.get(r);
@@ -24,9 +42,7 @@ public class Audio extends Exercise {
      * @return True if the user answer is the actual answer, else false
      */
     public boolean isCorrect(String userAnswer) {
-            if (answer.equals(userAnswer))
-                return true;
-        return false;
+        return (this.answer.getWord().trim().equalsIgnoreCase(userAnswer.trim()));
     }
 
     /**
@@ -34,7 +50,11 @@ public class Audio extends Exercise {
      * @return String of instructions
      */
     public String toString() {
-        Narrator.playSound(answer);
-        return ("Listen to the audio and select the word\n"+this.question);
+        String stringOptions = "";
+        for (Word word : options) {
+            stringOptions += (word+"/n");
+        }
+        answer.speak();
+        return ("Listen to the audio and select the word.\n"+stringOptions);
     }
 }

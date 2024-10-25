@@ -1,6 +1,7 @@
 package com.narration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 // Lesson Class
@@ -55,19 +56,21 @@ public class Lesson {
      */
     public Exercise generateExercise() {
         Random rand = new Random();
-        int choice = rand.nextInt(0,4);
+        int choice = rand.nextInt(0,5);
         Exercise exercise= null;
         switch (choice) {
-            case 0: //Fill In
-                exercise = new FillIn(null, null, null);
+            case 0: //Translation
+                exercise = new Translation(keyWords[(rand.nextInt(0, keyWords.length))]);
             case 1: //Matching
-                exercise = new Matching(null);
-            case 2: //Conversation
-                exercise = new Conversation(null, null);
-            case 3: //Audio
-                exercise = new Audio(null);
+                exercise = new Matching(keyWords);
+            case 2: //Audio
+                exercise = new Audio(keyWords);
+            case 3: //Conversation
+                exercise = new Conversation(keyPhrases[(rand.nextInt(0, keyPhrases.length))]);
+            case 4: //Fillin
+                exercise = new FillIn(keyPhrases[(rand.nextInt(0, keyPhrases.length))]);
             default:
-                exercise = new FillIn(null, null, null);
+                exercise = new Translation(keyWords[(rand.nextInt(0, keyWords.length))]);
         }
         return exercise;
     }

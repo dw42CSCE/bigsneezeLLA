@@ -14,11 +14,17 @@ public class Matching extends Exercise {
      * CLASS AUTHOR WRITE THIS
      * @param answers
      */
-    public Matching(ArrayList<Word> answers) {
+    public Matching(Word[] words) {
         this.question = "";
         this.options = "";
         this.answer = "";
         int i = 1;
+
+        ArrayList<Word> answers = new ArrayList<Word>();
+        for (Word word : words) {
+            answers.add(word);
+        }
+
         int[] list = new int[answers.size()];
 
         Random rand = new Random();
@@ -58,7 +64,7 @@ public class Matching extends Exercise {
      * @return True if userAnswer is correct, else false
      */
     public boolean isCorrect(String userAnswer) {
-        return (this.answer.equalsIgnoreCase(userAnswer.replaceAll("\\s+","")));
+        return (this.answer.trim().equalsIgnoreCase(userAnswer.trim()));
     }
 
     public String toString() {

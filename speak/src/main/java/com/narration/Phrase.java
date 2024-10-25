@@ -1,10 +1,15 @@
 package com.narration;
 
+import java.util.ArrayList;
+
 // Phrase Class
 public class Phrase {
 
     private String phrase;
     private String translation;
+    private ArrayList<String> responses;
+    private String phraseWithBlank;
+    private String missingWord;
     //private WordList wordList;
 
     // public Phrase(String phrase, String translation, String meaning, WordList wordList){
@@ -28,6 +33,15 @@ public class Phrase {
         this.translation = translation;
     }
 
+    public Phrase(String phrase, String translation, ArrayList<String> responses, String phraseWithBlank, String missingWord) {
+        this.phrase = phrase;
+        this.translation = translation;
+        this.responses = responses;
+        this.phraseWithBlank = phraseWithBlank;
+        this.missingWord = missingWord;
+    }
+
+
     /**
      * Gets the string phrase
      * @return String of the phrase
@@ -42,6 +56,18 @@ public class Phrase {
      */
     public String getTranslation(){
         return this.translation;
+    }
+
+    public ArrayList<String> getResponses() {
+        return responses;
+    }
+
+    public String getPhraseWithBlank(){
+        return this.phraseWithBlank;
+    }
+
+    public String getMissingWord(){
+        return this.missingWord;
     }
 
     public String toString(){

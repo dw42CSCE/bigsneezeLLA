@@ -4,17 +4,15 @@ import java.util.ArrayList;
 
 // Conversation Exercise Class
 public class Conversation extends Exercise {
-    protected String question;
-    protected ArrayList<String> options;
+    protected Phrase question;
 
     /**
      * Parameterized Constructor for Conversation
      * @param question UNSURE, AUTHOR OF CLASS WRITE
      * @param options UNSURE, AUTHOR OF CLASS WRITE
      */
-    public Conversation(String question, ArrayList<String> options) {
+    public Conversation(Phrase question) {
         this.question = question;
-        this.options = options;
     }
 
     /**
@@ -23,8 +21,8 @@ public class Conversation extends Exercise {
      * @return True if the equal to actual answer, else false
      */
     public boolean isCorrect(String userAnswer) {
-        for (String option : options)  {
-            if (option.equalsIgnoreCase(userAnswer.trim()))
+        for (String option : question.getResponses())  {
+            if (option.trim().equalsIgnoreCase(userAnswer.trim()))
                 return true;
         }
         return false;
@@ -35,6 +33,6 @@ public class Conversation extends Exercise {
      * @return String of instructions
      */
     public String toString() {
-        return ("Conversation: Respond to the following phrase.\n"+this.question);
+        return ("Conversation: Respond to the following phrase.\n"+this.question.getPhrase());
     }
 }

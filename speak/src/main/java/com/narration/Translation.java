@@ -1,7 +1,7 @@
 package com.narration;
 
 // Translation Exercise Class
-public class Translation extends Exercise{
+public class Translation extends Exercise {
 
     protected Word answer;
 
