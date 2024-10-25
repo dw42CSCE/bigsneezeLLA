@@ -28,10 +28,10 @@
                 "answer": "Hola"
                 },
                 {
-                "question": "Find the match: What is your name?",
+                "question": "Match the following to their spanish translation (format: \"1, 2, 3, 4\" english numbers) \nEnglish:\n1. Good night\n2. Hello\n3. Good morning\n4. What is your name\n",
                 "type":"Matching",
-                "options": "1. Quando Quenta \n2. Como te llamas \n3. Buenas dias \n4. Buenas noches",
-                "answer": "2"
+                "options": "Spanish:\n1. Hola \n2. Como te llamas \n3. Buenas dias \n4. Buenas noches",
+                "answer": "2, 4, 3, 1"
                 },
                 {
                 "question": "Fill in the blank to say \"Good Morning\"\nBuenas ______",
@@ -75,10 +75,10 @@
                 "answer": "Lo siento"
                 },
                 {
-                "question": "What is the correct phrase to say \"Thank you\" in Spanish?",
+                "question": "Match the following to their spanish translation (format: \"1, 2, 3, 4\" english numbers) \n English:\n1. Thank you\n2. Please\n3. Your welcome\n4. Im sorry\n ",
                 "type":"Matching",
-                "options": "1. Por favor \n2. Gracias \n3. Lo siento \n4. De nada",
-                "answer": "2"
+                "options": "Spanish:\n1. Por favor \n2. Gracias \n3. Lo siento \n4. De nada",
+                "answer": "2, 1, 4, 3"
                 },
                 {
                 "question": "Respond to someone saying \"Gracias\"",
