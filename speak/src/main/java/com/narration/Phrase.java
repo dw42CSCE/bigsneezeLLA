@@ -1,5 +1,6 @@
 package com.narration;
 
+// Phrase Class
 public class Phrase {
 
     private String phrase;
@@ -17,15 +18,28 @@ public class Phrase {
     //     }
     // }
 
+    /**
+     * Parameterized Constructor
+     * @param phrase String of the phrase
+     * @param translation String of the english translation
+     */
     public Phrase(String phrase, String translation) {
         this.phrase = phrase;
         this.translation = translation;
     }
 
+    /**
+     * Gets the string phrase
+     * @return String of the phrase
+     */
     public String getPhrase(){
         return this.phrase;
     }
 
+    /**
+     * Gets english translation
+     * @return String english translation
+     */
     public String getTranslation(){
         return this.translation;
     }

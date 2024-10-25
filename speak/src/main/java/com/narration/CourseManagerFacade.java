@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.UUID;
 
+// CourseManagerFacade Class
 public class CourseManagerFacade {
     private User user;
     private UserList users;
@@ -12,22 +13,40 @@ public class CourseManagerFacade {
     private Lesson lesson;
     private Exercise exercise;
 
+    /**
+     * Default Constructor, will get newest UserList and CourseList
+     */
     public CourseManagerFacade() {
         courses = CourseList.getInstance();
         users = UserList.getInstance(); 
     }
 
+    /**
+     * Logs in a user and sets this user
+     * @param username String of username
+     * @param password String of password
+     * @return User, null if not found
+     */
     public User login(String username, String password) {
         users = UserList.getInstance();
         user = users.getUser(username, password);
         return user;
     }
 
+    /**
+     * Adds a course to this user's list of courses
+     * @param course Course to be added
+     */
     public void addUserCourse(Course course){
         user.addCourse(course);
     }
     
-
+    /**
+     * Adds a user to the userlist with minimum required info, checks for duplicate 
+     * @param username String of username
+     * @param email String of email
+     * @param password String of password
+     */
     public void signUp(String username, String email, String password) {
         users = UserList.getInstance();
         
@@ -47,58 +66,108 @@ public class CourseManagerFacade {
         System.out.println("User signed up successfully!");
     }
     
-    
-
-    public Course getCourse(UUID language) {
-        course = user.getCourse(language);
+    /**
+     * Gets a course by uuid
+     * @param uuid UUID of course to be gotten
+     * @return Course with matching UUID
+     */
+    public Course getCourse(UUID uuid) {
+        course = user.getCourse(uuid);
         return course;
     }
 
+    /**
+     * Gets entire CourseList
+     * @return CourseList current CourseList
+     */
     public CourseList getAllCourses() {
         return courses;
     }
 
+    /**
+     * Gets entire current UserList
+     * @return UserList current UserList
+     */
     public UserList getUsers() {
         return users;  
     }
 
+    /**
+     * Toggles user dark mode
+     * @param isDarkMode Boolean of mode to be set to
+     */
     public void toggleDarkMode(boolean isDarkMode) {
         user.getSettings().toggleDarkMode(isDarkMode);
     }
 
+    /**
+     * Toggle email notifications
+     * @param emailNotification Boolean of mode to be set to
+     */
     public void toggleEmailNotification(boolean emailNotification) {
         user.getSettings().toggleEmailNotification(emailNotification);
     }
 
+    /**
+     * Sets current lesson to the lesson at that index in the current course
+     * @param index Lesson number - 1
+     */
     public void setLesson(int index) {
         lesson = course.getLesson(index);
     }
 
+    /**
+     * Gets current lesson
+     * @return Lesson current Lesson
+     */
     public Lesson getLesson() {
         return lesson;
     }
 
+    /**
+     * Sets current exercise to the exercise at that index in the current lesson
+     * @param index
+     */
     public void setExercise(int index) {
         exercise = lesson.getExercise(index);
     }
 
+    /**
+     * Gets current Exercise
+     * @return Exercise current Exercise
+     */
     public Exercise getExercise() {
         return exercise;
     }
 
+    /**
+     * Checks if user answer is correct
+     * @param userAnswer userAnswer to be checked
+     * @return True if userAnswer is right, else false
+     */
     public boolean isCorrect(String userAnswer) {
         return exercise.isCorrect(userAnswer);
     }
 
+    /**
+     * Logs out. Writes all changes to json
+     */
     public void logOut() {
         this.user = null;
         DataReadWriter.updateUsers(users.getUsers());
     }
 
+    /**
+     * Gets the Users settings
+     * @return Settings current User Settings
+     */
     public Settings getUserSettings() {
         return user.getSettings();
     }
 
+    /**
+     * Goes through User's first course, through lessons asking questions and tracking score
+     */
     public void playGame(){
         
         Scanner k = new Scanner(System.in);
@@ -124,7 +193,7 @@ public class CourseManagerFacade {
                     while(asked < 5 ){
                         Exercise exercise = lesson.generateExercise();
                         if(exercise.isCorrect(k.nextLine())){
-                            
+                            correct++;
                         }
                         asked++;
                     }
@@ -174,20 +243,20 @@ public class CourseManagerFacade {
 
     // } 
 
-// // FULL TEST FOR LOGGING IN, ANSWERING QUESTIONS, DOES NOT ATTEMPT TO SAVE
-    public static void main(String[] args) {
+// // // FULL TEST FOR LOGGING IN, ANSWERING QUESTIONS, DOES NOT ATTEMPT TO SAVE
+//     public static void main(String[] args) {
 
-        Scanner k = new Scanner(System.in);
-        CourseManagerFacade cmf = new CourseManagerFacade();
+//         Scanner k = new Scanner(System.in);
+//         CourseManagerFacade cmf = new CourseManagerFacade();
 
-        User user = cmf.login("asmith", "password");
+//         User user = cmf.login("asmith", "password");
 
-        System.out.println("Login successful. Welcome " + user.getUsername() + "!");
-        System.out.println("User's email is " + user.getEmailAddress());
+//         System.out.println("Login successful. Welcome " + user.getUsername() + "!");
+//         System.out.println("User's email is " + user.getEmailAddress());
 
-        cmf.playGame();
+//         cmf.playGame();
 
-        cmf.logOut();
+//         cmf.logOut();
 
-    }   
+//     }   
 }

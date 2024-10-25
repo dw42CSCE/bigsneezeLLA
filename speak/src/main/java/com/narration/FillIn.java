@@ -1,17 +1,27 @@
 package com.narration;
 import java.util.ArrayList;
 
+// FillIn Exercise Class
 public class FillIn extends Exercise {
     protected String question;
     protected Word answer;
     protected ArrayList<Word> options;
 
+    /**
+     * CLASS AUTHOR FILL THIS IN
+     * @param question
+     * @param answer
+     * @param options
+     */
     public FillIn(Phrase question, Word answer, ArrayList<Word> options) {
         this.question = question.getPhrase();
         this.answer = answer;
         this.options = options;
     }
 
+    /**
+     * CLASS AUTHOR FILL THIS IN
+     */
     public boolean isCorrect(String userAnswer) {
         if (answer.getWord().equalsIgnoreCase(userAnswer.trim()))
             return true;

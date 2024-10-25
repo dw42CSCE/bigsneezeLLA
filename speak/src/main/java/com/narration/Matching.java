@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+// Matching Exercise Class
 public class Matching extends Exercise {
     protected String question;
     protected String options;
     protected String answer;
 
+    /**
+     * CLASS AUTHOR WRITE THIS
+     * @param answers
+     */
     public Matching(ArrayList<Word> answers) {
         this.question = "";
         this.options = "";
@@ -47,6 +52,11 @@ public class Matching extends Exercise {
         
     }
 
+    /**
+     * Checks if userAnswer is correct
+     * @param userAnswer String userAnswer to be checked against
+     * @return True if userAnswer is correct, else false
+     */
     public boolean isCorrect(String userAnswer) {
         return (this.answer.equalsIgnoreCase(userAnswer.replaceAll("\\s+","")));
     }

@@ -158,6 +158,10 @@ public class DataReadWriter extends DataConstants{
         }
     }
 
+    /**
+     * Gets courses from JSON File
+     * @return ArrayList of all courses in JSON
+     */
     public static ArrayList<Course> getCourses() {
         ArrayList<Course> courses = new ArrayList<>();
     
@@ -190,6 +194,11 @@ public class DataReadWriter extends DataConstants{
         return null;
     }
 
+    /**
+     * Parses lessons from JSON
+     * @param lessonsJSON Object lessonsJSON from a Course in JSON
+     * @return ArrayList of Lessons
+     */
     private static ArrayList<Lesson> getLessons(JSONArray lessonsJSON){
 
         ArrayList<Lesson> lessons = new ArrayList<>();
@@ -211,6 +220,11 @@ public class DataReadWriter extends DataConstants{
         return lessons;
     }
 
+    /**
+     * 
+     * @param exercisesJSON
+     * @return
+     */
     private static ArrayList<Exercise> getExercises(JSONArray exercisesJSON){
         ArrayList<Exercise> exercises = new ArrayList<>();
 
@@ -228,6 +242,11 @@ public class DataReadWriter extends DataConstants{
         return exercises;
     }
 
+    /**
+     * 
+     * @param keywordsJSON
+     * @return
+     */
     private static Word[] getKeyWords(JSONArray keywordsJSON){
         Word[] words = new Word[keywordsJSON.size()];
 
@@ -240,6 +259,11 @@ public class DataReadWriter extends DataConstants{
         return words;
     }
 
+    /**
+     * 
+     * @param keyphrasesJSON
+     * @return
+     */
     private static Phrase[] getKeyPhrases(JSONArray keyphrasesJSON){
         Phrase[] phrases = new Phrase[keyphrasesJSON.size()];
 
@@ -252,6 +276,11 @@ public class DataReadWriter extends DataConstants{
         return phrases;
     }
 
+    /**
+     * 
+     * @param userCourses
+     * @return
+     */
     private static HashMap<Course, Integer> parseUserCourses(JSONArray userCourses) {
         HashMap<Course, Integer> courses = new HashMap<>();
         CourseList courselist = CourseList.getInstance();  // Ensure CourseList is populated before this step
