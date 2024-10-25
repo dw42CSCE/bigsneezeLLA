@@ -1,5 +1,17 @@
 package com.narration;
 
+public abstract class Exercise {
+    protected String question;
+
+    public abstract boolean isCorrect(String userAnswer);
+
+    public abstract String toString();
+
+}
+
+/*
+package com.narration;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -19,3 +31,4 @@ public abstract class Exercise {
 
     public abstract String toString();
 }
+*/
