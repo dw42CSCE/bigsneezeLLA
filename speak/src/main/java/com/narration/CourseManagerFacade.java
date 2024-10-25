@@ -117,45 +117,18 @@ public class CourseManagerFacade {
                 while (userProgress != firstCourse.getLessons().size()){
                     Lesson lesson = firstCourse.getLesson(userProgress);
                     int correct = 0;
+                    int asked = 0;
                     System.out.println(lesson.toString());
                     Narrator.playSound(lesson.getIntro());
-                    for (Exercise exercise : lesson.getExercises()){
-<<<<<<< HEAD
-                        System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
-                        if(exercise.type.equals("Audio")){
-                            Narrator.playSound(exercise.answer);
-                            System.out.println("Type v to hear it again");
-=======
-                            System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
-                            String answer = k.nextLine();
-                            if (answer.equalsIgnoreCase("quit")){
-                                userCourses.put(firstCourse, userProgress);
-                                user.setCourseProgress(null);
-                                System.out.println(userProgress);
-                                return;
-                            }
-                            if (exercise.isCorrect(answer)){
-                                
-                                correct++;
-                            } 
->>>>>>> main
-                        }
-                        String answer = k.nextLine();
-
-                        while(answer.equalsIgnoreCase("v")){
-                            Narrator.playSound(exercise.answer);
-                            answer = k.nextLine();
-                        }
-                        
-                        if (answer.equalsIgnoreCase("quit")){
-                            userCourses.put(firstCourse, userProgress);
-                            return;
-                        }
-                        if (exercise.isCorrect(answer)){
+                    
+                    while(asked < 5 ){
+                        Exercise exercise = lesson.generateExercise();
+                        if(exercise.isCorrect(k.nextLine())){
                             
-                            correct++;
-                        } 
+                        }
+                        asked++;
                     }
+
                     System.out.println("You got " + correct + "\\" + lesson.getExercises().size());
 
                     if (correct/lesson.getExercises().size() > .7){
@@ -167,14 +140,14 @@ public class CourseManagerFacade {
                         System.out.println("YOu did not pass! Try again");
                     }
                 }
+                    
+                }
                 
-            }
-
-        } else {
+            } else {
             System.out.println("First course is null.");
+            } 
         }
 
-        }
 
 // TEST FOR SIGNUP, will not write new user to json yet
     // public static void main(String[] args) {

@@ -30,7 +30,7 @@ public class Lesson {
         return this.exercises;
     }
 
-    public void generateExercise() {
+    public Exercise generateExercise() {
         Random rand = new Random();
         int choice = rand.nextInt(0,4);
         switch (choice) {
