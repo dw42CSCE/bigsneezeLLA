@@ -115,6 +115,7 @@ public class CourseManagerFacade {
                     Lesson lesson = firstCourse.getLesson(userProgress);
                     int correct = 0;
                     System.out.println(lesson.toString());
+                    Narrator.playSound(lesson.getIntro());
                     for (Exercise exercise : lesson.getExercises()){
                             System.out.println( "====================\n" + exercise.toString() + "\n====================\n");
                             String answer = k.nextLine();

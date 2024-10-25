@@ -37,7 +37,7 @@ public class Narrator {
 
             DescribeVoicesResponse describeVoicesResult = polly.describeVoices(describeVoiceRequest);
             Voice voice = describeVoicesResult.voices().stream()
-                    .filter(v -> v.name().equals("Miguel"))
+                    .filter(v -> v.name().equals("Kendra"))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Voice not found"));
 

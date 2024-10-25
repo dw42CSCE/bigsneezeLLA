@@ -42,4 +42,19 @@ public class CourseList {
         }
     return null;
     }
+
+    public Course getCourse(int index){
+        return courses.get(index);
+    }
+
+    public String toString(){
+        String display = "Available Courses: \n";
+        int i = 0;
+        String tempString = "";
+        for (Course course : courses){
+            tempString += (i+1 + ". " + course.getLanguage().name() + "\n");
+        }
+        display += tempString;
+        return display;
+    }
 }

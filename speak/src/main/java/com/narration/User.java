@@ -103,6 +103,10 @@ public class User {
         this.password=password;
     }
 
+    public void addCourse(Course course){
+        courses.put(course, 0);
+    }
+
     public void addCourseProgress(Course course, int lesson, int lessonProgress){
         int addProgress = 1/courses.size();
         int progress = courses.get(course) + addProgress;
