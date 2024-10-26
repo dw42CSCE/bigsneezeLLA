@@ -44,6 +44,10 @@ public class Audio extends Exercise {
     public boolean isCorrect(String userAnswer) {
         return (this.answer.getWord().trim().equalsIgnoreCase(userAnswer.trim()));
     }
+    
+    public Word getWord(){
+        return answer;
+    }
 
     /**
      * To String

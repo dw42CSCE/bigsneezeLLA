@@ -259,7 +259,7 @@ public void makeStudyFile() {
                             System.out.println("Correct!");
                         } else{
                             WordList words = user.getIncorrect();
-                            // NEED A WAY TO ADD WORDS
+                            Word word = exercise.getWord();
                             user.setWordList(words);
                         }
                         asked++;

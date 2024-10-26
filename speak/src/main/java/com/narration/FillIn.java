@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 // FillIn Exercise Class
 public class FillIn extends Exercise {
+    protected Phrase phrase;
     protected String question;
     protected String answer;
     protected String translation;
@@ -15,6 +16,10 @@ public class FillIn extends Exercise {
         this.translation = question.getTranslation();
         this.question = question.getPhraseWithBlank();
         this.answer = question.getMissingWord();
+    }
+
+    public Word getWord(){
+        return new Word(phrase.getPhrase(), phrase.getTranslation());
     }
 
     /**

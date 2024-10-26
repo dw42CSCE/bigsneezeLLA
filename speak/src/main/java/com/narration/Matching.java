@@ -10,12 +10,14 @@ public class Matching extends Exercise {
     protected String question;
     protected String options;
     protected String answer;
+    protected Word[] words;
 
     /**
      * CLASS AUTHOR WRITE THIS
      * @param answers
      */
     public Matching(Word[] words) {
+        this.words = words;
         this.question = "";
         this.options = "";
         this.answer = "";
@@ -51,6 +53,10 @@ public class Matching extends Exercise {
     
         // Set answer string, remove trailing comma and space
         this.answer = answerBuilder.substring(0, answerBuilder.length() - 2);
+    }
+
+    public Word getWord(){
+        return words[0];
     }
     
 
