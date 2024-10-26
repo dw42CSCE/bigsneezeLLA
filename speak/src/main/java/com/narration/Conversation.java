@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 // Conversation Exercise Class
 public class Conversation extends Exercise {
+    protected Phrase phrase;
     protected Phrase question;
 
     /**
@@ -26,6 +27,10 @@ public class Conversation extends Exercise {
                 return true;
         }
         return false;
+    }
+
+    public Word getWord(){
+        return new Word(phrase.getPhrase(), phrase.getTranslation());
     }
 
     /**

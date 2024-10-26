@@ -1,6 +1,7 @@
 package com.narration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -9,54 +10,55 @@ public class Matching extends Exercise {
     protected String question;
     protected String options;
     protected String answer;
+    protected Word[] words;
 
     /**
      * CLASS AUTHOR WRITE THIS
      * @param answers
      */
     public Matching(Word[] words) {
+        this.words = words;
         this.question = "";
         this.options = "";
         this.answer = "";
+    
+        // Limit words to a maximum of three items
+        ArrayList<Word> answers = new ArrayList<>(Arrays.asList(words));
+        Collections.shuffle(answers); // Shuffle for randomness
+        if (answers.size() > 3) {
+            answers = new ArrayList<>(answers.subList(0, 3)); // Keep only the first three
+        }
+    
+        // Building the question part
         int i = 1;
-
-        ArrayList<Word> answers = new ArrayList<Word>();
-        for (Word word : words) {
-            answers.add(word);
+        for (Word word : answers) {
+            this.question += (i + ". " + word.getWord() + "\n");
+            i++;
         }
-
-        int[] list = new int[answers.size()];
-
-        Random rand = new Random();
-		
+    
+        // Shuffle again for answer options to randomize them
         Collections.shuffle(answers);
-        for (Word word : answers) {
-            this.question += (i+". "+word.getWord()+"\n");
-            i++;
-        }
-
-        for (int f = 0; f < list.length; f++) {
-			int randomIndexToSwap = rand.nextInt(list.length);
-			int temp = list[randomIndexToSwap];
-			list[randomIndexToSwap] = list[f];
-			list[f] = temp;
-		}
-
-        for (int f = 0; f < list.length; f++) {
-            this.answer += list[f]+",";
-        }
-        this.answer = this.answer.substring(0,(this.options.length()-1));
-
-        Character j = 'A';
+    
+        // Building the options part and setting answer key
+        char optionLetter = 'A';
+        StringBuilder answerBuilder = new StringBuilder();
         i = 1;
+    
         for (Word word : answers) {
-            this.options += (j+". "+word.getMeaning()+"\n");
-            this.answer.replace(((char)(i + '0')), j);
+            this.options += (optionLetter + ". " + word.getMeaning() + "\n");
+            answerBuilder.append(optionLetter).append(", ");
             i++;
-            j++;
+            optionLetter++;
         }
-        
+    
+        // Set answer string, remove trailing comma and space
+        this.answer = answerBuilder.substring(0, answerBuilder.length() - 2);
     }
+
+    public Word getWord(){
+        return words[0];
+    }
+    
 
     /**
      * Checks if userAnswer is correct

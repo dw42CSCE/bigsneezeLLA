@@ -23,12 +23,10 @@ public class Lesson {
      * @param phrases Phrase array of useful phrases in lesson
      * @param progress Int representing lesson progress, NEEDED?
      */
-    public Lesson(String subject, String intro, ArrayList<Exercise> exercises,
-                    Word[] words, Phrase[] phrases, int progress) {
+    public Lesson(String subject, String intro, Word[] words, Phrase[] phrases, int progress) {
 
         this.subject = subject;
         this.intro = intro;
-        this.exercises = exercises;
         this.keyWords = words;
         this.keyPhrases = phrases;        
     }
@@ -61,16 +59,28 @@ public class Lesson {
         switch (choice) {
             case 0: //Translation
                 exercise = new Translation(keyWords[(rand.nextInt(0, keyWords.length))]);
+                // System.out.println("test1");
+                break;
             case 1: //Matching
                 exercise = new Matching(keyWords);
+                // System.out.println("test2");
+                break;
             case 2: //Audio
                 exercise = new Audio(keyWords);
+                // System.out.println("test3");
+                break;
             case 3: //Conversation
-                exercise = new Conversation(keyPhrases[(rand.nextInt(0, keyPhrases.length))]);
+                // exercise = new Conversation(keyPhrases[(rand.nextInt(0, keyPhrases.length))]);
+                // System.out.println("test4");
+                // break;
             case 4: //Fillin
-                exercise = new FillIn(keyPhrases[(rand.nextInt(0, keyPhrases.length))]);
+                exercise = new FillIn(keyPhrases[(rand.nextInt(keyPhrases.length))]);
+                // System.out.println("test5");
+                break;
             default:
                 exercise = new Translation(keyWords[(rand.nextInt(0, keyWords.length))]);
+                // System.out.println("testD");
+                break;
         }
         return exercise;
     }

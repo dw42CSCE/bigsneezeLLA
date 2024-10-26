@@ -14,6 +14,10 @@ public class Translation extends Exercise {
         this.answer = word;
     }
 
+    public Word getWord(){
+        return answer;
+    }
+
     /**
      * Checks if user's answer is right
      * @param useranswer String of the user's answer

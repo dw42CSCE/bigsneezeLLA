@@ -1,4 +1,7 @@
 package com.narration;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -27,11 +30,15 @@ public class CourseManagerFacade {
      * @param password String of password
      * @return User, null if not found
      */
-    public User login(String username, String password) {
-        users = UserList.getInstance();
-        user = users.getUser(username, password);
-        return user;
-    }
+     public User login(String username, String password) {
+         users = UserList.getInstance();
+         user = users.getUser(username, password);
+         if (user == null) {
+             System.out.println("Login failed: user not found.");
+         }
+
+         return user;
+     }
 
     /**
      * Adds a course to this user's list of courses
@@ -63,6 +70,7 @@ public class CourseManagerFacade {
         }
     
         users.addUser(username, email, password);
+        DataReadWriter.updateUsers(users.getUsers());
         System.out.println("User signed up successfully!");
     }
     
@@ -166,6 +174,75 @@ public class CourseManagerFacade {
     }
 
     /**
+     * Shows user's current position info
+     */
+    public void displayPosition(){
+        this.course = user.getCourses().keySet().iterator().next();
+        int coursePos = user.getCourseProgress(course);
+        int coursePerc = coursePos/course.getLessons().size() * 100;
+        int lessonNum = coursePos + 1;
+        System.out.println("Course: " + course.getLanguage() + "\n" + "Progress: %" + coursePerc + "\n" + "Lesson: " + lessonNum);
+    }
+
+    /**
+     * Displays the words and phrases the user is struggling with
+     */
+    public void displayStudyStuff(){
+        WordList words = user.getIncorrect();
+        for(Word word : words.getWords()){
+            System.out.println(word.toString());
+        }
+    }
+
+    /**
+     * Writes the Users incorrect words and phrases to text file for studying
+     */
+public void makeStudyFile() {
+    WordList words = user.getIncorrect();
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("study.txt"))) {
+        for (Word word : words.getWords()) {
+            writer.write(word.toString());
+            writer.newLine(); // Add a new line after each word
+        }
+        System.out.println("Study material saved to study.txt");
+    } catch (IOException e) {
+        System.err.println("An error occurred while writing to the file: " + e.getMessage());
+    }
+}
+
+    /**
+     * Tests the user on only the words and phrases they are strugging with
+     */
+    public void testStudyStuff() {
+        Scanner k = new Scanner(System.in);
+        WordList words = user.getIncorrect();
+    
+        if (words == null || words.getWords() == null || words.getWords().isEmpty()) {
+            System.out.println("No words to study.");
+            return;
+        }
+    
+        ArrayList<Word> wordsToRemove = new ArrayList<>();
+    
+        for (Word word : words.getWords()) {
+            Exercise exercise = new Translation(word);
+            
+            System.out.println(exercise.toString());
+            String input = k.nextLine();
+    
+            if (exercise.isCorrect(input)) {
+                wordsToRemove.add(word);
+                System.out.println("Correct! You answered: " + word.getWord());
+            }
+        }
+    
+        for (Word word : wordsToRemove) {
+            words.removeWord(word);
+        }
+    }
+    
+
+    /**
      * Goes through User's first course, through lessons asking questions and tracking score
      */
     public void playGame(){
@@ -188,19 +265,30 @@ public class CourseManagerFacade {
                     int correct = 0;
                     int asked = 0;
                     System.out.println(lesson.toString());
-                    Narrator.playSound(lesson.getIntro());
+                    Narrator.playSound(lesson.getIntro()); //UNCOMMENT THIS FOR SOUND
                     
                     while(asked < 5 ){
                         Exercise exercise = lesson.generateExercise();
-                        if(exercise.isCorrect(k.nextLine())){
+                        System.out.println(exercise.toString());
+                        String input = k.nextLine();
+                        if (input.equalsIgnoreCase("quit")){
+                            return;
+                        }
+                        if(exercise.isCorrect(input)){
                             correct++;
+                            System.out.println("Correct!");
+                        } else{
+                            WordList words = user.getIncorrect();
+                            Word word = exercise.getWord();
+                            words.addWord(word);
+                            user.setWordList(words);
                         }
                         asked++;
                     }
 
-                    System.out.println("You got " + correct + "\\" + lesson.getExercises().size());
+                    System.out.println("You got " + correct + "\\" + 5);
 
-                    if (correct/lesson.getExercises().size() > .7){
+                    if ((double)correct/5 > 0.7){
                         userProgress++;
                         userCourses.put(firstCourse, userProgress);
                         user.setCourseProgress(null);

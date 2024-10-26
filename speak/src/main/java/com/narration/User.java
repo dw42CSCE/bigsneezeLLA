@@ -62,12 +62,19 @@ public class User {
         this.uuid = createUUID();
     }
 
+    public WordList getIncorrect(){
+        return this.incorrectWords;
+    }
     /** 
      * Gets the username of the user.
      * @return the username
      */
     public String getUsername(){
         return userName;
+    }
+
+    public void setWordList(WordList words){
+        this.incorrectWords = words;
     }
 
     /** 

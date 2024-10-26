@@ -3,16 +3,24 @@ import java.util.ArrayList;
 
 // FillIn Exercise Class
 public class FillIn extends Exercise {
+    protected Phrase phrase;
     protected String question;
     protected String answer;
+    protected String translation;
 
     /**
      * CLASS AUTHOR FILL THIS IN
      * @param question
      */
     public FillIn(Phrase question) {
+        this.phrase = question;
+        this.translation = question.getTranslation();
         this.question = question.getPhraseWithBlank();
         this.answer = question.getMissingWord();
+    }
+
+    public Word getWord(){
+        return new Word(phrase.getPhrase(), phrase.getTranslation());
     }
 
     /**
@@ -23,7 +31,7 @@ public class FillIn extends Exercise {
     }
 
     public String toString() {
-        return ("Fillin: Fill in the missing word in the following phrase:\n"+this.question);
+        return ("Fillin: Fill in the missing word in the following phrase:\n"+ this.translation + "\n" + this.question );
     }
 }
 

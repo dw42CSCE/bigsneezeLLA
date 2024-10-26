@@ -1,6 +1,9 @@
 package com.narration;
 
 import java.util.ArrayList;
+import java.util.Random;
+
+import software.amazon.awssdk.regions.servicemetadata.RamServiceMetadata;
 
 // Phrase Class
 public class Phrase {
@@ -10,18 +13,6 @@ public class Phrase {
     private ArrayList<String> responses;
     private String phraseWithBlank;
     private String missingWord;
-    //private WordList wordList;
-
-    // public Phrase(String phrase, String translation, String meaning, WordList wordList){
-    //     this.wordList = wordList;
-    //     this.translation = translation;
-    //     this.meaning = meaning;
-    //     String[] tempArray = phrase.split(" ");
-    //     this.phrase = new Word[tempArray.length];
-    //     for (int i=0;i<tempArray.length;i++){
-    //         this.phrase[i] = wordList.getWord(tempArray[i]);
-    //     }
-    // }
 
     /**
      * Parameterized Constructor
@@ -31,6 +22,12 @@ public class Phrase {
     public Phrase(String phrase, String translation) {
         this.phrase = phrase;
         this.translation = translation;
+        String array[] = phrase.split(" ");
+        Random r = new Random();
+        int i = r.nextInt(array.length);
+        this.missingWord = array[i];
+        array[i] = "_____";
+        this.phraseWithBlank = String.join(" ", array);
     }
 
     public Phrase(String phrase, String translation, ArrayList<String> responses, String phraseWithBlank, String missingWord) {

@@ -6,18 +6,24 @@ public class WordList {
     private ArrayList<Word> words = new ArrayList<>();
     private WordList wordList;
 
-   /* private WordList(){
-        
-    };*/
     public WordList(){
         words=new ArrayList<Word>();
     }
 
-    public Word addWord(String word, String meaning){
-        Word newWord = (new Word(word, meaning));
-        words.add(newWord);
+    public Word addWord(String word, String meaning) {
+        Word newWord = new Word(word, meaning);
+        if (!words.contains(newWord)) {
+            words.add(newWord);
+        }
         return newWord;
     }
+    
+    public void addWord(Word word) {
+        if (!words.contains(word)) {
+            words.add(word);
+        }
+    }
+    
     
     public void removeWord(Word word){
         this.words.remove(word);
@@ -39,6 +45,14 @@ public class WordList {
                 return word;
         }
         return this.addWord(searchWord, "[No Definition Listed]");
+    }
+    
+    public ArrayList<Word> getWords() {
+        return words;
+    }
+
+    public void setWords(ArrayList<Word> words){
+        this.words = words;
     }
 
 }

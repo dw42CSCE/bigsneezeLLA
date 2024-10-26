@@ -55,7 +55,7 @@ public class UserList {
    * @param password String of user password
    */
   public void editUser(String firstName, String lastName, String email, String password) {
-    for(int i=0;i<users.size()-1;i++){
+    for(int i=0;i<users.size();i++){
       User tempUser=users.get(i);
       if(tempUser.getEmailAddress().equals(email) && tempUser.getPassword().equals(password)){
               tempUser.setName(firstName, lastName);
@@ -74,6 +74,7 @@ public class UserList {
    * @return User with username and password
    */
   public User getUser(String username, String password) {
+    users = DataReadWriter.getUsers();
     for (int i = 0; i < users.size(); i++) {  // Fix: iterate through the entire list
         User tempUser = users.get(i);
         if (tempUser.getUsername().equals(username) && tempUser.getPassword().equals(password)) {
@@ -97,7 +98,7 @@ public class UserList {
    * @param password String password of user to be removed
    */
   public void removeUser(String username, String password) {
-    for(int i=0;i<users.size()-1;i++){
+    for(int i=0;i<users.size();i++){
       User tempUser=users.get(i);
       if(tempUser.getUsername().equals(username) && tempUser.getPassword().equals(password)){
               users.remove(i);   

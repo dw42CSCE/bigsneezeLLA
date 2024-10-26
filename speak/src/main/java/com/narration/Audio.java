@@ -44,6 +44,10 @@ public class Audio extends Exercise {
     public boolean isCorrect(String userAnswer) {
         return (this.answer.getWord().trim().equalsIgnoreCase(userAnswer.trim()));
     }
+    
+    public Word getWord(){
+        return answer;
+    }
 
     /**
      * To String
@@ -52,9 +56,9 @@ public class Audio extends Exercise {
     public String toString() {
         String stringOptions = "";
         for (Word word : options) {
-            stringOptions += (word+"/n");
+            stringOptions += (word+"\n");
         }
         answer.speak();
-        return ("Listen to the audio and select the word.\n"+stringOptions);
+        return ("Audio: Listen to the audio and select the word.\n"+stringOptions);
     }
 }
