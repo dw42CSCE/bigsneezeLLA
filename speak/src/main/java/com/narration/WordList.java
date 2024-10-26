@@ -6,9 +6,6 @@ public class WordList {
     private ArrayList<Word> words = new ArrayList<>();
     private WordList wordList;
 
-   /* private WordList(){
-        
-    };*/
     public WordList(){
         words=new ArrayList<Word>();
     }
@@ -39,6 +36,9 @@ public class WordList {
                 return word;
         }
         return this.addWord(searchWord, "[No Definition Listed]");
+    }
+    public ArrayList<Word> getWords() {
+        return words;
     }
 
 }

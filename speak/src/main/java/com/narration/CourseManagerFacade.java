@@ -1,4 +1,7 @@
 package com.narration;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -180,21 +183,34 @@ public class CourseManagerFacade {
      * Displays the words and phrases the user is struggling with
      */
     public void displayStudyStuff(){
-
+        WordList words = user.getIncorrect();
+        for(Word word : words.getWords()){
+            System.out.println(word.toString());
+        }
     }
 
     /**
      * Writes the Users incorrect words and phrases to text file for studying
      */
-    public void makeStudyFile(){
-
+public void makeStudyFile() {
+    WordList words = user.getIncorrect();
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("study.txt"))) {
+        for (Word word : words.getWords()) {
+            writer.write(word.toString());
+            writer.newLine(); // Add a new line after each word
+        }
+        System.out.println("Study material saved to study.txt");
+    } catch (IOException e) {
+        System.err.println("An error occurred while writing to the file: " + e.getMessage());
     }
+}
 
     /**
      * Tests the user on only the words and phrases they are strugging with
      */
     public void testStudyStuff(){
-
+        WordList words = user.getIncorrect();
+        
     }
 
     /**
