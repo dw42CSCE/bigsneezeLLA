@@ -46,13 +46,13 @@ public class Matching extends Exercise {
     
         for (Word word : answers) {
             this.options += (optionLetter + ". " + word.getMeaning() + "\n");
-            answerBuilder.append(optionLetter).append(", ");
+            answerBuilder.append(optionLetter).append(",");
             i++;
             optionLetter++;
         }
     
         // Set answer string, remove trailing comma and space
-        this.answer = answerBuilder.substring(0, answerBuilder.length() - 2);
+        this.answer = answerBuilder.substring(0, answerBuilder.length() - 1);
     }
 
     public Word getWord(){

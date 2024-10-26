@@ -134,14 +134,4 @@ public class Lesson {
         }
         return sentence;
     }
-
-    /**
-     * Needed?
-     */
-    // public int getProgress() {
-    // }
-    // public void addProficiencyPoint() {
-    // }
-    // public void increaseProgress() {
-    // }
 }

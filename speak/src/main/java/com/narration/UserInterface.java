@@ -63,13 +63,23 @@ public class UserInterface {
             input = k.nextLine();
         }
 
+        System.out.println("====================\n" + "Logging in:\n");
+
         facade.login("ttomacka", "password");
+
+        System.out.println("====================\n" + "Study materials:\n");
 
         facade.displayStudyStuff();
 
+        System.out.println("====================\n" + "Make study file: \n");
+
         facade.makeStudyFile();
 
+        System.out.println("====================\n" + "Testing missed words: \n");
+
         facade.testStudyStuff();
+        
+        System.out.println("====================\n" + "Study materials:\n");
 
         facade.displayStudyStuff();
 
