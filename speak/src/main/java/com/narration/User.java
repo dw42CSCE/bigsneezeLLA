@@ -73,6 +73,10 @@ public class User {
         return userName;
     }
 
+    public void setWordList(WordList words){
+        this.incorrectWords = words;
+    }
+
     /** 
      * Gets the first name of the user.
      * @return the first name

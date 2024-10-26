@@ -37,6 +37,7 @@ public class WordList {
         }
         return this.addWord(searchWord, "[No Definition Listed]");
     }
+    
     public ArrayList<Word> getWords() {
         return words;
     }

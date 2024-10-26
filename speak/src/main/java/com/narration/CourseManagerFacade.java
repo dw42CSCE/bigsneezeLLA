@@ -209,8 +209,17 @@ public void makeStudyFile() {
      * Tests the user on only the words and phrases they are strugging with
      */
     public void testStudyStuff(){
+        Scanner k = new Scanner(System.in);
         WordList words = user.getIncorrect();
-        
+        System.out.println(exercise.toString());
+        String input = k.nextLine();
+        for(Word word : words.getWords()){
+            Exercise exercise = new Translation(word);
+            if(exercise.isCorrect(input)){
+                words.removeWord(word);
+                System.out.println("Correct!");
+            }
+        }
     }
 
     /**
@@ -249,7 +258,9 @@ public void makeStudyFile() {
                             correct++;
                             System.out.println("Correct!");
                         } else{
-
+                            WordList words = user.getIncorrect();
+                            // NEED A WAY TO ADD WORDS
+                            user.setWordList(words);
                         }
                         asked++;
                     }
