@@ -10,27 +10,6 @@
             "progress": 0,
             "intro": "Welcome to Big Sneeze's Spanish course! To start off we would like to say, Hola! That means \"Hello\" in Spanish!\nSome basic greetings are:\n",
             "keywords": [
-                {
-                    "word": "Buenas",
-                    "meaning": "Good",
-                    "uuid": 
-                },
-                {
-                    "word": "Tardes",
-                    "meaning": "Afternoon",
-                    "uuid":  
-                },
-                {
-                    "word": "Dias",
-                    "meaning": "Morning",
-                    "uuid":  
-                },
-                {
-                    "word": "Noches",
-                    "meaning": "Night",
-                    "uuid":  
-                },
-                 : ,
                 "Llamas : Name",
                 "Hola : Hello",
                 "Bienvindo : Welcome"
@@ -39,8 +18,7 @@
                 "Buenas Noches : Good Night",
                 "Buenas Tardes : Good Afternoon",
                 "Buenos Dias : Good Morning",
-                "Como te llamas? : What is your name?",
-                "Hola y bien"
+                "Como te llamas? : What is your name?"
                 ],
             "exercises": [
                 {
@@ -50,16 +28,28 @@
                 "answer": "Hola"
                 },
                 {
-                "question": "\"What is your name\" in Spanish is: __________",
-                "type":"Fill_In",
-                "options": "Quando Quenta  |  Como te llamas  |  Buenas dias  |  Buenas noches",
-                "answer": "Como te llamas"
+                "question": "Match the following to their spanish translation (format: \"1, 2, 3, 4\" english numbers) \nEnglish:\n1. Good night\n2. Hello\n3. Good morning\n4. What is your name\n",
+                "type":"Matching",
+                "options": "Spanish:\n1. Hola \n2. Como te llamas \n3. Buenas dias \n4. Buenas noches",
+                "answer": "2, 4, 3, 1"
                 },
                 {
                 "question": "Fill in the blank to say \"Good Morning\"\nBuenas ______",
                 "type":"Fill_In",
                 "options": "Llamas  |  Tardes  |  Dias  |  Noches",
                 "answer": "Dias"
+                },
+                {
+                "question": "Respond to the following: Beunas Dias!",
+                "type":"Conversation",
+                "options": "Llamas  |  Buanas Tardes  |  Buenas Dias  |  Buanas Noches",
+                "answer": "Buenas Dias"
+                },
+                {
+                "question": "Listen to the following audio and select an answer",
+                "type":"Audio",
+                "options": "Llamas  |  Tardes  |  Buenas Dias  |  Hola",
+                "answer": "Hola"
                 }
                 ]
             },
@@ -85,16 +75,28 @@
                 "answer": "Lo siento"
                 },
                 {
-                "question": "What is the correct phrase to say \"Thank you\" in Spanish?",
+                "question": "Match the following to their spanish translation (format: \"1, 2, 3, 4\" english numbers) \n English:\n1. Thank you\n2. Please\n3. Your welcome\n4. Im sorry\n ",
                 "type":"Matching",
-                "options": "Por favor  |  Gracias  |  Lo siento  |  De nada",
-                "answer": "Gracias"
+                "options": "Spanish:\n1. Por favor \n2. Gracias \n3. Lo siento \n4. De nada",
+                "answer": "2, 1, 4, 3"
                 },
                 {
-                "question": "How do you respond to someone thanking you by saying \"You're welcome\"?",
+                "question": "Respond to someone saying \"Gracias\"",
                 "type":"Conversation",
                 "options": "Gracias  |  Por favor  |  De nada  |  Lo siento",
                 "answer": "De nada"
+                },
+                {
+                "question": "Listen to the following audio and select an answer",
+                "type":"Audio",
+                "options": "Gracias  |  Lo siento  |  De nada  |  Por favor",
+                "answer": "Lo siento"
+                },
+                {
+                "question": "What would you say if you accidentally stepped on someone's foot?",
+                "type":"Matching",
+                "options": "Gracias  |  Lo siento  |  De nada  |  Por favor",
+                "answer": "Lo siento"
                 }
             ]
             }
