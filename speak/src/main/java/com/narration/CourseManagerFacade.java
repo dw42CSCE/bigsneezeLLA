@@ -166,6 +166,38 @@ public class CourseManagerFacade {
     }
 
     /**
+     * Shows user's current position info
+     */
+    public void displayPosition(){
+        this.course = user.getCourses().keySet().iterator().next();
+        int coursePos = user.getCourseProgress(course);
+        int coursePerc = coursePos/course.getLessons().size() * 100;
+        int lessonNum = coursePos + 1;
+        System.out.println("Course: " + course.getLanguage() + "\n" + "Progress: %" + coursePerc + "\n" + "Lesson: " + lessonNum);
+    }
+
+    /**
+     * Displays the words and phrases the user is struggling with
+     */
+    public void displayStudyStuff(){
+
+    }
+
+    /**
+     * Writes the Users incorrect words and phrases to text file for studying
+     */
+    public void makeStudyFile(){
+
+    }
+
+    /**
+     * Tests the user on only the words and phrases they are strugging with
+     */
+    public void testStudyStuff(){
+
+    }
+
+    /**
      * Goes through User's first course, through lessons asking questions and tracking score
      */
     public void playGame(){
@@ -184,7 +216,7 @@ public class CourseManagerFacade {
                 int userProgress = user.getCourseProgress(firstCourse);
 
                 while (userProgress != firstCourse.getLessons().size()){
-                    Lesson lesson = firstCourse.getLesson(userProgress+1);
+                    Lesson lesson = firstCourse.getLesson(userProgress);
                     int correct = 0;
                     int asked = 0;
                     System.out.println(lesson.toString());
@@ -193,8 +225,15 @@ public class CourseManagerFacade {
                     while(asked < 5 ){
                         Exercise exercise = lesson.generateExercise();
                         System.out.println(exercise.toString());
-                        if(exercise.isCorrect(k.nextLine())){
+                        String input = k.nextLine();
+                        if (input.equalsIgnoreCase("quit")){
+                            return;
+                        }
+                        if(exercise.isCorrect(input)){
                             correct++;
+                            System.out.println("Correct!");
+                        } else{
+
                         }
                         asked++;
                     }

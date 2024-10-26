@@ -11,8 +11,8 @@ public class UserInterface {
     }
 
     public static void main(String[] args) {
-        // scenario1();
-        scenario2();
+        scenario1();
+        //scenario2();
 
     }
 
@@ -46,14 +46,29 @@ public class UserInterface {
 
         facade.playGame();
 
-        // THIS METHOD NEEDS TO GET MADE
-        //System.out.println(user.getWordProgress());
+        facade.displayPosition();
+
+        facade.displayStudyStuff(); //Not done
+
+        facade.logOut();
+
+        System.out.println("Type next to move on");
+        while (!input.equalsIgnoreCase("next")){
+            input = k.nextLine();
+        }
+
+        facade.login("ttomacka", "pw");
+
+        facade.displayStudyStuff(); //Not done
+
+        facade.makeStudyFile(); //Not done
+
+        facade.testStudyStuff(); //Not done
 
         facade.logOut();
 
     }
 
-    //WONT WORK IN THIS BRANCH
     public static void scenario2(){
 
         CourseManagerFacade cmf = new CourseManagerFacade();

@@ -59,27 +59,27 @@ public class Lesson {
         switch (choice) {
             case 0: //Translation
                 exercise = new Translation(keyWords[(rand.nextInt(0, keyWords.length))]);
-                System.out.println("test1");
+                // System.out.println("test1");
                 break;
             case 1: //Matching
                 exercise = new Matching(keyWords);
-                System.out.println("test2");
+                // System.out.println("test2");
                 break;
             case 2: //Audio
                 exercise = new Audio(keyWords);
-                System.out.println("test3");
+                // System.out.println("test3");
                 break;
             case 3: //Conversation
                 // exercise = new Conversation(keyPhrases[(rand.nextInt(0, keyPhrases.length))]);
                 // System.out.println("test4");
                 // break;
             case 4: //Fillin
-                // exercise = new FillIn(keyPhrases[(rand.nextInt(0, keyPhrases.length))]);
+                exercise = new FillIn(keyPhrases[(rand.nextInt(keyPhrases.length))]);
                 // System.out.println("test5");
-                // break;
+                break;
             default:
                 exercise = new Translation(keyWords[(rand.nextInt(0, keyWords.length))]);
-                System.out.println("testD");
+                // System.out.println("testD");
                 break;
         }
         return exercise;

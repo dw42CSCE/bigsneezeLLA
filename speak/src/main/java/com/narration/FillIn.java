@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class FillIn extends Exercise {
     protected String question;
     protected String answer;
+    protected String translation;
 
     /**
      * CLASS AUTHOR FILL THIS IN
      * @param question
      */
     public FillIn(Phrase question) {
+        this.translation = question.getTranslation();
         this.question = question.getPhraseWithBlank();
         this.answer = question.getMissingWord();
     }
@@ -23,7 +25,7 @@ public class FillIn extends Exercise {
     }
 
     public String toString() {
-        return ("Fillin: Fill in the missing word in the following phrase:\n"+this.question);
+        return ("Fillin: Fill in the missing word in the following phrase:\n"+ this.translation + "\n" + this.question );
     }
 }
 

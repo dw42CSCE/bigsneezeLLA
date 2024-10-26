@@ -44,14 +44,13 @@ public class Matching extends Exercise {
     
         for (Word word : answers) {
             this.options += (optionLetter + ". " + word.getMeaning() + "\n");
-            answerBuilder.append(i).append("=").append(optionLetter).append(", ");
+            answerBuilder.append(optionLetter).append(", ");
             i++;
             optionLetter++;
         }
     
         // Set answer string, remove trailing comma and space
         this.answer = answerBuilder.substring(0, answerBuilder.length() - 2);
-
     }
     
 
@@ -61,7 +60,6 @@ public class Matching extends Exercise {
      * @return True if userAnswer is correct, else false
      */
     public boolean isCorrect(String userAnswer) {
-        System.out.println(answer + "\n" + userAnswer);
         return (this.answer.trim().equalsIgnoreCase(userAnswer.trim()));
     }
 

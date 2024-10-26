@@ -70,5 +70,39 @@
     },
     "courses": [
     ]
+  },
+  {
+    "uuid": "da131017-8599-4d31-bf38-31b83af77004",
+    "firstname": "null",
+    "lastname": "null",
+    "username": "jimmy",
+    "email": "jimmyj@gmail.com",
+    "password": "pw",
+    "ProfPoints": 0,
+    "settings": {
+      "emailNotifications": "true",
+      "darkMode": "true"
+    },
+    "courses": [
+    ]
+  },
+  {
+    "uuid": "59269184-fc76-4dd2-abc3-d22459797a24",
+    "firstname": "null",
+    "lastname": "null",
+    "username": "ttom",
+    "email": "ttom@gmail.com",
+    "password": "pw",
+    "ProfPoints": 0,
+    "settings": {
+      "emailNotifications": "true",
+      "darkMode": "true"
+    },
+    "courses": [
+      {
+        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
+        "progress": 1
+      }
+    ]
   }
 ]
