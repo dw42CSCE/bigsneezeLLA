@@ -210,12 +210,12 @@ public class DataReadWriter extends DataConstants{
             String subject = (String)lessonJSON.get(SUBJECT);
             int progress = ((Long)lessonJSON.get(COURSE_PROGRESS)).intValue();
             String intro = (String)lessonJSON.get(INTRO);
-            ArrayList<Exercise> exercises = getExercises((JSONArray) lessonJSON.get(EXERCISES));
+            // ArrayList<Exercise> exercises = getExercises((JSONArray) lessonJSON.get(EXERCISES));
             Word[] words = getKeyWords((JSONArray) lessonJSON.get(KEYWORDS));
             Phrase[] phrases = getKeyPhrases((JSONArray) lessonJSON.get(KEYPHRASES));
 
 
-            lessons.add(new Lesson(subject, intro, exercises, words, phrases, progress));
+            lessons.add(new Lesson(subject, intro, words, phrases, progress));
         }
         return lessons;
     }
@@ -225,22 +225,22 @@ public class DataReadWriter extends DataConstants{
      * @param exercisesJSON
      * @return
      */
-    private static ArrayList<Exercise> getExercises(JSONArray exercisesJSON){
-        ArrayList<Exercise> exercises = new ArrayList<>();
+    // private static ArrayList<Exercise> getExercises(JSONArray exercisesJSON){
+    //     ArrayList<Exercise> exercises = new ArrayList<>();
 
-        for (int i = 0; i <exercisesJSON.size(); i++){
-            JSONObject exerciseJSON = (JSONObject) exercisesJSON.get(i);
+    //     for (int i = 0; i <exercisesJSON.size(); i++){
+    //         JSONObject exerciseJSON = (JSONObject) exercisesJSON.get(i);
 
-            String question = (String)exerciseJSON.get(QUESTION);
-            String type = (String)exerciseJSON.get(TYPE);
-            String options = (String)exerciseJSON.get(OPTIONS);
-            String answer = (String)exerciseJSON.get(ANSWER);
+    //         String question = (String)exerciseJSON.get(QUESTION);
+    //         String type = (String)exerciseJSON.get(TYPE);
+    //         String options = (String)exerciseJSON.get(OPTIONS);
+    //         String answer = (String)exerciseJSON.get(ANSWER);
 
-            exercises.add(new Exercise(question,type, options, answer));
-        }
+    //         exercises.add(new Exercise(question,type, options, answer));
+    //     }
 
-        return exercises;
-    }
+    //     return exercises;
+    // }
 
     /**
      * 

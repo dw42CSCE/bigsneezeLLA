@@ -184,23 +184,24 @@ public class CourseManagerFacade {
                 int userProgress = user.getCourseProgress(firstCourse);
 
                 while (userProgress != firstCourse.getLessons().size()){
-                    Lesson lesson = firstCourse.getLesson(userProgress);
+                    Lesson lesson = firstCourse.getLesson(userProgress+1);
                     int correct = 0;
                     int asked = 0;
                     System.out.println(lesson.toString());
-                    Narrator.playSound(lesson.getIntro());
+                    // Narrator.playSound(lesson.getIntro()); //UNCOMMENT THIS FOR SOUND
                     
                     while(asked < 5 ){
                         Exercise exercise = lesson.generateExercise();
+                        System.out.println(exercise.toString());
                         if(exercise.isCorrect(k.nextLine())){
                             correct++;
                         }
                         asked++;
                     }
 
-                    System.out.println("You got " + correct + "\\" + lesson.getExercises().size());
+                    System.out.println("You got " + correct + "\\" + 5);
 
-                    if (correct/lesson.getExercises().size() > .7){
+                    if ((double)correct/5 > 0.7){
                         userProgress++;
                         userCourses.put(firstCourse, userProgress);
                         user.setCourseProgress(null);

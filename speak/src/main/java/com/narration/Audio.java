@@ -52,7 +52,7 @@ public class Audio extends Exercise {
     public String toString() {
         String stringOptions = "";
         for (Word word : options) {
-            stringOptions += (word+"/n");
+            stringOptions += (word+"\n");
         }
         answer.speak();
         return ("Listen to the audio and select the word.\n"+stringOptions);
