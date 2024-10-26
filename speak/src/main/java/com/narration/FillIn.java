@@ -13,6 +13,7 @@ public class FillIn extends Exercise {
      * @param question
      */
     public FillIn(Phrase question) {
+        this.phrase = question;
         this.translation = question.getTranslation();
         this.question = question.getPhraseWithBlank();
         this.answer = question.getMissingWord();

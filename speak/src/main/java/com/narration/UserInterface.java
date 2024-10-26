@@ -11,6 +11,9 @@ public class UserInterface {
     }
 
     public static void main(String[] args) {
+
+        // show that Tim Tomacka is not in the users.json, and Tammy Tomacka is.
+
         scenario1();
         //scenario2();
 
@@ -28,6 +31,8 @@ public class UserInterface {
 
         facade.logOut();
 
+        // Show the users.json -> illustrating that Tom is now in the file.
+
         Scanner k = new Scanner(System.in);
         String input = "a";
 
@@ -40,32 +45,37 @@ public class UserInterface {
 
         System.out.println(facade.getAllCourses().toString());
 
-        // User says 1
-
         facade.addUserCourse(facade.getAllCourses().getCourse(0));
 
         facade.playGame();
 
         facade.displayPosition();
 
-        facade.displayStudyStuff(); //Not done
+        facade.displayStudyStuff();
 
         facade.logOut();
 
+        // Show Tammy's entry in the users.json file
+
+        input = "a";
         System.out.println("Type next to move on");
         while (!input.equalsIgnoreCase("next")){
             input = k.nextLine();
         }
 
-        facade.login("ttomacka", "pw");
+        facade.login("ttomacka", "password");
 
-        facade.displayStudyStuff(); //Not done
+        facade.displayStudyStuff();
 
-        facade.makeStudyFile(); //Not done
+        facade.makeStudyFile();
 
-        facade.testStudyStuff(); //Not done
+        facade.testStudyStuff();
+
+        facade.displayStudyStuff();
 
         facade.logOut();
+
+        // Show the updates to Tammy's user.json file with the words / phrases she got correct no longer being listed.
 
     }
 

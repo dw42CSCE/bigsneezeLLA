@@ -1,0 +1,18 @@
+Buenas Tardes : Good Afternoon
+Por Favor : Please
+Amigo : Friend
+Nombre : Name
+Gracias : Thanks
+Casa : House
+Comida : Food
+Familia : Family
+Libro : Book
+Agua : Water
+Como estas : How are you
+Me llamo : My name is
+Que hora es : What time is it
+Donde esta el baño : Where is the bathroom
+Tengo hambre : I am hungry
+Puedes ayudarme : Can you help me
+Mucho gusto : Nice to meet you
+Hasta luego : See you later

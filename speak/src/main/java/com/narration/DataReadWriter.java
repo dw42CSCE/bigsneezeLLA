@@ -26,32 +26,50 @@ public class DataReadWriter extends DataConstants{
      * @return An array list of Users
      */
     public static ArrayList<User> getUsers() {
-        ArrayList<User> users = new ArrayList<User>();
-
+        ArrayList<User> users = new ArrayList<>();
+    
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
-            JSONArray peopleJSON = (JSONArray)parser.parse(reader);
+            JSONArray peopleJSON = (JSONArray) parser.parse(reader);
             
             for (int i = 0; i < peopleJSON.size(); i++) {
-                JSONObject personJSON = (JSONObject)peopleJSON.get(i);
-                UUID uuid = UUID.fromString((String)personJSON.get(USER_UUID));
-                String firstname = (String)personJSON.get(USER_FIRST_NAME);
-                String lastname = (String)personJSON.get(USER_LAST_NAME);
-                String username = (String)personJSON.get(USER_USER_NAME);
-                String email = (String)personJSON.get(USER_EMAIL);
-                String password = (String)personJSON.get(USER_PASSWORD);
-                int profPts = ((Long)personJSON.get(USER_PROFICIENCY_PTS)).intValue();
+                JSONObject personJSON = (JSONObject) peopleJSON.get(i);
+                UUID uuid = UUID.fromString((String) personJSON.get(USER_UUID));
+                String firstname = (String) personJSON.get(USER_FIRST_NAME);
+                String lastname = (String) personJSON.get(USER_LAST_NAME);
+                String username = (String) personJSON.get(USER_USER_NAME);
+                String email = (String) personJSON.get(USER_EMAIL);
+                String password = (String) personJSON.get(USER_PASSWORD);
+                int profPts = ((Long) personJSON.get(USER_PROFICIENCY_PTS)).intValue();
                 
-                JSONObject settingsObj = (JSONObject)personJSON.get(SETTINGS);
+                JSONObject settingsObj = (JSONObject) personJSON.get(SETTINGS);
                 Settings settings = parseSettings(settingsObj);
-
-                // JSONObject courseObj = (JSONObject)personJSON.get(USER_COURSES);
-                // Course course = CourseList.getInstance().getCourse();
+    
+                // Parse user courses
                 JSONArray coursesJSON = (JSONArray) personJSON.get(COURSES);
-                HashMap<Course,Integer> courses = parseUserCourses(coursesJSON);
-
-                users.add(new User(username, password, uuid, firstname, lastname, email, courses, profPts, settings));
+                HashMap<Course, Integer> courses = parseUserCourses(coursesJSON);
+                
+                // Parse user's words
+                JSONArray wordsJSON = (JSONArray) personJSON.get("words");
+                ArrayList<String> strings = new ArrayList<>();
+                ArrayList<Word> words = new ArrayList<>();
+                if (wordsJSON != null) {
+                    for (Object wordObj : wordsJSON) {
+                        strings.add((String) wordObj);
+                    }
+                    
+                    for (String string : strings){
+                        String parts[] = string.split(":");
+                        Word word = new Word(parts[0].trim(), parts[1].trim());
+                        words.add(word);
+                    }
+                }
+                
+                User user = new User(username, password, uuid, firstname, lastname, email, courses, profPts, settings);
+                user.getIncorrect().setWords(words);
+                
+                users.add(user);
             }
             return users;
         } catch (Exception e) {
@@ -59,6 +77,7 @@ public class DataReadWriter extends DataConstants{
         }
         return null;
     }
+    
 
     private static Settings parseSettings(JSONObject settings) {
         if (settings == null) {
@@ -97,7 +116,7 @@ public class DataReadWriter extends DataConstants{
     public static void updateUsers(ArrayList<User> users) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("[\n");
-
+    
         for (int i = 0; i < users.size(); i++) {
             User user = users.get(i);
             jsonBuilder.append("  {\n");
@@ -108,28 +127,25 @@ public class DataReadWriter extends DataConstants{
             jsonBuilder.append("    \"email\": \"").append(user.getEmailAddress()).append("\",\n");
             jsonBuilder.append("    \"password\": \"").append(user.getPassword()).append("\",\n");
             jsonBuilder.append("    \"ProfPoints\": ").append(user.getProfPoints()).append(",\n");
-
+    
             // Settings
             jsonBuilder.append("    \"settings\": {\n");
             jsonBuilder.append("      \"emailNotifications\": \"").append(user.getSettings().getEmailNotifications()).append("\",\n");
             jsonBuilder.append("      \"darkMode\": \"").append(user.getSettings().getDarkMode()).append("\"\n");
             jsonBuilder.append("    },\n");
-
+    
             // Courses
             jsonBuilder.append("    \"courses\": [\n");
-            if (user.getCourses() != null){
+            if (user.getCourses() != null) {
                 for (Map.Entry<Course, Integer> entry : user.getCourses().entrySet()) {
                     UUID courseUuid = entry.getKey().getUuid();
                     int progress = entry.getValue();
-                
-                    //Course course = getCourse(courseUuid);  // Fetch the Course object using the UUID
-                
+                    
                     jsonBuilder.append("      {\n");
-                    //jsonBuilder.append("        \"language\": \"").append(course.getLanguage()).append("\",\n");
                     jsonBuilder.append("        \"uuid\": \"").append(courseUuid).append("\",\n");
                     jsonBuilder.append("        \"progress\": ").append(progress).append("\n");
                     jsonBuilder.append("      }");
-                
+                    
                     // Add comma if not the last entry
                     if (!entry.equals(user.getCourses().entrySet().toArray()[user.getCourses().size() - 1])) {
                         jsonBuilder.append(",");
@@ -137,27 +153,42 @@ public class DataReadWriter extends DataConstants{
                     jsonBuilder.append("\n");
                 }
             }
-            
-            jsonBuilder.append("    ]\n");
-
+            jsonBuilder.append("    ],\n");
+    
+            // Words
+            jsonBuilder.append("    \"words\": [\n");
+            if (user.getIncorrect() != null && !user.getIncorrect().getWords().isEmpty()) {
+                for (int j = 0; j < user.getIncorrect().getWords().size(); j++) {
+                    String word = user.getIncorrect().getWords().get(j).toString();
+                    jsonBuilder.append("      \"").append(word).append("\"");
+    
+                    // Add comma if not the last entry
+                    if (j < user.getIncorrect().getWords().size() - 1) {
+                        jsonBuilder.append(",");
+                    }
+                    jsonBuilder.append("\n");
+                }
+            }
+            jsonBuilder.append("    ]\n"); // Closing for words array
+    
             jsonBuilder.append("  }");
-
+    
             if (i < users.size() - 1) {
                 jsonBuilder.append(",");
             }
             jsonBuilder.append("\n");
         }
-
+    
         jsonBuilder.append("]");
-
-        // Write the JSON string to the file CHANGE FILE NAME
+    
+        // Write the JSON string to the file
         try (FileWriter writer = new FileWriter("JSON\\UserInfo.json")) {
             writer.write(jsonBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    
     /**
      * Gets courses from JSON File
      * @return ArrayList of all courses in JSON
@@ -304,45 +335,4 @@ public class DataReadWriter extends DataConstants{
         }
         return courses;
     }
-    
-    
-
-// TEST FOR SIMPLE READWRITER
-    // public static void main(String[] args) {
-    //     ArrayList<User> users = getUsers();
-    //     for (User user : users) {
-    //         System.out.println(user);
-    //     }
-    // }
-
-// TEST FOR GETCOURSES, Exercises, Words, and Phrases NOT IMPLEMENTED
-    // public static void main(String[] args) {
-    //     ArrayList<Course> courses = getCourses();
-
-    //     // Print the courses to verify the data
-    //     for (Course course : courses) {
-    //         System.out.println("Course Language: " + course.getLanguage());
-    //         System.out.println("Course UUID: " + course.getUuid());
-    //         for(int i = 0; i < course.getLessons().size(); i++){
-    //             System.out.println("Lesson " + (i+1) + "\nSubject: \n" + course.getLesson(i).getSubject());
-    //             System.out.println("Intro: \n" + course.getLesson(i).getIntro());
-    //         }
-    //     }
-    // }
-
-// TEST FOR updateUsers
-    // public static void main(String[] args){
-    //     ArrayList<User> users = new ArrayList<>();
-    //     HashMap<Course, Integer> courses = new HashMap();
-
-    //     Settings settings = new Settings(false, false);
-
-    //     Course course = getCourses().get(0);
-
-    //     courses.put(course, 1);
-
-    //     users.add(new User("DWade", "Password", UUID.randomUUID() , "Dallas" , "Wade" , "dw@email.com", courses, 2, settings));
-
-    //     updateUsers(users);
-    // }
 }

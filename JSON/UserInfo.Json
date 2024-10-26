@@ -1,24 +1,5 @@
 [
   {
-    "uuid": "1b889c9e-a1b2-4a0f-84c5-960eddabb7e0",
-    "firstname": "Alice",
-    "lastname": "Smith",
-    "username": "asmith",
-    "email": "alice.smith@example.com",
-    "password": "password",
-    "ProfPoints": 150,
-    "settings": {
-      "emailNotifications": "true",
-      "darkMode": "true"
-    },
-    "courses": [
-      {
-        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
-        "progress": 1
-      }
-    ]
-  },
-  {
     "uuid": "cf874699-564c-43d8-8b24-87171c663ab7",
     "firstname": "Tammy",
     "lastname": "Tomacka",
@@ -35,59 +16,23 @@
         "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
         "progress": 0
       }
+    ],
+    "words": [
+      "Nombre : Name",
+      "Libro : Book",
+      "Agua : Water",
+      "Como estas : How are you",
+      "Me llamo : My name is",
+      "Que hora es : What time is it",
+      "Donde esta el baño : Where is the bathroom",
+      "Tengo hambre : I am hungry",
+      "Puedes ayudarme : Can you help me",
+      "Mucho gusto : Nice to meet you",
+      "Hasta luego : See you later"
     ]
   },
   {
-    "uuid": "965dd353-fd93-4902-a1e7-d95f98ed8b08",
-    "firstname": "Charlie",
-    "lastname": "Davis",
-    "username": "charlestheusername",
-    "email": "charlie.davis@example.com",
-    "password": "password",
-    "ProfPoints": 175,
-    "settings": {
-      "emailNotifications": "true",
-      "darkMode": "true"
-    },
-    "courses": [
-      {
-        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
-        "progress": 60
-      }
-    ]
-  },
-  {
-    "uuid": "37218af2-e1f4-49e0-b9e4-631fc5142812",
-    "firstname": "null",
-    "lastname": "null",
-    "username": "Dw",
-    "email": "dw@gmail.com",
-    "password": "pw",
-    "ProfPoints": 0,
-    "settings": {
-      "emailNotifications": "true",
-      "darkMode": "true"
-    },
-    "courses": [
-    ]
-  },
-  {
-    "uuid": "da131017-8599-4d31-bf38-31b83af77004",
-    "firstname": "null",
-    "lastname": "null",
-    "username": "jimmy",
-    "email": "jimmyj@gmail.com",
-    "password": "pw",
-    "ProfPoints": 0,
-    "settings": {
-      "emailNotifications": "true",
-      "darkMode": "true"
-    },
-    "courses": [
-    ]
-  },
-  {
-    "uuid": "59269184-fc76-4dd2-abc3-d22459797a24",
+    "uuid": "751efc86-362c-4234-8fae-b1ce15252589",
     "firstname": "null",
     "lastname": "null",
     "username": "ttom",
@@ -101,8 +46,11 @@
     "courses": [
       {
         "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
-        "progress": 1
+        "progress": 0
       }
+    ],
+    "words": [
+      "Llamas : Name"
     ]
   }
 ]

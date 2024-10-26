@@ -30,11 +30,15 @@ public class CourseManagerFacade {
      * @param password String of password
      * @return User, null if not found
      */
-    public User login(String username, String password) {
-        users = UserList.getInstance();
-        user = users.getUser(username, password);
-        return user;
-    }
+     public User login(String username, String password) {
+         users = UserList.getInstance();
+         user = users.getUser(username, password);
+         if (user == null) {
+             System.out.println("Login failed: user not found.");
+         }
+
+         return user;
+     }
 
     /**
      * Adds a course to this user's list of courses
@@ -66,6 +70,7 @@ public class CourseManagerFacade {
         }
     
         users.addUser(username, email, password);
+        DataReadWriter.updateUsers(users.getUsers());
         System.out.println("User signed up successfully!");
     }
     
@@ -208,19 +213,34 @@ public void makeStudyFile() {
     /**
      * Tests the user on only the words and phrases they are strugging with
      */
-    public void testStudyStuff(){
+    public void testStudyStuff() {
         Scanner k = new Scanner(System.in);
         WordList words = user.getIncorrect();
-        System.out.println(exercise.toString());
-        String input = k.nextLine();
-        for(Word word : words.getWords()){
+    
+        if (words == null || words.getWords() == null || words.getWords().isEmpty()) {
+            System.out.println("No words to study.");
+            return;
+        }
+    
+        ArrayList<Word> wordsToRemove = new ArrayList<>();
+    
+        for (Word word : words.getWords()) {
             Exercise exercise = new Translation(word);
-            if(exercise.isCorrect(input)){
-                words.removeWord(word);
-                System.out.println("Correct!");
+            
+            System.out.println(exercise.toString());
+            String input = k.nextLine();
+    
+            if (exercise.isCorrect(input)) {
+                wordsToRemove.add(word);
+                System.out.println("Correct! You answered: " + word.getWord());
             }
         }
+    
+        for (Word word : wordsToRemove) {
+            words.removeWord(word);
+        }
     }
+    
 
     /**
      * Goes through User's first course, through lessons asking questions and tracking score
@@ -245,7 +265,7 @@ public void makeStudyFile() {
                     int correct = 0;
                     int asked = 0;
                     System.out.println(lesson.toString());
-                    // Narrator.playSound(lesson.getIntro()); //UNCOMMENT THIS FOR SOUND
+                    Narrator.playSound(lesson.getIntro()); //UNCOMMENT THIS FOR SOUND
                     
                     while(asked < 5 ){
                         Exercise exercise = lesson.generateExercise();
@@ -260,6 +280,7 @@ public void makeStudyFile() {
                         } else{
                             WordList words = user.getIncorrect();
                             Word word = exercise.getWord();
+                            words.addWord(word);
                             user.setWordList(words);
                         }
                         asked++;

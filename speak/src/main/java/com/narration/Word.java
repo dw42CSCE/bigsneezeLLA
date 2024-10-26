@@ -1,6 +1,7 @@
 package com.narration;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Word {
@@ -37,6 +38,19 @@ public class Word {
     public ArrayList<Word> getSimilarWords(){
         
         return similarWords;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Word)) return false;
+        Word other = (Word) obj;
+        return this.word.equals(other.word) && this.meaning.equals(other.meaning);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(word, meaning);
     }
         
 }
