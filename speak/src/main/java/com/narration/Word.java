@@ -6,12 +6,14 @@ import java.util.UUID;
 public class Word {
     private String word;
     private String meaning;
+    private int progress;
     private ArrayList<Word> similarWords;
     private UUID uuid;
 
     public Word(String word, String meaning){
         this.word = word;
         this.meaning = meaning;
+        this.progress = 0;
     }
 
     public String getWord(){
@@ -21,6 +23,15 @@ public class Word {
     public String getMeaning(){
         return this.meaning;
     }
+
+    public int getProgress(){
+        return this.progress;
+    }
+
+    public void addProgress(){
+        progress ++;
+    }
+
 
     public void speak(){
         Narrator.playSound(this.word);

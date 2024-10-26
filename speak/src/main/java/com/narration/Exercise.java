@@ -30,4 +30,8 @@ public class Exercise {
         };
         return (question + "\n" + options);
     }
+
+    public String getAnswer(){
+        return answer;
+    }
 }

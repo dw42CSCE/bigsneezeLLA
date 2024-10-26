@@ -137,7 +137,11 @@ public class CourseManagerFacade {
                             return;
                         }
                         if (exercise.isCorrect(answer)){
-                            
+                            WordList checkIfThere=user.getCorrectWordList();
+                            Word test = checkIfThere.getWord(answer);
+                            test.addProgress();
+                            if(test.getProgress()>=3)
+                                checkIfThere.addWord(answer, answer);
                             correct++;
                         } 
                     }

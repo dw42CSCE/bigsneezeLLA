@@ -147,4 +147,13 @@ public class User {
     private UUID createUUID(){
         return UUID.randomUUID();
     }
+
+    public WordList getCorrectWordList(){
+        return correctWords;
+    }
+
+    public WordList getIncorrectWordList(){
+        return incorrectWords;
+    }
+
 }
