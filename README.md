@@ -5,4 +5,4 @@ This project is language learning app, similar to Rosetta Stone or Duolingo. Thi
 
 Below if the link to the scenario 1 video:
 
-https://youtu.be/fVXPBveZjFI
+https://youtu.be/CYTbcei-cmA
