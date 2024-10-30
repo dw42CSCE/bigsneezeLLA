@@ -46,4 +46,8 @@ public class Settings {
     public boolean getEmailNotifications(){
         return this.emailNotifications;
     }
+    
+    public String toString(){
+        return ("Dark Mode: " + this.isDarkMode + "\nEmail Notifications: " + this.emailNotifications);
+    }
 }

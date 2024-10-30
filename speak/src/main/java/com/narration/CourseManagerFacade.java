@@ -291,7 +291,6 @@ public void makeStudyFile() {
                     if ((double)correct/5 > 0.7){
                         userProgress++;
                         userCourses.put(firstCourse, userProgress);
-                        user.setCourseProgress(null);
                         System.out.println("You may move on");
                     } else { 
                         System.out.println("YOu did not pass! Try again");
