@@ -1,6 +1,3 @@
-Buenas Tardes : Good Afternoon
-Por Favor : Please
-Amigo : Friend
 Nombre : Name
 Gracias : Thanks
 Casa : House
