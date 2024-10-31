@@ -36,7 +36,7 @@
     ]
   },
   {
-    "uuid": "84371fca-2ddc-4f6c-a145-1d9eabbe29b7",
+    "uuid": "0d542694-5ca6-42ef-9113-b435e9d99656",
     "firstname": "null",
     "lastname": "null",
     "username": "test",
@@ -44,8 +44,8 @@
     "password": "pw",
     "ProfPoints": 0,
     "settings": {
-      "emailNotifications": "true",
-      "darkMode": "true"
+      "emailNotifications": "false",
+      "darkMode": "false"
     },
     "courses": [
     ],
