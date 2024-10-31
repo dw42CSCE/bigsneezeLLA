@@ -34,6 +34,7 @@
       "Mucho gusto : Nice to meet you",
       "Hasta luego : See you later"
     ]
+<<<<<<< HEAD
   },
   {
     "uuid": "abfb9c62-8a88-4c5a-977e-7107e42d3f82",
@@ -51,5 +52,7 @@
     ],
     "words": [
     ]
+=======
+>>>>>>> 651e34ba38ad156f61c019bd93eb2ed9b2c953d2
   }
 ]
