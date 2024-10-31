@@ -31,7 +31,7 @@ public class Word {
         return (this.word+" : "+this.meaning);
     }
 
-    public UUID setUUID(){
+    public UUID getUUID(){
         return this.uuid;
     }
 
