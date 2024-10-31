@@ -34,26 +34,5 @@
       "Mucho gusto : Nice to meet you",
       "Hasta luego : See you later"
     ]
-  },
-  {
-<<<<<<< HEAD
-    "uuid": "0d542694-5ca6-42ef-9113-b435e9d99656",
-=======
-    "uuid": "a94a3dbd-0b7f-4542-bb07-f9a23dfe140a",
->>>>>>> 651e34ba38ad156f61c019bd93eb2ed9b2c953d2
-    "firstname": "null",
-    "lastname": "null",
-    "username": "test",
-    "email": "test@gmail",
-    "password": "pw",
-    "ProfPoints": 0,
-    "settings": {
-      "emailNotifications": "false",
-      "darkMode": "false"
-    },
-    "courses": [
-    ],
-    "words": [
-    ]
   }
 ]
