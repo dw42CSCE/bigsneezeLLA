@@ -9,10 +9,17 @@ import java.io.FileReader;
 import java.util.UUID;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.HashMap;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.io.BufferedReader;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+
+import software.amazon.awssdk.utils.async.InputStreamConsumingPublisher;
 
 @SuppressWarnings("unused")
 
@@ -29,9 +36,10 @@ public class DataReadWriter extends DataConstants{
         ArrayList<User> users = new ArrayList<>();
     
         try {
-            FileReader reader = new FileReader(USER_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray peopleJSON = (JSONArray) parser.parse(reader);
+            InputStream inputStream = DataReadWriter.class.getResourceAsStream(DataConstants.USER_FILE_NAME);
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+            BufferedReader reader = new BufferedReader(inputStreamReader);
+            JSONArray peopleJSON = (JSONArray) new JSONParser().parse(reader);
             
             for (int i = 0; i < peopleJSON.size(); i++) {
                 JSONObject personJSON = (JSONObject) peopleJSON.get(i);
@@ -182,9 +190,14 @@ public class DataReadWriter extends DataConstants{
         jsonBuilder.append("]");
     
         // Write the JSON string to the file
-        try (FileWriter writer = new FileWriter("JSON\\UserInfo.json")) {
+        try {
+            URI url = DataReadWriter.class.getResource(USER_FILE_NAME).toURI();
+            FileWriter writer = new FileWriter(url.getPath());
+
             writer.write(jsonBuilder.toString());
-        } catch (IOException e) {
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -197,10 +210,10 @@ public class DataReadWriter extends DataConstants{
         ArrayList<Course> courses = new ArrayList<>();
     
         try {
-            FileReader reader = new FileReader(COURSE_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONObject data = (JSONObject) parser.parse(reader); // Parse the root JSON object
-            JSONArray coursesJSON = (JSONArray) data.get("courses"); // Get the array of courses
+            InputStream inputStream = DataReadWriter.class.getResourceAsStream(DataConstants.COURSE_FILE_NAME);
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+            BufferedReader reader = new BufferedReader(inputStreamReader);
+            JSONArray coursesJSON = (JSONArray) new JSONParser().parse(reader);
     
             for (int i = 0; i < coursesJSON.size(); i++) {
                 JSONObject courseJSON = (JSONObject) coursesJSON.get(i);

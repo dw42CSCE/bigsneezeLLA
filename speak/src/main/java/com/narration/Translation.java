@@ -5,7 +5,6 @@ public class Translation extends Exercise {
 
     protected Word answer;
 
-
     /**
      * Parameterized Constructor
      * @param word Word word

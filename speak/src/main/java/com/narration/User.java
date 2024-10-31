@@ -173,9 +173,9 @@ public class User {
      * Sets the progress of courses based on an ArrayList of lesson progress.
      * @param lessonProgress an ArrayList representing lesson progress
      */
-    public void setCourseProgress(ArrayList<Integer> lessonProgress){
-        // Implementation goes here
-    }
+    // public void setCourseProgress(ArrayList<Integer> lessonProgress){
+    //     // Implementation goes here
+    // }
 
     /**
      * Sets the user's password.
@@ -202,11 +202,11 @@ public class User {
      * @param lesson        the lesson index
      * @param lessonProgress the progress to be added for the lesson
      */
-    public void addCourseProgress(Course course, int lesson, int lessonProgress){
-        int addProgress = 1 / courses.size();
-        int progress = courses.get(course) + addProgress;
-        courses.put(course, progress);
-    }
+    // public void addCourseProgress(Course course, int lesson, int lessonProgress){
+    //     int addProgress = 1 / courses.size();
+    //     int progress = courses.get(course) + addProgress;
+    //     courses.put(course, progress);
+    // }
 
     /**
      * Returns a string representation of the user, including their username and name.
@@ -233,8 +233,8 @@ public class User {
      * @param emailNotifsOn    boolean indicating if email notifications should be enabled
      */
     public void setSettings(Boolean darkModeOn, Boolean emailNotifsOn){
-       settings.toggleDarkMode(false);
-       settings.toggleEmailNotification(false);
+       settings.toggleDarkMode(darkModeOn);
+       settings.toggleEmailNotification(emailNotifsOn);
     }
 
     /**

@@ -19,6 +19,10 @@
     ],
     "words": [
       "Nombre : Name",
+      "Gracias : Thanks",
+      "Casa : House",
+      "Comida : Food",
+      "Familia : Family",
       "Libro : Book",
       "Agua : Water",
       "Como estas : How are you",
@@ -32,7 +36,7 @@
     ]
   },
   {
-    "uuid": "751efc86-362c-4234-8fae-b1ce15252589",
+    "uuid": "ceb193cb-1966-42b0-a3cb-575ef54d7777",
     "firstname": "null",
     "lastname": "null",
     "username": "ttom",
@@ -44,13 +48,8 @@
       "darkMode": "true"
     },
     "courses": [
-      {
-        "uuid": "b1303bf7-6575-41ea-93fb-4bb8da658eda",
-        "progress": 0
-      }
     ],
     "words": [
-      "Llamas : Name"
     ]
   }
 ]
