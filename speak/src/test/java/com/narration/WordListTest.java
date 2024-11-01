@@ -62,18 +62,36 @@ public class WordListTest {
     public void testSameWordDiffMeaning(){
         words.addWord(new Word("Test", "First Meaning"));
         words.addWord(new Word("Test", "Different Meaning"));
-        assertEquals(words.getWords().get(0).getMeaning(), words.getWords().get(1).getMeaning());
+        assertNotEquals(words.getWords().get(0).getMeaning(), words.getWords().get(1).getMeaning());
     }
 
-    
+
     //Remove Word Tests
     @Test
     public void testRemoveWord(){
         words.addWord(word);
         words.removeWord(word);
-        testWord=words.getWord("Test");
-        assertNotEquals(word, testWord);
+        assertTrue(words.getWords().isEmpty());
     }
+
+    @Test
+    public void testRemoveWordWithMultipleMeanings(){
+        words.addWord(new Word("Test", "First Meaning"));
+        words.addWord(new Word("Test", "Different Meaning"));
+        words.removeWord(words.getWord("Test"));
+        assertTrue(words.getWords().isEmpty());
+    }
+
+    //Edit Word
+    @Test
+    public void testEditWord(){
+        words.editWord("Test", "New word", "new def");
+        assertEquals(words.getWord("New word").getWord(),"New word");
+    }
+
+    
+
+
 
  
  
