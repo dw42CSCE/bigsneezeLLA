@@ -7,9 +7,7 @@ import java.util.stream.Collectors;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.stream.Collectors;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class WordListTest {
@@ -34,17 +32,18 @@ public class WordListTest {
     }
 
     @Test
-    public void testAddDuplicateWord(){
-        this.words.addWord(word);
-        this.words.addWord("Test", "Test");
-        int j=0;
-        for(int i=0; i<words.getWords().size();i++){
-            if(word==words.getWord("Test")){
-                j++;
+    public void testAddDuplicateWord() {
+        words.addWord(word);
+        words.addWord("Test", "Test");
+        int count = 0;
+        for (Word testWord : words.getWords()) {
+            if (testWord.getWord().equals("Test")) {
+                count++;
             }
         }
-        assertEquals(1,j);
+        assertEquals(1, count);
     }
+    
 
     @Test
     public void testNullWord(){
@@ -82,12 +81,38 @@ public class WordListTest {
         assertTrue(words.getWords().isEmpty());
     }
 
+    @Test
+    public void testCaseSensitiveRemove(){
+        words.addWord(word);
+        words.removeWord(words.getWord("test"));
+        assertTrue(words.getWords().isEmpty());
+    }
+
     //Edit Word
     @Test
     public void testEditWord(){
         words.editWord("Test", "New word", "new def");
         assertEquals(words.getWord("New word").getWord(),"New word");
     }
+
+    @Test
+    public void testEditNonExist(){
+        words.addWord(word);
+        words.editWord("Unreal", "EditTest", "Test");
+        int count =0;
+        if(words.getWord("EditTest").equals("EditTest"))
+            count++;
+        assertEquals(0,count);
+    }
+
+    @Test
+    public void testCaseSensitive(){
+        words.addWord(word);
+        words.editWord("test", "NewTest", "NewDef");
+        assertEquals("NewTest", words.getWord("NewTest").getWord());
+    }
+
+
 
     
 
