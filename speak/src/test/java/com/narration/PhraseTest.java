@@ -15,6 +15,17 @@ public class PhraseTest {
         assertEquals(phrase.getTranslation(), "What is your name");
     }
 
+
+    @Test
+    public void testNullPhrase(){
+        Phrase word1 = new Phrase(null, "Test");
+        Phrase word2 = new Phrase("Test", null);
+        assertEquals(word1.getMeaning(), "Hello");
+        assertEquals(word1.getWord(), "Default");
+        assertEquals(word2.getMeaning(), "Default");
+        assertEquals(word2.getWord(), "Hola");
+    }
+
     @Test
     public void testToString(){
         Phrase phrase = new Phrase("Como te llamas", "What is your name");
