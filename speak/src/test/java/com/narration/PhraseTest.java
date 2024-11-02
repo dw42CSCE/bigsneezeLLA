@@ -20,10 +20,10 @@ public class PhraseTest {
     public void testNullPhrase(){
         Phrase word1 = new Phrase(null, "Test");
         Phrase word2 = new Phrase("Test", null);
-        assertEquals(word1.getMeaning(), "Hello");
-        assertEquals(word1.getWord(), "Default");
-        assertEquals(word2.getMeaning(), "Default");
-        assertEquals(word2.getWord(), "Hola");
+        assertEquals(word1.getTranslation(), "Test");
+        assertEquals(word1.getPhrase(), "Default");
+        assertEquals(word2.getTranslation(), "Default");
+        assertEquals(word2.getPhrase(), "Test");
     }
 
     @Test
