@@ -8,7 +8,7 @@ public class UserList {
   /**
    * Default constructor for UserList
    */
-  private UserList() {
+  public UserList() {
     users = DataReadWriter.getUsers();
     if (users == null) {
         users = new ArrayList<>();  // Initialize with an empty list if null
