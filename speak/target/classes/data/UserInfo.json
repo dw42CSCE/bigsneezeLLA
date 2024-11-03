@@ -28,31 +28,11 @@
       "Como estas : How are you",
       "Me llamo : My name is",
       "Que hora es : What time is it",
-      "Donde esta el ba?o : Where is the bathroom",
+      "Donde esta el baño : Where is the bathroom",
       "Tengo hambre : I am hungry",
       "Puedes ayudarme : Can you help me",
       "Mucho gusto : Nice to meet you",
       "Hasta luego : See you later"
     ]
-<<<<<<< HEAD
-  },
-  {
-    "uuid": "abfb9c62-8a88-4c5a-977e-7107e42d3f82",
-    "firstname": "null",
-    "lastname": "null",
-    "username": "ttom",
-    "email": "ttom@gmail.com",
-    "password": "pw",
-    "ProfPoints": 0,
-    "settings": {
-      "emailNotifications": "true",
-      "darkMode": "true"
-    },
-    "courses": [
-    ],
-    "words": [
-    ]
-=======
->>>>>>> 651e34ba38ad156f61c019bd93eb2ed9b2c953d2
   }
 ]
