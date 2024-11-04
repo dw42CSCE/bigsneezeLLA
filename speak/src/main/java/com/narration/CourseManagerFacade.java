@@ -54,24 +54,26 @@ public class CourseManagerFacade {
      * @param email String of email
      * @param password String of password
      */
-    public void signUp(String username, String email, String password) {
+    public User signUp(String username, String email, String password) {
         users = UserList.getInstance();
         
         for (User existingUser : users.getUsers()) {
             if (existingUser.getUsername().equals(username)) {
                 System.out.println("Username already taken.");
-                return;
+                return user;
             }
     
             if (existingUser.getEmailAddress().equals(email)) {
                 System.out.println("Email already in use.");
-                return;
+                return user;
             }
         }
     
         users.addUser(username, email, password);
         DataReadWriter.updateUsers(users.getUsers());
         System.out.println("User signed up successfully!");
+        user = users.getUser(username, password)
+        return user;
     }
     
     /**
