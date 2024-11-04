@@ -41,11 +41,6 @@ public class LessonTest {
     }
 
     @Test
-    public void testGenerateExercise() {
-        Exercise game = lesson.generateExercise();
-    }
-
-    @Test
     public void testGenerateExerciseAreDifferentTwoWords() {
         Exercise e1 = lesson.generateExercise();
         Exercise e2 = lesson.generateExercise();
