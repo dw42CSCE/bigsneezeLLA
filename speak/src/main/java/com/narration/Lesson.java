@@ -55,7 +55,7 @@ public class Lesson {
     public Exercise generateExercise() {
         Random rand = new Random();
         int choice = rand.nextInt(0,5);
-        Exercise exercise= null;
+        Exercise exercise = null;
         switch (choice) {
             case 0: //Translation
                 exercise = new Translation(keyWords[(rand.nextInt(0, keyWords.length))]);
