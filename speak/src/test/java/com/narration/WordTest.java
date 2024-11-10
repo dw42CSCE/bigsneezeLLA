@@ -18,10 +18,10 @@ public class WordTest {
     public void testNullWord(){
         Word word1 = new Word(null, "Hello");
         Word word2 = new Word("Hola", null);
-        assertEquals(word1.getMeaning(), "Hello");
-        assertEquals(word1.getWord(), "Default");
-        assertEquals(word2.getMeaning(), "Default");
-        assertEquals(word2.getWord(), "Hola");
+        assertEquals("Hello", word1.getMeaning() );
+        assertEquals("Default", word1.getWord() );
+        assertEquals("Default", word2.getMeaning() );
+        assertEquals("Hola", word2.getWord() );
     }
 
     @Test
