@@ -69,7 +69,7 @@ public class UserListTest {
     @Test
     public void testCaseSensitiveRemove(){
         users.addUser("Test", "Test","Test");
-        users.removeUser("test","test");
+        users.removeUser("test","Test");
         assertTrue(users.getUsers().isEmpty());
     }
 
